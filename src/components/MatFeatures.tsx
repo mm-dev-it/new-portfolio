@@ -167,6 +167,8 @@ function MatPreloader({ active }: { active: boolean }) {
         document.body.classList.remove("mat-preloader-active");
         delete document.body.dataset.matPreloader;
 
+        window.dispatchEvent(new Event("mat-preload-done"));
+
         if (window.jQuery) {
           window.jQuery(window).trigger("load");
         }
