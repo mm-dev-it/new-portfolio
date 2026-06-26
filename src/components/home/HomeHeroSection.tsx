@@ -13,7 +13,6 @@ export default function HomeHeroSection() {
     scrollText,
     aside,
     image,
-    imageMobile,
     imageAlt,
   } = homeHeroContent;
 
@@ -46,23 +45,19 @@ export default function HomeHeroSection() {
         </div>
 
         <div className="ph-image">
-          <div className="ph-image-inner ph-image-inner--desktop">
-            <img src={image} alt={imageAlt} loading="eager" decoding="async" />
-          </div>
-
-          <div className="mat-hero-mobile-visual">
-            <div className="mat-hero-mobile-backdrop" aria-hidden="true">
-              <div className="mat-hero-mobile-backdrop__glow" />
-              <div className="mat-hero-mobile-backdrop__square">
-                <div className="mat-hero-mobile-backdrop__accent" />
-                <div className="mat-hero-mobile-backdrop__base" />
-                <div className="mat-hero-mobile-backdrop__frame" />
+          <div className="mat-hero-visual">
+            <div className="mat-hero-visual-backdrop" aria-hidden="true">
+              <div className="mat-hero-visual-backdrop__glow" />
+              <div className="mat-hero-visual-backdrop__square">
+                <div className="mat-hero-visual-backdrop__accent" />
+                <div className="mat-hero-visual-backdrop__base" />
+                <div className="mat-hero-visual-backdrop__frame" />
               </div>
             </div>
             <img
-              src={imageMobile}
+              src={image}
               alt={imageAlt}
-              className="mat-hero-mobile-photo"
+              className="mat-hero-visual-photo"
               loading="eager"
               decoding="async"
             />

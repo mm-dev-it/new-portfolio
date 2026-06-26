@@ -5,13 +5,11 @@
   --mat-hero-text-muted: #737373;
   --mat-hero-accent: #c8f542;
   --mat-hero-accent-dim: rgba(200, 245, 66, 0.15);
-  --mat-hero-border: rgba(255, 255, 255, 0.08);
   --mat-hero-font-display: "Syne", sans-serif;
   --mat-hero-font-mono: "IBM Plex Mono", monospace;
   --mat-hero-ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --mat-hero-footer-bottom: clamp(1.5rem, 4vh, 3rem);
   --mat-hero-scroll-size: clamp(160px, 18vw, 220px);
-  --mat-hero-image-radius: 0.75rem;
 
   position: relative;
   min-height: 100vh;
@@ -165,57 +163,98 @@
   top: auto !important;
   right: auto !important;
   width: 100%;
-  max-width: min(480px, 38vw);
+  max-width: min(420px, 38vw);
   margin: 0;
   justify-self: end;
 }
 
-.mat-hero-section .ph-image-inner {
+.mat-hero-visual {
+  display: block;
   position: relative;
-  overflow: hidden;
-  border-radius: var(--mat-hero-image-radius);
-  border: 1px solid var(--mat-hero-border);
-  box-shadow:
-    0 24px 80px rgba(0, 0, 0, 0.55),
-    0 0 0 1px rgba(200, 245, 66, 0.06) inset;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: visible;
 }
 
-.mat-hero-section .ph-image-inner::before {
-  content: "";
+.mat-hero-visual-backdrop {
+  position: absolute;
+  inset: 14% 10% 10% 10%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mat-hero-visual-backdrop__glow {
+  position: absolute;
+  inset: -28%;
+  background: radial-gradient(
+    circle at 52% 58%,
+    rgba(200, 245, 66, 0.16) 0%,
+    rgba(200, 245, 66, 0.04) 38%,
+    transparent 68%
+  );
+  filter: blur(18px);
+  opacity: 0;
+}
+
+.mat-hero-visual-backdrop__square {
+  position: absolute;
+  inset: -10px;
+  clip-path: inset(0 100% 100% 0);
+}
+
+.mat-hero-visual-backdrop__accent {
+  position: absolute;
+  inset: 10px;
+  background: var(--mat-hero-accent);
+  transform: translate(10px, 10px);
+}
+
+.mat-hero-visual-backdrop__base {
+  position: absolute;
+  inset: 10px;
+  background: linear-gradient(
+    145deg,
+    #0a0a0a 0%,
+    #111111 52%,
+    #0d0d0d 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow:
+    0 28px 64px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.mat-hero-visual-backdrop__frame {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(200, 245, 66, 0.14) 0%,
-    transparent 42%
-  );
-  pointer-events: none;
-  z-index: 1;
+  border: 1px solid rgba(200, 245, 66, 0.22);
 }
 
-.mat-hero-section .ph-image-inner img {
+.mat-hero-visual-photo {
+  position: relative;
+  z-index: 2;
   display: block;
   width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: center top;
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(0, 0, 0, 0.35) 10%,
-    #000 24%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(0, 0, 0, 0.35) 10%,
-    #000 24%
-  );
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  opacity: 0;
+  transform: translateY(calc(4% + 24px));
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.35));
 }
 
-/* Mobile hero visual — hidden on desktop */
-.mat-hero-mobile-visual {
-  display: none;
+html.mat-preload-done .mat-hero-visual-backdrop__glow {
+  animation: mat-hero-glow-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards,
+    mat-hero-glow-drift 12s ease-in-out 1.6s infinite alternate;
+}
+
+html.mat-preload-done .mat-hero-visual-backdrop__square {
+  animation: mat-hero-square-draw 1.45s cubic-bezier(0.16, 1, 0.3, 1) 0.22s
+    forwards;
+}
+
+html.mat-preload-done .mat-hero-visual-photo {
+  animation: mat-hero-photo-rise 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
 }
 
 /* Scroll down */
@@ -289,6 +328,42 @@
   line-height: 1;
 }
 
+@media (min-width: 1025px) {
+  .mat-hero-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 48%);
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  .mat-hero-section .ph-image {
+    max-width: min(560px, 48vw);
+  }
+
+  .mat-hero-visual {
+    aspect-ratio: 4 / 4.75;
+  }
+
+  .mat-hero-visual-backdrop {
+    inset: 8% 4% 4% 4%;
+  }
+
+  .mat-hero-visual-backdrop__square {
+    inset: -14px;
+  }
+
+  .mat-hero-visual-backdrop__accent {
+    transform: translate(12px, 12px);
+  }
+
+  .mat-hero-visual-photo {
+    transform: translateY(2%);
+  }
+
+  html.mat-preload-done .mat-hero-visual-photo {
+    animation: mat-hero-photo-rise-desktop 1.15s cubic-bezier(0.16, 1, 0.3, 1)
+      0.55s both;
+  }
+}
+
 @media (max-width: 1024px) {
   .mat-hero-section {
     align-items: flex-start;
@@ -316,98 +391,12 @@
     align-self: center;
   }
 
-  .mat-hero-section .ph-image-inner--desktop {
-    display: none;
-  }
-
-  .mat-hero-mobile-visual {
-    display: block;
-    position: relative;
-    width: 100%;
+  .mat-hero-visual {
     aspect-ratio: 4 / 5;
-    overflow: visible;
   }
 
-  .mat-hero-mobile-backdrop {
-    position: absolute;
+  .mat-hero-visual-backdrop {
     inset: 14% 10% 10% 10%;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .mat-hero-mobile-backdrop__glow {
-    position: absolute;
-    inset: -28%;
-    background: radial-gradient(
-      circle at 52% 58%,
-      rgba(200, 245, 66, 0.16) 0%,
-      rgba(200, 245, 66, 0.04) 38%,
-      transparent 68%
-    );
-    filter: blur(18px);
-    opacity: 0;
-  }
-
-  .mat-hero-mobile-backdrop__square {
-    position: absolute;
-    inset: -10px;
-    clip-path: inset(0 100% 100% 0);
-  }
-
-  .mat-hero-mobile-backdrop__accent {
-    position: absolute;
-    inset: 10px;
-    background: var(--mat-hero-accent);
-    transform: translate(10px, 10px);
-  }
-
-  .mat-hero-mobile-backdrop__base {
-    position: absolute;
-    inset: 10px;
-    background: linear-gradient(
-      145deg,
-      #0a0a0a 0%,
-      #111111 52%,
-      #0d0d0d 100%
-    );
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    box-shadow:
-      0 28px 64px rgba(0, 0, 0, 0.45),
-      inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  }
-
-  .mat-hero-mobile-backdrop__frame {
-    position: absolute;
-    inset: 0;
-    border: 1px solid rgba(200, 245, 66, 0.22);
-  }
-
-  .mat-hero-mobile-photo {
-    position: relative;
-    z-index: 2;
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center bottom;
-    opacity: 0;
-    transform: translateY(calc(4% + 24px));
-    filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.35));
-  }
-
-  html.mat-preload-done .mat-hero-mobile-backdrop__glow {
-    animation: mat-hero-glow-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards,
-      mat-hero-glow-drift 12s ease-in-out 1.6s infinite alternate;
-  }
-
-  html.mat-preload-done .mat-hero-mobile-backdrop__square {
-    animation: mat-hero-square-draw 1.45s cubic-bezier(0.16, 1, 0.3, 1) 0.22s
-      forwards;
-  }
-
-  html.mat-preload-done .mat-hero-mobile-photo {
-    animation: mat-hero-photo-rise 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.55s
-      both;
   }
 
   .mat-hero-content {
@@ -498,17 +487,28 @@
   }
 }
 
+@keyframes mat-hero-photo-rise-desktop {
+  from {
+    opacity: 0;
+    transform: translateY(calc(2% + 24px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(2%);
+  }
+}
+
 @media (max-width: 768px) {
   .mat-hero-section {
     padding-top: clamp(6.5rem, 16vw, 7.5rem);
     padding-bottom: 1.75rem;
   }
 
-  .mat-hero-mobile-visual {
+  .mat-hero-visual {
     aspect-ratio: 1 / 1.05;
   }
 
-  .mat-hero-mobile-backdrop {
+  .mat-hero-visual-backdrop {
     inset: 12% 8% 8% 8%;
   }
 
@@ -560,26 +560,32 @@
     animation: none;
   }
 
-  html.mat-preload-done .mat-hero-mobile-backdrop__glow,
-  html.mat-preload-done .mat-hero-mobile-backdrop__square,
-  html.mat-preload-done .mat-hero-mobile-photo {
+  html.mat-preload-done .mat-hero-visual-backdrop__glow,
+  html.mat-preload-done .mat-hero-visual-backdrop__square,
+  html.mat-preload-done .mat-hero-visual-photo {
     animation: none;
   }
 
-  .mat-hero-mobile-backdrop__glow {
+  .mat-hero-visual-backdrop__glow {
     opacity: 1;
   }
 
-  .mat-hero-mobile-backdrop__square {
+  .mat-hero-visual-backdrop__square {
     clip-path: inset(0 0 0 0);
   }
 
-  .mat-hero-mobile-backdrop__accent {
+  .mat-hero-visual-backdrop__accent {
     transform: translate(10px, 10px);
   }
 
-  .mat-hero-mobile-photo {
+  .mat-hero-visual-photo {
     opacity: 1;
     transform: translateY(4%);
+  }
+}
+
+@media (min-width: 1025px) and (prefers-reduced-motion: reduce) {
+  .mat-hero-visual-photo {
+    transform: translateY(2%);
   }
 }
