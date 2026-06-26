@@ -1,0 +1,261 @@
+/* Scoped copy of portfolio-mat about section */
+.mat-about-section {
+  --bg: #050505;
+  --bg-card: #111111;
+  --text: #f5f5f5;
+  --text-muted: #737373;
+  --accent: #c8f542;
+  --accent-dim: rgba(200, 245, 66, 0.15);
+  --border: rgba(255, 255, 255, 0.08);
+  --font-display: "Syne", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  padding: 8rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+}
+
+/* Reset stili globali del tema (p { margin-bottom: 30px }, h3 enormi, ecc.) */
+.mat-about-section h2,
+.mat-about-section h3,
+.mat-about-section p {
+  margin: 0;
+}
+
+.mat-about-section .about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 6rem;
+}
+
+.mat-about-section .section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.mat-about-section .about-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 2rem;
+}
+
+.mat-about-section .accent {
+  color: var(--accent);
+}
+
+.mat-about-section .about-text {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  max-width: 440px;
+}
+
+.mat-about-section .about-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.mat-about-section .about-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.mat-about-section .about-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #8ab830);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--bg);
+  flex-shrink: 0;
+}
+
+.mat-about-section .about-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.mat-about-section .about-role {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.mat-about-section .about-status {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.mat-about-section .status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: mat-about-pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes mat-about-pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+.mat-about-section .timeline-item {
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent-dim);
+  margin-bottom: 1.5rem;
+}
+
+.mat-about-section .timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.mat-about-section .timeline-year {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+
+.mat-about-section .timeline-role {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.3;
+  margin: 0.25rem 0;
+}
+
+.mat-about-section .timeline-company {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.mat-about-section .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.mat-about-section .skill-item {
+  background: var(--bg);
+  padding: 2rem;
+  transition: background 0.3s;
+}
+
+.mat-about-section .skill-item:hover {
+  background: var(--bg-card);
+}
+
+.mat-about-section .skill-num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+
+.mat-about-section .skill-item h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem !important;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 1rem 0 0.75rem;
+}
+
+.mat-about-section .skill-item p {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.mat-about-section .reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.mat-about-section .reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.8s var(--ease-out-expo),
+    transform 0.8s var(--ease-out-expo);
+}
+
+@media (max-width: 1024px) {
+  .mat-about-section .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .mat-about-section .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .mat-about-section {
+    padding: 5rem 1.25rem;
+  }
+
+  .mat-about-section .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mat-about-section .reveal-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .mat-about-section .status-dot {
+    animation: none;
+  }
+}

@@ -1,0 +1,153 @@
+/* Design system Mat — pagina progetto (solo colori, layout invariato) */
+.mat-project-page {
+  --mat-project-accent: #c8f542;
+  --mat-project-accent-dim: rgba(200, 245, 66, 0.45);
+  --mat-project-text: #f5f5f5;
+  --mat-project-text-muted: #737373;
+  --mat-project-label: rgba(245, 245, 245, 0.82);
+  --mat-project-bg: #050505;
+}
+
+/* Hero full screen — immagine di sfondo sul page-header, non sul inner */
+.mat-project-page #page-header.ph-bg-image .ph-image {
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Hero — categoria */
+.mat-project-page #page-header .ph-category {
+  color: var(--mat-project-accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 1;
+}
+
+.mat-project-page #page-header .ph-caption-title {
+  color: var(--mat-project-text);
+}
+
+/* Overlay hero più scuro — testi leggibili su foto chiare */
+.mat-project-page #page-header.ph-image-cover-5 .ph-image-inner::before {
+  opacity: 0.68;
+}
+
+.mat-project-page #page-header .ph-image-inner::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    rgba(5, 5, 5, 0.62) 0%,
+    rgba(5, 5, 5, 0.34) 42%,
+    rgba(5, 5, 5, 0.12) 68%,
+    transparent 100%
+  );
+}
+
+/* Gradiente inferiore hero → sfondo design system */
+.mat-project-page #page-header.ph-bg-image.ph-image-shadow::after {
+  background: linear-gradient(
+    0deg,
+    rgba(5, 5, 5, 1) 0%,
+    rgba(5, 5, 5, 0) 100%
+  );
+}
+
+/* Project info list */
+.mat-project-page #page-header .project-info-list .pi-list-heading {
+  color: var(--mat-project-label);
+  opacity: 1;
+}
+
+.mat-project-page #page-header .project-info-list .pi-list-cont {
+  color: var(--mat-project-text);
+}
+
+.mat-project-page #page-header .project-info-list > ul > li::after {
+  background-color: rgba(200, 245, 66, 0.35);
+}
+
+.mat-project-page #page-header .project-info-list .pi-list-cont a {
+  color: var(--mat-project-accent);
+}
+
+.mat-project-page #page-header .project-info-list .pi-list-cont a:hover {
+  color: var(--mat-project-text);
+  opacity: 1;
+}
+
+.mat-project-page #page-header .project-info-list .pi-list-icon {
+  color: var(--mat-project-accent);
+}
+
+/* Scroll down circle */
+.mat-project-page #page-header .scroll-down-circle .sdc-icon {
+  color: var(--mat-project-accent);
+}
+
+.mat-project-page #page-header .scroll-down-circle text {
+  fill: var(--mat-project-accent-dim);
+}
+
+.mat-project-page #page-header .scroll-down-circle:hover text {
+  fill: var(--mat-project-accent);
+}
+
+/* Made with love */
+.mat-project-page #page-header .made-with-love {
+  color: var(--mat-project-text-muted);
+  opacity: 1;
+}
+
+.mat-project-page #page-header .mwl-icon {
+  color: var(--mat-project-accent);
+}
+
+/* About section */
+.mat-project-page #page-content {
+  background-color: var(--mat-project-bg);
+}
+
+.mat-project-page #page-content .tt-heading-title {
+  color: var(--mat-project-accent);
+}
+
+.mat-project-page #page-content .text-gray,
+.mat-project-page #page-content .text-gray p {
+  color: var(--mat-project-text-muted) !important;
+}
+
+/* Nav portfolio in fondo */
+.mat-project-page #page-content .tt-pn-title {
+  color: var(--mat-project-text);
+  opacity: 0.35;
+}
+
+.mat-project-page #page-content .tt-pn-hover-title {
+  color: var(--mat-project-accent);
+}
+
+.mat-project-page #page-content .tt-pn-subtitle {
+  color: var(--mat-project-text-muted);
+}
+
+.mat-project-page #page-content .tt-pn-hover-title span::after {
+  background-color: var(--mat-project-accent);
+}
+
+@media (min-width: 1025px) {
+  .mat-project-page #page-content .tt-pn-link:hover .tt-pn-title {
+    color: var(--mat-project-text-muted);
+  }
+}
+
+@media (max-width: 1024px) {
+  .mat-project-page #page-content .tt-pn-title:hover {
+    color: var(--mat-project-accent);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,148 @@
+/* Custom cursor — portfolio-mat style */
+body.mat-custom-cursor:not(.is-mobile) {
+  cursor: none;
+}
+
+body.mat-custom-cursor:not(.is-mobile) a,
+body.mat-custom-cursor:not(.is-mobile) button {
+  cursor: none;
+}
+
+.mat-cursor-dot,
+.mat-cursor-ring,
+.mat-cursor-pn-ball {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.mat-cursor-dot,
+.mat-cursor-ring {
+  z-index: 99999;
+}
+
+.mat-cursor-dot {
+  width: 6px;
+  height: 6px;
+  background: #c8f542;
+  mix-blend-mode: difference;
+}
+
+.mat-cursor-ring {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(200, 245, 66, 0.5);
+  transition:
+    width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s,
+    background 0.3s;
+}
+
+.mat-cursor-ring.is-hover {
+  width: 64px;
+  height: 64px;
+  background: rgba(200, 245, 66, 0.15);
+  border-color: #c8f542;
+}
+
+/* Anteprima circolare Portfolio — dietro alla scritta (come tema originale) */
+.mat-cursor-pn-ball {
+  z-index: -1;
+  width: min(20vw, 320px);
+  height: min(20vw, 320px);
+  overflow: hidden;
+  background: #040404;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.3s,
+    width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mat-cursor-pn-ball.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mat-cursor-pn-ball .tt-pn-image {
+  display: block !important;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.mat-cursor-pn-ball .tt-pn-image::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background-color: #040404;
+  opacity: 0.1;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mat-cursor-pn-ball .tt-pn-image img,
+.mat-cursor-pn-ball .tt-pn-image video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Testo Portfolio sopra l'anteprima circolare */
+body.mat-pn-hover-on .tt-page-nav {
+  position: relative;
+  z-index: 2;
+}
+
+body.mat-pn-hover-on .tt-page-nav .tt-pn-link,
+body.mat-pn-hover-on .tt-page-nav .tt-pn-subtitle {
+  position: relative;
+  z-index: 2;
+}
+
+body.tt-magic-cursor #magic-cursor {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
+  .mat-cursor-pn-ball {
+    display: none;
+  }
+}
+
+@media (pointer: coarse) {
+  .mat-cursor-dot,
+  .mat-cursor-ring,
+  .mat-cursor-pn-ball {
+    display: none;
+  }
+
+  body.mat-custom-cursor,
+  body.mat-custom-cursor a,
+  body.mat-custom-cursor button {
+    cursor: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mat-cursor-dot,
+  .mat-cursor-ring,
+  .mat-cursor-pn-ball {
+    display: none;
+  }
+
+  body.mat-custom-cursor,
+  body.mat-custom-cursor a,
+  body.mat-custom-cursor button {
+    cursor: auto;
+  }
+}

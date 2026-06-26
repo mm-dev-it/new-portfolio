@@ -1,0 +1,40 @@
+# Redirect vecchi URL .html verso le nuove route
+RewriteEngine On
+
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteRule ^about-me\.html$ /about-me/ [R=301,L]
+RewriteRule ^contact\.html$ /contact/ [R=301,L]
+RewriteRule ^i-miei-lavori\.html$ /i-miei-lavori/ [R=301,L]
+RewriteRule ^lagoa-world\.html$ /lagoa-world/ [R=301,L]
+RewriteRule ^boho-folks-dream\.html$ /boho-folks-dream/ [R=301,L]
+RewriteRule ^roger-sushi-lab\.html$ /roger-sushi-lab/ [R=301,L]
+RewriteRule ^barbato\.html$ /barbato/ [R=301,L]
+RewriteRule ^verdesalus\.html$ /verdesalus/ [R=301,L]
+RewriteRule ^namahsi\.html$ /namahsi/ [R=301,L]
+RewriteRule ^fluid\.html$ /fluid/ [R=301,L]
+RewriteRule ^dixy-store\.html$ /dixy-store/ [R=301,L]
+RewriteRule ^bnb-da-zare\.html$ /roger-sushi-lab/ [R=301,L]
+
+# DirectoryIndex per trailing slash
+DirectoryIndex index.html
+
+## EXPIRES CACHING ##
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access 1 year"
+ExpiresByType image/jpeg "access 1 year"
+ExpiresByType image/gif "access 1 year"
+ExpiresByType image/png "access 1 year"
+ExpiresByType text/css "access 1 month"
+ExpiresByType text/html "access 1 month"
+ExpiresByType application/pdf "access 1 month"
+ExpiresByType text/x-javascript "access 1 month"
+ExpiresByType application/x-javascript "access 1 month"
+ExpiresByType image/x-icon "access 1 year"
+ExpiresDefault "access 1 month"
+</IfModule>
+
+## Enable compression ##
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css application/xml application/xhtml+xml application/rss+xml application/javascript application/x-javascript
+</IfModule>

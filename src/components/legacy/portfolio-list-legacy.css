@@ -1,0 +1,8 @@
+.portfolio-list .pli-counter {
+  color: #c8f542;
+  opacity: 1;
+}
+
+.portfolio-list .pli-counter::before {
+  color: inherit;
+}

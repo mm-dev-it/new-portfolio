@@ -1,0 +1,212 @@
+/* Scoped copy of portfolio-mat contact section */
+.mat-contact-section {
+  --bg: #050505;
+  --text: #f5f5f5;
+  --text-muted: #737373;
+  --accent: #c8f542;
+  --accent-dim: rgba(200, 245, 66, 0.15);
+  --border: rgba(255, 255, 255, 0.08);
+  --font-display: "Syne", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  padding: 8rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+}
+
+.mat-contact-section h2,
+.mat-contact-section p {
+  margin: 0;
+}
+
+.mat-contact-section::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-dim) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.mat-contact-section .contact-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.mat-contact-section .section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.mat-contact-section .contact-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+
+.mat-contact-section .contact-line {
+  display: block;
+}
+
+.mat-contact-section .contact-line--accent {
+  color: var(--accent);
+}
+
+.mat-contact-section .contact-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+}
+
+.mat-contact-section .contact-email {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 3rem;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.mat-contact-section .contact-email::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s var(--ease-out-expo);
+}
+
+.mat-contact-section .contact-email:hover {
+  color: var(--accent);
+}
+
+.mat-contact-section .contact-email:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.mat-contact-section .contact-actions {
+  margin-bottom: 3rem;
+}
+
+.mat-contact-section .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  transition:
+    transform 0.3s var(--ease-out-expo),
+    box-shadow 0.3s;
+}
+
+.mat-contact-section .btn-primary.btn-lg {
+  padding: 1.25rem 2.5rem;
+  font-size: 0.85rem;
+}
+
+.mat-contact-section .btn-primary:hover {
+  box-shadow: 0 0 40px rgba(200, 245, 66, 0.3);
+}
+
+.mat-contact-section .btn-primary svg {
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.mat-contact-section .btn-primary:hover svg {
+  transform: translateY(3px);
+}
+
+.mat-contact-section .contact-socials {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.mat-contact-section .social-link {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+
+.mat-contact-section .social-link:hover {
+  color: var(--accent);
+}
+
+.mat-contact-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  background: var(--bg);
+}
+
+.mat-contact-section .reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.mat-contact-section .reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.8s var(--ease-out-expo),
+    transform 0.8s var(--ease-out-expo);
+}
+
+@media (max-width: 768px) {
+  .mat-contact-section {
+    padding: 5rem 1.25rem;
+  }
+
+  .mat-contact-footer {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mat-contact-section .reveal-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

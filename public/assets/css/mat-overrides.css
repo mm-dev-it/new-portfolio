@@ -1,0 +1,12 @@
+/* Mat design overrides — must load after theme.css */
+
+.tt-overlay-menu.tt-ol-menu-count .tt-ol-menu-list > li > a::before,
+.tt-overlay-menu.tt-ol-menu-count
+  .tt-ol-menu-list
+  > li
+  > .tt-ol-submenu-trigger
+  > a::before {
+  color: #c8f542 !important;
+  opacity: 1 !important;
+  font-family: "IBM Plex Mono", monospace !important;
+}

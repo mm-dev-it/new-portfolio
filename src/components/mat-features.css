@@ -1,0 +1,119 @@
+.mat-accent {
+  --mat-accent: #c8f542;
+  --mat-accent-dim: rgba(200, 245, 66, 0.15);
+}
+
+/* Disabilita completamente il vecchio preloader del tema */
+body.tt-transition #page-transition,
+#page-transition {
+  display: none !important;
+}
+
+/* Nasconde il contenuto sulla home finché il loading Mat non ha finito */
+html.mat-preload-home:not(.mat-preload-done) #content-wrap,
+html.mat-preload-home:not(.mat-preload-done) #tt-header,
+html.mat-preload-home:not(.mat-preload-done) #hero,
+html.mat-preload-home:not(.mat-preload-done) .mat-hero-section,
+body.mat-preloader-active #content-wrap,
+body.mat-preloader-active #tt-header,
+body.mat-preloader-active #hero,
+body.mat-preloader-active .mat-hero-section {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Hero portfolio — nascosta fino all'animazione GSAP */
+#page-header.mat-ph-enter:not(.mat-ph-enter-done):not(.ph-bg-image) .page-header-inner,
+#page-header.mat-ph-enter:not(.mat-ph-enter-done):not(.ph-bg-image) .scroll-down-circle,
+#page-header.mat-ph-enter:not(.mat-ph-enter-done):not(.ph-bg-image) .made-with-love {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Pagine progetto — full screen: nasconde solo img e testi animati */
+#page-header.mat-ph-enter.ph-bg-image:not(.mat-ph-enter-done) .ph-image img,
+#page-header.mat-ph-enter.ph-bg-image:not(.mat-ph-enter-done) .ph-video,
+#page-header.mat-ph-enter.ph-bg-image:not(.mat-ph-enter-done) .ph-appear,
+#page-header.mat-ph-enter.ph-bg-image:not(.mat-ph-enter-done) .project-info-list > ul {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* ── Preloader Mat ── */
+.mat-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 10002;
+  background: #020202;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.8s;
+}
+
+.mat-preloader.done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.mat-preloader-inner {
+  text-align: center;
+}
+
+.mat-preloader-label {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #737373;
+  margin-bottom: 1rem;
+}
+
+.mat-preloader-counter {
+  display: block;
+  font-family: "Syne", var(--font-display, sans-serif);
+  font-size: clamp(4rem, 12vw, 8rem);
+  font-weight: 800;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--mat-accent, #c8f542);
+  font-synthesis: none;
+}
+
+.mat-preloader-bar {
+  width: 120px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 2rem auto 0;
+  overflow: hidden;
+}
+
+.mat-preloader-progress {
+  height: 100%;
+  width: 0%;
+  background: var(--mat-accent, #c8f542);
+  transition: width 0.1s linear;
+}
+
+/* ── Scroll progress top bar ── */
+.mat-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 100010;
+  background: transparent;
+  pointer-events: none;
+}
+
+.mat-scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--mat-accent, #c8f542);
+  transform-origin: left;
+  transition: width 0.08s linear;
+}

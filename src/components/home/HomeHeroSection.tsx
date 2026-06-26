@@ -1,0 +1,89 @@
+import { homeHeroContent } from "@/data/homeHero";
+import "./home-hero-section.css";
+
+export default function HomeHeroSection() {
+  const {
+    eyebrow,
+    name,
+    line1,
+    line2Prefix,
+    line2Accent,
+    line2Suffix,
+    ghost,
+    scrollText,
+    aside,
+    image,
+    imageAlt,
+  } = homeHeroContent;
+
+  return (
+    <section
+      id="hero"
+      className="mat-hero-section"
+      aria-label="Introduzione"
+    >
+      <div className="mat-hero-inner">
+        <div className="mat-hero-content">
+          <p className="mat-hero-eyebrow ph-appear">
+            <span className="mat-hero-dot" aria-hidden="true" />
+            <span>{eyebrow}</span>
+          </p>
+
+          <h1 className="mat-hero-title ph-appear">{name}</h1>
+
+          <p className="mat-hero-subtitle ph-appear">
+            {line1}
+            <br />
+            {line2Prefix}
+            <span className="accent">{line2Accent}</span>
+            {line2Suffix}
+          </p>
+
+          <div className="mat-hero-ghost ph-appear" aria-hidden="true">
+            {ghost}
+          </div>
+        </div>
+
+        <div className="ph-image">
+          <div className="ph-image-inner">
+            <img src={image} alt={imageAlt} loading="eager" decoding="async" />
+          </div>
+        </div>
+      </div>
+
+      <a
+        href="#page-content"
+        className="scroll-down-circle magnetic-item"
+        data-offset="30"
+        data-cursor="hover"
+        aria-label="Scorri verso il contenuto"
+      >
+        <div className="sdc-inner ph-appear">
+          <div className="sdc-icon">
+            <i className="fas fa-chevron-down" aria-hidden="true" />
+          </div>
+          <svg viewBox="0 0 500 500" aria-hidden="true">
+            <defs>
+              <path
+                d="M50,250c0-110.5,89.5-200,200-200s200,89.5,200,200s-89.5,200-200,200S50,360.5,50,250"
+                id="mat-hero-textcircle"
+              />
+            </defs>
+            <text dy="30">
+              <textPath xlinkHref="#mat-hero-textcircle">{scrollText}</textPath>
+            </text>
+          </svg>
+        </div>
+      </a>
+
+      <div className="made-with-love ph-appear">
+        <div className="mwl-inner">
+          <div className="mwl-icon">
+            <i className="far fa-heart" aria-hidden="true" />
+          </div>
+          <div className="mwl-text">{aside}</div>
+        </div>
+      </div>
+    </section>
+  );
+}
