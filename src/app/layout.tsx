@@ -64,25 +64,13 @@ export default function RootLayout({
           rel="stylesheet"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){var p=location.pathname;if(p==="/"||p===""){document.documentElement.classList.add("mat-preload-home","home-native-scroll");document.addEventListener("DOMContentLoaded",function(){document.body.classList.add("mat-preloader-active","tt-no-smooth-scroll");document.body.dataset.matPreloader="true";});}})();`,
           }}
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap"
-          rel="stylesheet"
         />
         <link rel="stylesheet" href="/assets/vendor/normalize.min.css" />
         <link

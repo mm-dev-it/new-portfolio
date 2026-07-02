@@ -221,7 +221,7 @@ body:not(.is-mobile) .hide-to-mobile { display: none !important; }
 
 /* font alter */
 .font-alter { 
-	font-family: 'Noto Serif JP', serif !important;
+	font-family: 'IBM Plex Mono', monospace !important;
 }
 
 /* font styles */

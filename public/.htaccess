@@ -3,7 +3,8 @@ RewriteEngine On
 
 RewriteRule ^index\.html$ / [R=301,L]
 RewriteRule ^about-me\.html$ /about-me/ [R=301,L]
-RewriteRule ^contact\.html$ /contact/ [R=301,L]
+RewriteRule ^contact\.html$ / [R=301,L]
+RewriteRule ^contact/?$ / [R=301,L]
 RewriteRule ^i-miei-lavori\.html$ /i-miei-lavori/ [R=301,L]
 RewriteRule ^lagoa-world\.html$ /lagoa-world/ [R=301,L]
 RewriteRule ^boho-folks-dream\.html$ /boho-folks-dream/ [R=301,L]

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import AboutHeroSection from "@/components/about/AboutHeroSection";
 import SiteLayout, { SiteFooter } from "@/components/SiteLayout";
+import { worksHeroContent } from "@/data/worksHero";
 
 export const metadata: Metadata = {
   title: "Chi Sono | Matteo Malaspina - Sviluppatore Web Freelance a Fermo",
@@ -11,85 +13,53 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <SiteLayout active="about">
-      <div
-        id="page-header"
-        className="ph-full ph-cap-xxlg ph-center ph-image-cropped ph-content-parallax"
-      >
-        <div className="page-header-inner tt-wrap">
-          <div className="ph-image">
-            <div className="ph-image-inner">
-              <img src="/assets/img/page-header/bg_2.png" alt="Image" />
-            </div>
-          </div>
-          <div className="ph-caption">
-            <h1 className="ph-caption-title ph-appear">Chi Sono</h1>
-            <div className="ph-caption-title-ghost ph-appear">Chi Sono</div>
-            <div className="ph-caption-subtitle ph-appear">Matteo Malaspina</div>
-          </div>
-        </div>
-
-        <a href="#page-content" className="scroll-down-circle" data-offset="30">
-          <div className="sdc-inner ph-appear">
-            <div className="sdc-icon">
-              <i className="fas fa-chevron-down"></i>
-            </div>
-            <svg viewBox="0 0 500 500">
-              <defs>
-                <path
-                  d="M50,250c0-110.5,89.5-200,200-200s200,89.5,200,200s-89.5,200-200,200S50,360.5,50,250"
-                  id="textcircle-about"
-                />
-              </defs>
-              <text dy="30">
-                <textPath xlinkHref="#textcircle-about">
-                  Scorri in basso - Scorri in basso -
-                </textPath>
-              </text>
-            </svg>
-          </div>
-        </a>
-
-        <div className="made-with-love ph-appear">
-          <div className="mwl-inner">
-            <div className="mwl-text">Sogna in Grande</div>
-            <div className="mwl-icon">
-              <i className="far fa-heart"></i>
-            </div>
-          </div>
-        </div>
-      </div>
+      <AboutHeroSection />
 
       <div id="page-content">
         <div className="tt-section padding-bottom-xlg-150">
           <div className="tt-section-inner tt-wrap max-width-900">
             <div className="text-xxlg font-alter text-gray-2">
               <p className="anim-fadeinup">
-                Ciao, mi chiamo <strong className="text-white">Matteo Malaspina</strong>{" "}
-                ho 25 anni ed abito a Fermo (FM). Dopo il diploma di scuola secondaria
-                superiore ho frequentato il corso biennale all&apos;Istituto Tecnico
-                Superiore (ITS SMART) ottenendo il titolo di &quot;Tecnico Superiore
-                delle produzioni e del Marketing&quot; con votazione 90/100.
+                Mi chiamo Matteo Malaspina, ho 28 anni e vivo a Fermo.
               </p>
               <p className="anim-fadeinup">
-                Grazie a questo percorso di studi è nata la mia passione per la
-                Programmazione e lo Sviluppo Web. Ho migliorato le mie conoscenze in
-                questo ambito lavorando 1 anno come stagista presso{" "}
-                <a href="https://andriy.tech/" target="_blank" rel="noopener noreferrer">
-                  Andriy Sidletskyy
-                </a>{" "}
-                (Web Developer Freelance) ottime sono le mie nozioni in:
-                <br />- Sviluppo di siti vetrina ed E-commerce tramite un C.M.S;
-                <br />- Sviluppo di siti tramite Html, Css e Javascript;
-                <br />- Strumenti e tecniche SEO;
-                <br />- Strumenti di Google (Analytics, Google ADS e AdSense;
+                Lavoro come Web Developer e, negli ultimi anni, ho costruito il mio
+                percorso partendo dalla pratica. Dopo il diploma e il percorso ITS SMART
+                ho scelto di lavorare a stretto contatto con sviluppatori senior e agenzie
+                digitali, trasformando quella che era una semplice esperienza di
+                formazione in una collaborazione professionale.
               </p>
               <p className="anim-fadeinup">
-                Da Gennaio 2022 ho avuto modo di consolidare le mie competenze lavorando
-                come stagista presso la Web Agency{" "}
-                <a href="https://wemadeit.it/" target="_blank" rel="noopener noreferrer">
-                  WeMadeIt Studio
-                </a>{" "}
-                dove attualmente ricopro il ruolo di Programmatore Web.
+                Questa esperienza mi ha permesso di seguire progetti dall&apos;inizio alla
+                fine, non limitandomi allo sviluppo del codice ma occupandomi anche
+                dell&apos;organizzazione del lavoro, del rapporto con il cliente e delle
+                decisioni tecniche necessarie per portare un prodotto online.
+              </p>
+              <p className="anim-fadeinup">
+                Oggi sviluppo principalmente applicazioni web con React, utilizzando
+                Supabase per il backend e Netlify per il deployment. Mi occupo inoltre
+                della gestione dell&apos;infrastruttura, della configurazione dei server e
+                dell&apos;implementazione di sistemi di tracking e analytics con GTM, GA4,
+                Microsoft Clarity e Mixpanel.
+              </p>
+              <p className="anim-fadeinup">
+                Parallelamente sono socio e CTO di una startup innovativa, dove seguo
+                l&apos;intero sviluppo della piattaforma. Essere l&apos;unico referente
+                tecnico significa prendere decisioni ogni giorno, trovare soluzioni ai
+                problemi e mantenere il prodotto stabile mentre continua a crescere.
+              </p>
+              <p className="anim-fadeinup">
+                È probabilmente questo l&apos;aspetto del mio lavoro che mi piace di più,
+                affrontare problemi complessi, capire perché qualcosa non funziona e
+                trovare il modo migliore per risolverlo. Più che scrivere codice, mi piace
+                costruire prodotti che funzionano davvero e che siano semplici da
+                utilizzare, mantenere e far evolvere nel tempo.
+              </p>
+              <p className="anim-fadeinup">
+                Credo molto nell&apos;autonomia e nella responsabilità. Quando seguo un
+                progetto cerco sempre di essere una figura su cui il cliente o il team
+                possano contare, capace di gestire il lavoro con metodo e senza bisogno
+                di supervisione continua.
               </p>
             </div>
           </div>
@@ -104,7 +74,7 @@ export default function AboutPage() {
               </a>
               <div className="tt-pn-subtitle anim-fadeinup">I miei lavori</div>
               <div className="tt-pn-image">
-                <img src="/assets/img/page-header/my-works.jpg" alt="image" />
+                <img src={worksHeroContent.image} alt={worksHeroContent.imageAlt} />
               </div>
             </div>
           </div>

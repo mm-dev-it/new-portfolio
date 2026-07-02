@@ -11,7 +11,6 @@ export const siteConfig = {
     { label: "Home", href: "/" },
     { label: "Portfolio", href: "/i-miei-lavori" },
     { label: "Chi Sono", href: "/about-me" },
-    { label: "Contatti", href: "/contact" },
   ],
 } as const;
 

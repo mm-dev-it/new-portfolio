@@ -1,0 +1,190 @@
+/* Portfolio hero — vecchio layout centrato + Mat design system */
+.mat-page-hero {
+  --mat-works-accent: #c8f542;
+  --mat-works-accent-dim: rgba(200, 245, 66, 0.12);
+  --mat-works-bg: #050505;
+  --mat-works-text: #f5f5f5;
+  --mat-works-text-muted: #a3a3a3;
+  --mat-works-font-display: "Syne", sans-serif;
+  --mat-works-font-mono: "IBM Plex Mono", monospace;
+
+  background-color: var(--mat-works-bg) !important;
+  overflow: hidden;
+}
+
+.mat-page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 55% at 50% 42%,
+    var(--mat-works-accent-dim) 0%,
+    transparent 68%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mat-page-hero .page-header-inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* Immagine centrata — stile tema originale */
+.mat-page-hero.ph-center:not(.ph-bg-image) .ph-image {
+  width: clamp(280px, 32vw, 520px) !important;
+  max-width: none;
+}
+
+@media (min-width: 1025px) {
+  .mat-page-hero.ph-full:not(.ph-bg-image).ph-image-cropped .ph-image-inner {
+    padding-bottom: 130%;
+  }
+}
+
+.mat-page-hero .ph-image-inner {
+  border-radius: 0.35rem;
+  overflow: hidden;
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(200, 245, 66, 0.12);
+}
+
+.mat-page-hero .ph-image-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 5, 5, 0.15) 0%,
+    rgba(5, 5, 5, 0.55) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mat-page-hero.ph-image-cover-2 .ph-image-inner::before {
+  background-color: #050505;
+  opacity: 0.35;
+}
+
+/* Eyebrow Mat */
+.mat-page-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin: 0 auto 1.25rem;
+  font-family: var(--mat-works-font-mono);
+  font-size: clamp(0.58rem, 1.2vw, 0.72rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mat-works-text-muted);
+}
+
+.mat-page-hero-dot {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--mat-works-accent);
+  box-shadow: 0 0 10px rgba(200, 245, 66, 0.5);
+}
+
+/* Titolo — Syne italic come home, sopra l'immagine */
+.mat-page-hero .ph-caption {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+  pointer-events: none;
+}
+
+.mat-page-hero .ph-caption-title {
+  font-family: var(--mat-works-font-display);
+  font-size: clamp(3rem, 10vw, 8.5rem) !important;
+  font-weight: 800 !important;
+  font-style: italic;
+  line-height: 1.05 !important;
+  letter-spacing: -0.03em;
+  color: var(--mat-works-text) !important;
+  text-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Ghost — contorno lime invece del bianco opaco */
+.mat-page-hero .ph-caption-title-ghost {
+  font-family: var(--mat-works-font-display);
+  font-size: clamp(4rem, 14vw, 12rem) !important;
+  font-weight: 800 !important;
+  color: transparent !important;
+  opacity: 1 !important;
+  -webkit-text-stroke: 1px rgba(200, 245, 66, 0.14);
+  padding-top: 5%;
+}
+
+/* Sottotitolo con accent */
+.mat-page-hero .ph-caption-subtitle {
+  margin-top: clamp(1rem, 2.5vw, 2rem) !important;
+  font-family: var(--mat-works-font-mono);
+  font-size: clamp(0.85rem, 1.5vw, 1.05rem) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.06em;
+  color: var(--mat-works-text-muted) !important;
+}
+
+.mat-page-hero .ph-caption-subtitle .accent {
+  color: var(--mat-works-accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(200, 245, 66, 0.45);
+  text-underline-offset: 0.25em;
+}
+
+/* Scroll + aside — accent Mat */
+.mat-page-hero .scroll-down-circle .sdc-icon {
+  color: var(--mat-works-accent);
+}
+
+.mat-page-hero .scroll-down-circle text {
+  fill: rgba(200, 245, 66, 0.42);
+  font-family: var(--mat-works-font-mono);
+}
+
+.mat-page-hero .scroll-down-circle:hover text {
+  fill: var(--mat-works-accent);
+}
+
+.mat-page-hero .mwl-icon {
+  color: var(--mat-works-accent) !important;
+}
+
+.mat-page-hero .mwl-text {
+  font-family: var(--mat-works-font-mono);
+  color: var(--mat-works-text-muted) !important;
+}
+
+@media (max-width: 1024px) {
+  .mat-page-hero.ph-center:not(.ph-bg-image) .ph-image {
+    width: clamp(240px, 58vw, 360px) !important;
+  }
+
+  .mat-page-hero .ph-caption-title {
+    font-size: clamp(2.5rem, 12vw, 4rem) !important;
+  }
+
+  .mat-page-hero .ph-caption-title-ghost {
+    font-size: clamp(3.5rem, 18vw, 5.5rem) !important;
+  }
+
+  .mat-page-hero-eyebrow {
+    margin-bottom: 0.85rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .mat-page-hero .ph-caption-subtitle {
+    margin-top: 0.85rem !important;
+  }
+}

@@ -78,13 +78,11 @@ export default function HomeWorkSection() {
 
               {homeWorkSlides.map((slide, index) => (
                 <article key={slide.slug} className="mat-work-slide">
-                  <div
-                    className="mat-work-slide-inner magnetic-item"
-                    data-cursor={`Esplora<br>${slide.title}`}
-                  >
+                  <div className="mat-work-slide-inner">
                     <Link
                       href={getHomeWorkSlideHref(slide)}
                       className="mat-work-slide-media"
+                      data-cursor={`Esplora<br>${slide.title}`}
                     >
                       <img
                         src={getHomeWorkSlideImage(index)}
@@ -99,11 +97,11 @@ export default function HomeWorkSection() {
                         <h3 className="mat-work-slide-title">{slide.title}</h3>
                       </div>
                       <Link
-                        href={getHomeWorkSlideHref(slide)}
-                        className="mat-work-slide-link magnetic-item"
-                        data-cursor="Esplora<br>progetto"
+                        href="/i-miei-lavori"
+                        className="mat-work-slide-link"
+                        data-cursor="Esplora<br>progetti"
                       >
-                        Esplora progetto
+                        Esplora progetti
                         <ArrowIcon />
                       </Link>
                     </div>

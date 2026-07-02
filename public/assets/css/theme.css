@@ -3,8 +3,8 @@
 *
 * Author:		Matteo Malaspina
 *
-* Body Font (global): 'Poppins', sans-serif;
-* Secondary Font: 'Noto Serif JP', serif;
+* Body Font (global): 'IBM Plex Mono', monospace;
+* Display Font (titles): 'Syne', sans-serif;
 -------------------------------------------------------------------- */
 
 
@@ -202,7 +202,7 @@ hr {
 /* Body font
 ============= */
 body {
-	font-family: 'Poppins', sans-serif;
+	font-family: 'IBM Plex Mono', monospace;
 }
 
 
@@ -239,7 +239,7 @@ body {
 .tt-scrolling-text,
 #blog-list.bli-compact .bli-info::before,
 .blog-interactive-item::before {
-	font-family: 'Noto Serif JP', serif;
+	font-family: 'Syne', sans-serif;
 }
 
 

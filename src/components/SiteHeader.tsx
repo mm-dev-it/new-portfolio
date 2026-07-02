@@ -1,4 +1,4 @@
-export type NavKey = "home" | "portfolio" | "about" | "contact";
+export type NavKey = "home" | "portfolio" | "about";
 
 type SiteHeaderProps = {
   active?: NavKey;
@@ -65,9 +65,6 @@ export default function SiteHeader({ active }: SiteHeaderProps) {
                       <div className="tt-ol-submenu-trigger">
                         <a href="/about-me">Chi Sono</a>
                       </div>
-                    </li>
-                    <li>
-                      <a href="/contact">Contatti</a>
                     </li>
                   </ul>
                 </div>

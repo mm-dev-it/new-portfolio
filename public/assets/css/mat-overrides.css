@@ -1,5 +1,79 @@
 /* Mat design overrides — must load after theme.css */
 
+:root {
+  --mat-font-display: "Syne", sans-serif;
+  --mat-font-body: "IBM Plex Mono", monospace;
+}
+
+/* ── Base: IBM Plex Mono per corpo e descrizioni ── */
+body {
+  font-family: var(--mat-font-body) !important;
+}
+
+/* ── Syne: titoli e heading ── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.ph-caption-title,
+.ph-caption-title-ghost,
+.tt-heading-title,
+.tt-ol-menu-list,
+.tt-ol-menu-list > li > a,
+.tt-ol-menu-list > li > .tt-ol-submenu-trigger > a,
+.tt-main-menu,
+.tt-pn-link .tt-pn-title,
+.tt-pn-link .tt-pn-hover-title,
+.pli-title,
+.portfolio-interactive-item,
+.tt-scrolling-text,
+.ttgr-cat-list,
+.ph-share-ghost,
+.tt-search-ghost {
+  font-family: var(--mat-font-display) !important;
+}
+
+/* ── IBM Plex Mono: descrizioni, UI, metadati ── */
+p,
+.ph-caption-subtitle,
+.tt-heading-subtitle,
+.tt-ol-menu-toggle-btn-text,
+.tt-m-menu-toggle-btn-text,
+.scroll-down-circle,
+.scroll-down-circle text,
+.made-with-love,
+.made-with-love .mwl-text,
+.tt-btn,
+.tt-btn a,
+.social-buttons,
+.footer-social,
+.footer-social-text,
+.tt-copyright,
+.project-info-list,
+.tt-pn-subtitle,
+.tt-pagination,
+.pli-counter,
+.pli-category,
+.ttgr-cat-trigger-wrap,
+.tt-ps-nav-pagination,
+.tt-pc-navigation,
+.tt-cc-pagination,
+#blog-list.bli-compact .bli-info::before,
+.blog-interactive-item::before,
+.mat-preloader-label,
+.font-alter {
+  font-family: var(--mat-font-body) !important;
+}
+
+/* Menu overlay — numeri + accent Mat */
 .tt-overlay-menu.tt-ol-menu-count .tt-ol-menu-list > li > a::before,
 .tt-overlay-menu.tt-ol-menu-count
   .tt-ol-menu-list
@@ -8,5 +82,5 @@
   > a::before {
   color: #c8f542 !important;
   opacity: 1 !important;
-  font-family: "IBM Plex Mono", monospace !important;
+  font-family: var(--mat-font-body) !important;
 }
