@@ -8,6 +8,6 @@ export const homeHeroContent = {
   ghost: "Ciao!",
   scrollText: "Scorri in basso - Scorri in basso -",
   aside: "Sogna in Grande",
-  image: "/assets/img/matteo-malaspina-hero.png",
+  image: "/assets/img/matteo-malaspina-hero-2.png",
   imageAlt: "Matteo Malaspina — Sviluppatore Web",
 } as const;
