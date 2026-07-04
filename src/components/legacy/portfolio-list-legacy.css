@@ -6,3 +6,11 @@
 .portfolio-list .pli-counter::before {
   color: inherit;
 }
+
+.portfolio-list .pli-categories-wrap .pli-category {
+  display: block;
+}
+
+.portfolio-list .pli-categories-wrap .pli-category ~ .pli-category {
+  margin-left: 0;
+}

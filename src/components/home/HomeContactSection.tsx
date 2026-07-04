@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import SiteFooter from "@/components/SiteFooter";
 import { homeContactContent } from "@/data/homeContact";
 import "./home-contact-section.css";
 
@@ -13,7 +14,6 @@ export default function HomeContactSection() {
     email,
     cta,
     socials,
-    footerText,
   } = homeContactContent;
 
   useEffect(() => {
@@ -106,9 +106,7 @@ export default function HomeContactSection() {
         </div>
       </section>
 
-      <footer className="mat-contact-footer">
-        <p>{footerText}</p>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

@@ -7,6 +7,7 @@ export const siteConfig = {
   phoneHref: "tel:+393347145447",
   address: "Contrada Santo Stefano 3, 63900 Fermo (FM) Italy",
   linkedin: "https://www.linkedin.com/in/matteo-malaspina-front-end-developer/",
+  footerText: "2026 _ M.M. P.iva 02514710447 _ © Tutti i diritti riservati",
   nav: [
     { label: "Home", href: "/" },
     { label: "Portfolio", href: "/i-miei-lavori" },

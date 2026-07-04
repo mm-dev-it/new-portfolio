@@ -14,5 +14,4 @@ export const homeContactContent = {
     },
     { label: "Gmail", href: "mailto:mtt.malaspina@gmail.com" },
   ],
-  footerText: "2026 _ M.M. P.iva 02514710447 _ © Tutti i diritti riservati",
 } as const;

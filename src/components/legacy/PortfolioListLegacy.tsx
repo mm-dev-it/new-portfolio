@@ -60,16 +60,10 @@ function PortfolioListItem({
                 <div className="pli-categories-wrap">
                   <div className="pli-category">{project.category}</div>
                   {project.portfolioSubtitle && (
-                    <>
-                      <br />
-                      <div className="pli-category">{project.portfolioSubtitle}</div>
-                    </>
+                    <div className="pli-category">{project.portfolioSubtitle}</div>
                   )}
                   {project.collaboration && (
-                    <>
-                      <br /> &nbsp;
-                      <div className="pli-category">{project.collaboration}</div>
-                    </>
+                    <div className="pli-category">{project.collaboration}</div>
                   )}
                 </div>
               </div>
@@ -89,16 +83,10 @@ function PortfolioListItem({
             <div className="pli-categories-wrap">
               <div className="pli-category">{project.category}</div>
               {project.portfolioSubtitle && (
-                <>
-                  <br />
-                  <div className="pli-category">{project.portfolioSubtitle}</div>
-                </>
+                <div className="pli-category">{project.portfolioSubtitle}</div>
               )}
               {project.collaboration && (
-                <>
-                  <br />
-                  <div className="pli-category">{project.collaboration}</div>
-                </>
+                <div className="pli-category">{project.collaboration}</div>
               )}
             </div>
           </div>
