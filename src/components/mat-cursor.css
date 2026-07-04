@@ -22,7 +22,7 @@ body.mat-custom-cursor:not(.is-mobile) button {
 
 .mat-cursor-dot,
 .mat-cursor-ring {
-  z-index: 99999;
+  z-index: 100002;
 }
 
 .mat-cursor-dot {
