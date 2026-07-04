@@ -27,6 +27,12 @@
     ) {
       return false;
     }
+    if (
+      document.documentElement.classList.contains("mat-preload-home") &&
+      !document.documentElement.classList.contains("mat-page-enter")
+    ) {
+      return false;
+    }
     return true;
   }
 
@@ -153,4 +159,16 @@
       ScrollTrigger.refresh(true);
     }
   });
+
+  if (document.documentElement.classList.contains("mat-preload-home")) {
+    window.addEventListener(
+      "mat-preload-done",
+      function () {
+        window.setTimeout(function () {
+          tryInit(0);
+        }, 100);
+      },
+      { once: true },
+    );
+  }
 })();
