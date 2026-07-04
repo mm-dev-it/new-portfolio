@@ -10,7 +10,7 @@ const cookieTextPreview =
   "Utilizziamo cookie tecnici necessari al funzionamento del sito e per memorizzare la tua scelta sui cookie. I font sono caricati tramite Google Fonts e possono comportare un trattamento limitato di dati tecnici (es. indirizzo IP) da parte di Google.";
 
 const cookieTextMore =
-  "Non utilizziamo cookie di profilazione o marketing. Se compili il form contatti, trattiamo i dati che ci invii (nome, email, messaggio) solo per risponderti. Titolare: Matteo Malaspina";
+  "Non utilizziamo cookie di profilazione o marketing. Titolare: Matteo Malaspina";
 
 type MatCookieConsentProps = {
   waitForPreloader?: boolean;
@@ -71,7 +71,7 @@ export default function MatCookieConsent({
           <h2 className="mat-cookie-consent__title">Cookie e trattamento dati</h2>
 
           <p className="mat-cookie-consent__text mat-cookie-consent__text--desktop">
-            {cookieTextPreview} {cookieTextMore} —{" "}
+            {cookieTextPreview} {cookieTextMore}{" "}
             <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
           </p>
 
@@ -79,7 +79,7 @@ export default function MatCookieConsent({
             <p className="mat-cookie-consent__text">{cookieTextPreview}</p>
             {expanded ? (
               <p className="mat-cookie-consent__text mat-cookie-consent__text--more">
-                {cookieTextMore} —{" "}
+                {cookieTextMore}{" "}
                 <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
               </p>
             ) : null}
