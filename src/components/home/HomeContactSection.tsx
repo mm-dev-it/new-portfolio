@@ -46,25 +46,6 @@ export default function HomeContactSection() {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    const el = document.getElementById("mat-footer-time");
-    if (!el) return;
-
-    const timeEl = el;
-
-    function update() {
-      timeEl.textContent = new Date().toLocaleTimeString("it-IT", {
-        hour: "2-digit",
-        minute: "2-digit",
-        timeZoneName: "short",
-      });
-    }
-
-    update();
-    const interval = window.setInterval(update, 30000);
-    return () => window.clearInterval(interval);
-  }, []);
-
   return (
     <>
       <section id="contatti" className="mat-contact-section">
@@ -112,8 +93,9 @@ export default function HomeContactSection() {
               <a
                 key={social.label}
                 href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(social.href.startsWith("mailto:")
+                  ? {}
+                  : { target: "_blank", rel: "noopener noreferrer" })}
                 className="social-link magnetic-item"
                 data-cursor="hover"
               >
@@ -126,7 +108,6 @@ export default function HomeContactSection() {
 
       <footer className="mat-contact-footer">
         <p>{footerText}</p>
-        <p className="footer-time" id="mat-footer-time" />
       </footer>
     </>
   );

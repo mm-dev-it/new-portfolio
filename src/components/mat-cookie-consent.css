@@ -1,0 +1,189 @@
+.mat-cookie-consent {
+  --mat-cookie-bg: rgba(10, 10, 10, 0.97);
+  --mat-cookie-border: rgba(255, 255, 255, 0.08);
+  --mat-cookie-text: #f5f5f5;
+  --mat-cookie-muted: #a3a3a3;
+  --mat-cookie-accent: #c8f542;
+
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 100001;
+  width: 100%;
+  border-top: 1px solid var(--mat-cookie-border);
+  background: var(--mat-cookie-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: var(--mat-cookie-text);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+  transition:
+    opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.45s;
+}
+
+.mat-cookie-consent.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mat-cookie-consent__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  width: min(1400px, 100%);
+  margin: 0 auto;
+  padding: clamp(0.9rem, 2vw, 1.15rem) clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.mat-cookie-consent__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.mat-cookie-consent__label {
+  margin: 0 0 0.35rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mat-cookie-accent);
+}
+
+.mat-cookie-consent__title {
+  margin: 0 0 0.45rem;
+  font-family: "Syne", sans-serif;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.mat-cookie-consent__text {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(0.68rem, 0.95vw, 0.74rem);
+  line-height: 1.6;
+  color: var(--mat-cookie-muted);
+}
+
+.mat-cookie-consent__text a {
+  color: var(--mat-cookie-text);
+  text-decoration: underline;
+  text-decoration-color: rgba(200, 245, 66, 0.45);
+  text-underline-offset: 0.18em;
+}
+
+.mat-cookie-consent__text--desktop {
+  display: block;
+}
+
+.mat-cookie-consent__text-mobile {
+  display: none;
+}
+
+.mat-cookie-consent__read-more {
+  margin-top: 0.55rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mat-cookie-accent);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgba(200, 245, 66, 0.45);
+  text-underline-offset: 0.2em;
+}
+
+.mat-cookie-consent__read-more:hover {
+  color: #d4ff4a;
+}
+
+.mat-cookie-consent__actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.mat-cookie-consent__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.35rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.mat-cookie-consent__btn--primary {
+  border: 1px solid var(--mat-cookie-accent);
+  background: var(--mat-cookie-accent);
+  color: #050505;
+}
+
+.mat-cookie-consent__btn--primary:hover {
+  background: #d4ff4a;
+  border-color: #d4ff4a;
+}
+
+.mat-cookie-consent__btn--ghost {
+  border: 1px solid var(--mat-cookie-border);
+  background: transparent;
+  color: var(--mat-cookie-text);
+}
+
+.mat-cookie-consent__btn--ghost:hover {
+  border-color: rgba(200, 245, 66, 0.35);
+  color: var(--mat-cookie-accent);
+}
+
+@media (max-width: 768px) {
+  .mat-cookie-consent__inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem 1.15rem calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .mat-cookie-consent__text--desktop {
+    display: none;
+  }
+
+  .mat-cookie-consent__text-mobile {
+    display: block;
+  }
+
+  .mat-cookie-consent__text--more {
+    margin-top: 0.55rem;
+  }
+
+  .mat-cookie-consent__actions {
+    width: 100%;
+  }
+
+  .mat-cookie-consent__btn {
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mat-cookie-consent {
+    transition: none;
+  }
+}

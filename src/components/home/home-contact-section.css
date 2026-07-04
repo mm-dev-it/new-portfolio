@@ -167,7 +167,7 @@
 
 .mat-contact-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 2rem;
   border-top: 1px solid var(--border);
@@ -175,7 +175,12 @@
   font-size: 0.7rem;
   color: var(--text-muted);
   letter-spacing: 0.05em;
+  text-align: center;
   background: var(--bg);
+}
+
+.mat-contact-footer p {
+  margin: 0;
 }
 
 .mat-contact-section .reveal-up {
@@ -197,9 +202,7 @@
   }
 
   .mat-contact-footer {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
+    padding: 2rem 1.25rem;
   }
 }
 

@@ -166,16 +166,84 @@
 }
 
 @media (max-width: 1024px) {
-  .mat-page-hero.ph-center:not(.ph-bg-image) .ph-image {
-    width: clamp(240px, 58vw, 360px) !important;
+  .mat-page-hero {
+    --mat-page-hero-mobile-peek: 3.25rem;
+    --mat-page-hero-mobile-header: 4rem;
+    --mat-page-hero-mobile-image-w: min(66vw, 365px);
+    --mat-page-hero-mobile-image-ratio: 145%;
+
+    min-height: calc(100vh - var(--mat-page-hero-mobile-peek));
+    min-height: calc(100dvh - var(--mat-page-hero-mobile-peek));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Nascondi "Sogna in Grande" solo mobile — desktop invariato */
+  .mat-page-hero .made-with-love {
+    display: none !important;
+  }
+
+  /* Override padding tema legacy (ph-image-on) */
+  body.ph-image-on #page-header.mat-page-hero:not(.project-info-list-on) .page-header-inner,
+  #page-header.mat-page-hero .page-header-inner {
+    position: relative;
+    flex: 1;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    width: 100%;
+    min-height: calc(
+      100dvh - var(--mat-page-hero-mobile-peek) - var(--mat-page-hero-mobile-header)
+    );
+    padding: var(--mat-page-hero-mobile-header) 1rem var(--mat-page-hero-mobile-peek) !important;
+    box-sizing: border-box;
+  }
+
+  /* Foto + caption nello stesso slot — testo centrato sulla foto come desktop */
+  .mat-page-hero .ph-image,
+  .mat-page-hero .ph-caption {
+    grid-area: 1 / 1;
+  }
+
+  .mat-page-hero.ph-center:not(.ph-bg-image) .ph-image,
+  .mat-page-hero .ph-image {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: var(--mat-page-hero-mobile-image-w) !important;
+    max-width: none;
+    height: auto;
+    margin: 0;
+    z-index: 1;
+  }
+
+  .mat-page-hero:not(.ph-bg-image).ph-image-cropped .ph-image-inner {
+    padding-bottom: var(--mat-page-hero-mobile-image-ratio);
+  }
+
+  .mat-page-hero .ph-caption {
+    position: relative;
+    inset: auto;
+    width: var(--mat-page-hero-mobile-image-w);
+    aspect-ratio: 100 / 145;
+    align-self: center;
+    justify-self: center;
+    z-index: 9;
+    pointer-events: none;
   }
 
   .mat-page-hero .ph-caption-title {
-    font-size: clamp(2.5rem, 12vw, 4rem) !important;
+    font-size: clamp(2.35rem, 11vw, 3.35rem) !important;
   }
 
   .mat-page-hero .ph-caption-title-ghost {
-    font-size: clamp(3.5rem, 18vw, 5.5rem) !important;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    font-size: clamp(3.25rem, 16vw, 4.75rem) !important;
   }
 
   .mat-page-hero-eyebrow {
@@ -184,7 +252,17 @@
 }
 
 @media (max-width: 640px) {
+  .mat-page-hero {
+    --mat-page-hero-mobile-peek: 2.75rem;
+    --mat-page-hero-mobile-header: 3.65rem;
+    --mat-page-hero-mobile-image-w: min(
+      68vw,
+      calc((100dvh - 6rem - var(--mat-page-hero-mobile-peek)) / 1.45)
+    );
+  }
+
   .mat-page-hero .ph-caption-subtitle {
     margin-top: 0.85rem !important;
+    font-size: 0.82rem !important;
   }
 }

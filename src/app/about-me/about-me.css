@@ -1,0 +1,6 @@
+@media (max-width: 767px) {
+  .about-me-content.text-xxlg,
+  .about-me-content.text-xxlg p {
+    font-size: 1.05rem !important;
+  }
+}

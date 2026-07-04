@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import AboutHeroSection from "@/components/about/AboutHeroSection";
 import SiteLayout, { SiteFooter } from "@/components/SiteLayout";
 import { worksHeroContent } from "@/data/worksHero";
+import "./about-me.css";
 
 export const metadata: Metadata = {
   title: "Chi Sono | Matteo Malaspina - Sviluppatore Web Freelance a Fermo",
@@ -18,7 +19,7 @@ export default function AboutPage() {
       <div id="page-content">
         <div className="tt-section padding-bottom-xlg-150">
           <div className="tt-section-inner tt-wrap max-width-900">
-            <div className="text-xxlg font-alter text-gray-2">
+            <div className="about-me-content text-xxlg font-alter text-gray-2">
               <p className="anim-fadeinup">
                 Mi chiamo Matteo Malaspina, ho 28 anni e vivo a Fermo.
               </p>

@@ -8,10 +8,11 @@ export const homeContactContent = {
   email: siteConfig.email,
   cta: "Inizia un progetto",
   socials: [
-    { label: "GitHub", href: "https://github.com" },
-    { label: "LinkedIn", href: siteConfig.linkedin },
-    { label: "Twitter", href: "https://twitter.com" },
-    { label: "Dribbble", href: "https://dribbble.com" },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/matteo-malaspina-web-developer/",
+    },
+    { label: "Gmail", href: "mailto:mtt.malaspina@gmail.com" },
   ],
-  footerText: `© ${new Date().getFullYear()} Matteo Malaspina — Crafted with code & passion`,
+  footerText: "2026 _ M.M. P.iva 02514710447 _ © Tutti i diritti riservati",
 } as const;

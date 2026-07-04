@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import MatCookieConsent from "./MatCookieConsent";
 
 type MatFeaturesProps = {
   showPreloader?: boolean;
@@ -30,8 +31,21 @@ function ScrollProgressBar() {
     function usesNativeScroll() {
       return (
         document.documentElement.classList.contains("home-native-scroll") ||
-        document.body.classList.contains("tt-no-smooth-scroll")
+        document.body.classList.contains("tt-no-smooth-scroll") ||
+        document.body.classList.contains("is-mobile")
       );
+    }
+
+    function isDocumentScrolling() {
+      if (usesNativeScroll()) return true;
+
+      const sb = getScrollbar();
+      if (sb) return false;
+
+      const container = document.getElementById("scroll-container");
+      if (!container) return true;
+
+      return container.scrollHeight - container.clientHeight <= 1;
     }
 
     function getScrollbar() {
@@ -46,7 +60,7 @@ function ScrollProgressBar() {
     }
 
     function getScrollTop() {
-      if (usesNativeScroll()) {
+      if (isDocumentScrolling()) {
         return window.scrollY || document.documentElement.scrollTop;
       }
 
@@ -62,7 +76,7 @@ function ScrollProgressBar() {
     }
 
     function getScrollLimit() {
-      if (usesNativeScroll()) {
+      if (isDocumentScrolling()) {
         return Math.max(
           document.documentElement.scrollHeight - window.innerHeight,
           1,
@@ -223,6 +237,7 @@ export default function MatFeatures({ showPreloader = false }: MatFeaturesProps)
     <>
       <ScrollProgressBar />
       {showPreloader ? <MatPreloader active /> : null}
+      <MatCookieConsent waitForPreloader={showPreloader} />
     </>
   );
 }

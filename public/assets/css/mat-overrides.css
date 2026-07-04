@@ -84,3 +84,26 @@ p,
   opacity: 1 !important;
   font-family: var(--mat-font-body) !important;
 }
+
+/* Numeri menu su mobile — il tema li abilita solo da 992px */
+@media (max-width: 991px) {
+  .tt-overlay-menu.tt-ol-menu-count .tt-ol-menu-list {
+    counter-reset: ol-menu-list-counter;
+  }
+
+  .tt-overlay-menu.tt-ol-menu-count .tt-ol-menu-list > li > a::before,
+  .tt-overlay-menu.tt-ol-menu-count
+    .tt-ol-menu-list
+    > li
+    > .tt-ol-submenu-trigger
+    > a::before {
+    position: absolute;
+    counter-increment: ol-menu-list-counter;
+    content: "" counter(ol-menu-list-counter, decimal-leading-zero);
+    top: 5px;
+    left: -30px;
+    line-height: 1;
+    font-size: 14px;
+    font-weight: normal;
+  }
+}
