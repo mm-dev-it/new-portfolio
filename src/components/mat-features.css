@@ -22,15 +22,7 @@ body.mat-preloader-active .mat-hero-section {
   visibility: hidden !important;
 }
 
-/* Hero portfolio — nascosta fino all'animazione GSAP */
-#page-header.mat-ph-enter:not(.mat-ph-enter-done):not(.ph-bg-image) .page-header-inner,
-#page-header.mat-ph-enter:not(.mat-ph-enter-done):not(.ph-bg-image) .scroll-down-circle,
-#page-header.mat-ph-enter:not(.mat-ph-enter-done):not(.ph-bg-image) .made-with-love {
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* Pagine progetto — full screen: nasconde solo img e testi animati */
+/* Hero portfolio / about — entrance gestita da mat-page-enter.css */
 #page-header.mat-ph-enter.ph-bg-image:not(.mat-ph-enter-done) .ph-image img,
 #page-header.mat-ph-enter.ph-bg-image:not(.mat-ph-enter-done) .ph-video,
 #page-header.mat-ph-enter.ph-bg-image:not(.mat-ph-enter-done) .ph-appear,

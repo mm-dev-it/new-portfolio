@@ -88,7 +88,8 @@
 
 	if ($("body").hasClass("tt-transition")) {
 
-		var matPhHideLoadTarget = null;
+		var hideLoadQueued = false;
+		var hideLoadDone = false;
 
 		function shouldRunHideLoad() {
 			if (document.body.dataset.matPreloader === "true") return false;
@@ -99,9 +100,8 @@
 
 		function runHideLoad() {
 			if (!shouldRunHideLoad()) return;
-			var ph = document.querySelector("#page-header.mat-ph-enter:not(.mat-ph-enter-done)");
-			if (ph && ph === matPhHideLoadTarget) return;
-			matPhHideLoadTarget = ph;
+			if (hideLoadQueued) return;
+			hideLoadQueued = true;
 			setTimeout(function () {
 				HideLoad();
 			}, 0);
@@ -130,6 +130,17 @@
 		// Transitions Out (when "ptr-overlay" slides out)
 		// ================
 		function HideLoad() {
+			if (hideLoadDone) return;
+			hideLoadDone = true;
+
+			var isMatHomeHero = $(".mat-hero-section").length;
+			var isMatPageHero = $("#page-header.mat-page-hero").length;
+
+			if (isMatHomeHero || isMatPageHero) {
+				$("#page-header.mat-ph-enter").addClass("mat-ph-enter-done");
+				return;
+			}
+
 			var tl_transitOut = gsap.timeline();
 
 				 // tt-Header appear

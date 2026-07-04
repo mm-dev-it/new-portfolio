@@ -243,18 +243,18 @@
   filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.35));
 }
 
-html.mat-preload-done .mat-hero-visual-backdrop__glow {
-  animation: mat-hero-glow-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards,
+html.mat-page-enter .mat-hero-visual-backdrop__glow {
+  animation: mat-hero-glow-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.14s forwards,
     mat-hero-glow-drift 12s ease-in-out 1.6s infinite alternate;
 }
 
-html.mat-preload-done .mat-hero-visual-backdrop__square {
-  animation: mat-hero-square-draw 1.45s cubic-bezier(0.16, 1, 0.3, 1) 0.22s
+html.mat-page-enter .mat-hero-visual-backdrop__square {
+  animation: mat-hero-square-draw 1.45s cubic-bezier(0.16, 1, 0.3, 1) 0.26s
     forwards;
 }
 
-html.mat-preload-done .mat-hero-visual-photo {
-  animation: mat-hero-photo-rise 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+html.mat-page-enter .mat-hero-visual-photo {
+  animation: mat-hero-photo-rise 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
 }
 
 /* Scroll down */
@@ -358,9 +358,9 @@ html.mat-preload-done .mat-hero-visual-photo {
     transform: translateY(2%);
   }
 
-  html.mat-preload-done .mat-hero-visual-photo {
+  html.mat-page-enter .mat-hero-visual-photo {
     animation: mat-hero-photo-rise-desktop 1.15s cubic-bezier(0.16, 1, 0.3, 1)
-      0.55s both;
+      0.38s both;
   }
 }
 
@@ -560,9 +560,9 @@ html.mat-preload-done .mat-hero-visual-photo {
     animation: none;
   }
 
-  html.mat-preload-done .mat-hero-visual-backdrop__glow,
-  html.mat-preload-done .mat-hero-visual-backdrop__square,
-  html.mat-preload-done .mat-hero-visual-photo {
+  html.mat-page-enter .mat-hero-visual-backdrop__glow,
+  html.mat-page-enter .mat-hero-visual-backdrop__square,
+  html.mat-page-enter .mat-hero-visual-photo {
     animation: none;
   }
 

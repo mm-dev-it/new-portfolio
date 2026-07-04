@@ -2,6 +2,7 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import MatCookieConsent from "./MatCookieConsent";
+import MatPageEnter from "./MatPageEnter";
 
 type MatFeaturesProps = {
   showPreloader?: boolean;
@@ -236,6 +237,7 @@ export default function MatFeatures({ showPreloader = false }: MatFeaturesProps)
   return (
     <>
       <ScrollProgressBar />
+      <MatPageEnter />
       {showPreloader ? <MatPreloader active /> : null}
       <MatCookieConsent waitForPreloader={showPreloader} />
     </>

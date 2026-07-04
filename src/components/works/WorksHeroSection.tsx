@@ -17,7 +17,7 @@ export default function WorksHeroSection() {
   return (
     <div
       id="page-header"
-      className="mat-page-hero ph-full ph-center ph-cap-xxlg ph-image-cropped ph-image-cover-2 ph-content-parallax mat-ph-enter"
+      className="mat-page-hero ph-full ph-center ph-cap-xxlg ph-image-cropped ph-image-cover-2 ph-content-parallax"
     >
       <div className="page-header-inner tt-wrap">
         <div className="ph-image">
