@@ -21,8 +21,14 @@ export const metadata: Metadata = {
     images: [{ url: "/assets/img/mm.png" }],
   },
   icons: {
-    icon: "/assets/img/mm.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/assets/img/mm.png", type: "image/png" },
+    ],
     shortcut: "/assets/img/mm.png",
+    apple: [
+      { url: "/assets/img/mm.png", sizes: "180x180", type: "image/png" },
+    ],
   },
 };
 
