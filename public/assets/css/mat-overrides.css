@@ -10,6 +10,28 @@ body {
   font-family: var(--mat-font-body) !important;
 }
 
+/* ── GSAP ScrollSmoother (sostituisce Smooth Scrollbar) ── */
+body.tt-smooth-scroll:not(.tt-no-smooth-scroll) {
+  overflow: visible !important;
+}
+
+body.tt-smooth-scroll:not(.tt-no-smooth-scroll) #scroll-container {
+  width: 100% !important;
+  height: auto !important;
+  overflow: visible !important;
+  margin: 0 !important;
+}
+
+#scroll-container #content-wrap {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.tt-smooth-scroll #scroll-container #content-wrap {
+    will-change: auto;
+  }
+}
+
 /* ── Syne: titoli e heading ── */
 h1,
 h2,

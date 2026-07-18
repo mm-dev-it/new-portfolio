@@ -10,7 +10,7 @@
 // Detect browser
 // Detect mobile device
 // Page transitions
-// Smooth Scrollbar
+// GSAP ScrollSmoother
 // Magic cursor
 // Image lazy loading
 // Header tools
@@ -289,104 +289,54 @@
 
 
 	// =======================================================================================
-	// Smooth Scrollbar
-	// Source: https://github.com/idiotWu/smooth-scrollbar/
+	// GSAP ScrollSmoother
+	// Source: https://gsap.com/docs/v3/Plugins/ScrollSmoother/
 	// =======================================================================================
 
-	if ($("body").hasClass("tt-smooth-scroll") && !$("body").hasClass("tt-no-smooth-scroll") && !document.documentElement.classList.contains("home-native-scroll")) {
+	if ($("body").hasClass("tt-smooth-scroll") && !$("body").hasClass("tt-no-smooth-scroll")) {
+		if (typeof ScrollSmoother !== "undefined" && typeof ScrollTrigger !== "undefined") {
+			gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-		// Not for mobile devices!
-		if(!isMobile) {
+			var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+			var existingSmoother = ScrollSmoother.get();
+			if (existingSmoother) {
+				existingSmoother.kill();
+			}
 
-			// Init Smooth Scrollbar
-			// ======================
-			var Scrollbar = window.Scrollbar;
-			Scrollbar.init(document.querySelector("#scroll-container"), {
-				damping: 0.06,
-				renderByPixel: true,
-				continuousScrolling: true,
-				alwaysShowTracks: true
-			});
-			
-
-			// 3rd party library setup
-			// More info: https://greensock.com/docs/v3/Plugins/ScrollTrigger/static.scrollerProxy()
-			// ========================
-			let scrollPositionX = 0,
-				scrollPositionY = 0,
-				bodyScrollBar = Scrollbar.init(document.getElementById("scroll-container"));
-
-			bodyScrollBar.addListener(({ offset }) => {  
-				scrollPositionX = offset.x;
-				scrollPositionY = offset.y;
+			ScrollSmoother.create({
+				wrapper: "#scroll-container",
+				content: "#content-wrap",
+				smooth: prefersReducedMotion ? 0 : 1.15,
+				effects: !prefersReducedMotion,
+				smoothTouch: prefersReducedMotion ? false : 0.1,
+				ignoreMobileResize: true,
 			});
 
-			bodyScrollBar.setPosition(0, 0);
-			bodyScrollBar.track.xAxis.element.remove();
-
-			// tell ScrollTrigger to use these proxy getter/setter methods for the "body" element:
-			ScrollTrigger.scrollerProxy("body", {
-				scrollTop(value) {
-					if (arguments.length) {
-						bodyScrollBar.scrollTop = value;
-					}
-					return bodyScrollBar.scrollTop;
-				},
-				getBoundingClientRect() {
-					return {
-						top: 0,
-						left: 0,
-						width: window.innerWidth,
-						height: window.innerHeight,
-					};
-				},
-				pinType: "transform",
-			});
-
-			// when smooth scroller updates, tell ScrollTrigger to update() too. 
-			bodyScrollBar.addListener(ScrollTrigger.update);
-
-
-			// Move "tt-header" out of "scroll-container"
-			// Expl: Since Smooth Scrollbar doesn't support element fixed position inside "scroll-container" move the "tt-header" out of it.
-			// ==========================================
-			if ($("#tt-header").hasClass("tt-header-fixed")) {
-				var $ttHeader = $("#tt-header");
-				if ($ttHeader.closest("#scroll-container").length) {
-					$ttHeader.prependTo( $("#body-inner"));
+			// Pause while homepage preloader is active
+			if (document.body.dataset.matPreloader === "true") {
+				var $preloaderSmoother = ScrollSmoother.get();
+				if ($preloaderSmoother) {
+					$preloaderSmoother.paused(true);
+					window.addEventListener(
+						"mat-preload-done",
+						function () {
+							var s = ScrollSmoother.get();
+							if (s) s.paused(false);
+							ScrollTrigger.refresh(true);
+						},
+						{ once: true }
+					);
 				}
 			}
 
-
-			// Enable regular scrollbar inside a smooth scrollbar (#scroll-container). IMPORTANT: use class "tt-overflow" on inside scroll elements!
-			// ===================================================
-			if ($(".tt-overflow").length) {
-				// Determine if an element is scrollable
-				$.fn.ttIsScrollable = function () {
-					return this[0].scrollWidth > this[0].clientWidth || this[0].scrollHeight > this[0].clientHeight;
-				};
-
-				$(".tt-overflow").each(function() {
-					var $this = $(this);
-					if ($this.ttIsScrollable()) {
-						$this.on("wheel", function(e) {
-							e.stopPropagation();
-						});
-					}
-				});
+			// Fixed elements must stay outside the transformed content
+			if ($("#tt-header").hasClass("tt-header-fixed")) {
+				var $ttHeader = $("#tt-header");
+				if ($ttHeader.closest("#scroll-container").length) {
+					$ttHeader.prependTo($("#body-inner"));
+				}
 			}
-
-
-			// Prevent input[type=number] to scroll on focus 
-			// ==============================================
-			$("input[type=number]").on("focus", function() {
-				$(this).on("wheel", function(e) {
-					e.stopPropagation();
-				});
-			});
-
 		}
-
 	}
 	
 
@@ -950,7 +900,11 @@
 	
 	$olMenuToggleBtn.on("click", function() {
 		$("html").toggleClass("tt-no-scroll");
-		$("body").toggleClass("tt-ol-menu-open");	
+		$("body").toggleClass("tt-ol-menu-open");
+		var $smoother = typeof ScrollSmoother !== "undefined" ? ScrollSmoother.get() : null;
+		if ($smoother) {
+			$smoother.paused($("body").hasClass("tt-ol-menu-open"));
+		}
 		if ($("body").hasClass("tt-ol-menu-open")) {
 
 			// Menu step in animations
@@ -2779,7 +2733,7 @@
 
 	// ================================================================
 	// Scroll between anchors 
-	// Requires "Smooth Scrollbar" (https://github.com/idiotWu/smooth-scrollbar/blob/develop/docs/api.md#scrollbarscrollintoview)
+	// Requires "GSAP ScrollSmoother" / native scroll fallback
 	// ================================================================
 
 	$('a[href^="#"]')
@@ -2798,17 +2752,11 @@
 
 		// You can use data attribute (for example: data-offset="100") to set top offset in HTML markup if needed. 
 		if ($(this).data("offset") != undefined) $offset = $(this).data("offset");
-		
-		if(!isMobile) { // Not for mobile devices!
-			if ($("body").hasClass("tt-smooth-scroll") && !$("body").hasClass("tt-no-smooth-scroll") && !document.documentElement.classList.contains("home-native-scroll")) {
-				var topY = $(target).offset().top - $("#scroll-container > .scroll-content").offset().top - $offset;
-				var $scrollbar = Scrollbar.init(document.getElementById("scroll-container"));
-				gsap.to($scrollbar, { duration: 1.5, scrollTo: { y: topY, autoKill: true }, ease: Expo.easeInOut });
 
-			} else {
-				var topY = $(target).offset().top - $("body").offset().top - $offset;
-				$("html,body").animate({scrollTop: topY}, 800);
-			}
+		var $smoother = typeof ScrollSmoother !== "undefined" ? ScrollSmoother.get() : null;
+		if ($smoother && $("body").hasClass("tt-smooth-scroll") && !$("body").hasClass("tt-no-smooth-scroll")) {
+			var position = $offset ? "top " + $offset : "top top";
+			$smoother.scrollTo(target, true, position);
 		} else {
 			var topY = $(target).offset().top - $("body").offset().top - $offset;
 			$("html,body").animate({scrollTop: topY}, 800);
@@ -2824,13 +2772,9 @@
 	// ================================================================
 
 	$(".scroll-to-top").on("click", function() {
-		if(!isMobile) { // Not for mobile devices!
-			if ($("body").hasClass("tt-smooth-scroll") && !$("body").hasClass("tt-no-smooth-scroll") && !document.documentElement.classList.contains("home-native-scroll")) {
-				var $scrollbar = Scrollbar.init(document.getElementById("scroll-container"));
-				gsap.to($scrollbar, { duration: 1.5, scrollTo: { y: 0, autoKill: true }, ease: Expo.easeInOut });
-			} else {
-				$("html,body").animate({scrollTop: 0}, 800);
-			}
+		var $smoother = typeof ScrollSmoother !== "undefined" ? ScrollSmoother.get() : null;
+		if ($smoother && $("body").hasClass("tt-smooth-scroll") && !$("body").hasClass("tt-no-smooth-scroll")) {
+			$smoother.scrollTo(0, true);
 		} else {
 			$("html,body").animate({scrollTop: 0}, 800);
 		}

@@ -2,6 +2,8 @@
   "use strict";
 
   var initialized = false;
+  var ctx = null;
+  var runId = 0;
 
   function waitForImages(container) {
     var images = container.querySelectorAll("img");
@@ -36,36 +38,45 @@
     return true;
   }
 
-  function getScroller() {
-    return document.documentElement.classList.contains("home-native-scroll") ||
-      document.body.classList.contains("tt-no-smooth-scroll")
-      ? window
-      : "body";
+  function wantsSmoother() {
+    return (
+      document.body.classList.contains("tt-smooth-scroll") &&
+      !document.body.classList.contains("tt-no-smooth-scroll")
+    );
   }
 
-  function init() {
-    if (initialized || !canInit()) return;
-    if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+  function waitForSmoother(cb, attempt) {
+    attempt = attempt || 0;
+    var hasLib = typeof ScrollSmoother !== "undefined";
+    var smoother = hasLib ? ScrollSmoother.get() : null;
 
-    var prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (prefersReduced) {
-      initialized = true;
+    if (wantsSmoother() && hasLib && !smoother && attempt < 80) {
+      window.setTimeout(function () {
+        waitForSmoother(cb, attempt + 1);
+      }, 50);
       return;
     }
 
-    var track = document.getElementById("mat-work-track");
-    var workSection = document.querySelector(".mat-work-section");
-    var trackWrap = document.querySelector(".mat-work-track-wrap");
-    if (!track || !workSection || !trackWrap) return;
+    cb(smoother || null);
+  }
 
-    initialized = true;
-    gsap.registerPlugin(ScrollTrigger);
+  function killExisting() {
+    runId += 1;
+    if (ctx) {
+      ctx.revert();
+      ctx = null;
+    }
+    initialized = false;
+  }
 
-    waitForImages(track).then(function () {
-      var scroller = getScroller();
+  function build(smoother, track, workSection, trackWrap, pinEl, myRun) {
+    if (myRun !== runId) return;
 
+    // ScrollSmoother applies a transform on #content-wrap.
+    // position:fixed pins break inside transformed ancestors → blank/black pin.
+    var useTransformPin = !!smoother;
+
+    ctx = gsap.context(function () {
       var getScrollAmount = function () {
         var amount = track.scrollWidth - trackWrap.clientWidth;
         return amount > 0 ? -amount : 0;
@@ -76,17 +87,16 @@
         ease: "none",
         scrollTrigger: {
           trigger: workSection,
-          scroller: scroller,
           start: "top top",
           end: function () {
             var amount = track.scrollWidth - trackWrap.clientWidth;
             return "+=" + Math.max(amount, window.innerHeight);
           },
-          pin: ".mat-work-pin",
+          pin: pinEl,
           pinSpacing: true,
-          scrub: 1,
+          pinType: useTransformPin ? "transform" : "fixed",
+          scrub: true,
           invalidateOnRefresh: true,
-          anticipatePin: 1,
         },
       });
 
@@ -112,18 +122,52 @@
             ease: "none",
             scrollTrigger: {
               trigger: slide,
-              scroller: scroller,
               containerAnimation: scrollTween,
               start: "left 98%",
               end: isLast ? "left 72%" : "left 38%",
-              scrub: 1,
+              scrub: true,
             },
           },
         );
       });
+    }, workSection);
 
-      window.requestAnimationFrame(function () {
-        ScrollTrigger.refresh(true);
+    window.requestAnimationFrame(function () {
+      if (myRun !== runId) return;
+      ScrollTrigger.refresh(true);
+    });
+  }
+
+  function init() {
+    if (initialized || !canInit()) return;
+    if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
+      return;
+    }
+
+    var prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (prefersReduced) {
+      initialized = true;
+      return;
+    }
+
+    var track = document.getElementById("mat-work-track");
+    var workSection = document.querySelector(".mat-work-section");
+    var trackWrap = document.querySelector(".mat-work-track-wrap");
+    var pinEl = document.querySelector(".mat-work-pin");
+    if (!track || !workSection || !trackWrap || !pinEl) return;
+
+    initialized = true;
+    gsap.registerPlugin(ScrollTrigger);
+
+    var myRun = runId;
+
+    waitForSmoother(function (smoother) {
+      if (myRun !== runId) return;
+
+      waitForImages(track).then(function () {
+        build(smoother, track, workSection, trackWrap, pinEl, myRun);
       });
     });
   }
@@ -165,8 +209,9 @@
       "mat-preload-done",
       function () {
         window.setTimeout(function () {
+          killExisting();
           tryInit(0);
-        }, 100);
+        }, 150);
       },
       { once: true },
     );

@@ -75,7 +75,7 @@ export default function RootLayout({
         />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var p=location.pathname;if(p==="/"||p===""){document.documentElement.classList.add("mat-preload-home","home-native-scroll");document.addEventListener("DOMContentLoaded",function(){document.body.classList.add("mat-preloader-active","tt-no-smooth-scroll");document.body.dataset.matPreloader="true";});}})();`,
+            __html: `(function(){var p=location.pathname;if(p==="/"||p===""){document.documentElement.classList.add("mat-preload-home");document.addEventListener("DOMContentLoaded",function(){document.body.classList.add("mat-preloader-active");document.body.dataset.matPreloader="true";});}})();`,
           }}
         />
         <link rel="stylesheet" href="/assets/vendor/normalize.min.css" />

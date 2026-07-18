@@ -10,12 +10,16 @@ type MatFeaturesProps = {
 
 declare global {
   interface Window {
-    Scrollbar?: {
-      get: (el: Element) => {
-        offset: { x: number; y: number };
-        limit: { x: number; y: number };
-        addListener: (fn: () => void) => void;
-        removeListener?: (fn: () => void) => void;
+    ScrollSmoother?: {
+      get: () => {
+        progress: number;
+        scrollTop: (value?: number) => number | void;
+      } | null;
+    };
+    gsap?: {
+      ticker: {
+        add: (fn: () => void) => void;
+        remove: (fn: () => void) => void;
       };
     };
     jQuery?: (sel: unknown) => {
@@ -29,113 +33,40 @@ function ScrollProgressBar() {
     const bar = document.getElementById("mat-scroll-bar");
     if (!bar) return;
 
-    function usesNativeScroll() {
-      return (
-        document.documentElement.classList.contains("home-native-scroll") ||
-        document.body.classList.contains("tt-no-smooth-scroll") ||
-        document.body.classList.contains("is-mobile")
-      );
-    }
+    function update() {
+      if (!bar) return;
 
-    function isDocumentScrolling() {
-      if (usesNativeScroll()) return true;
-
-      const sb = getScrollbar();
-      if (sb) return false;
-
-      const container = document.getElementById("scroll-container");
-      if (!container) return true;
-
-      return container.scrollHeight - container.clientHeight <= 1;
-    }
-
-    function getScrollbar() {
-      if (usesNativeScroll()) return null;
-      const el = document.getElementById("scroll-container");
-      if (!el || !window.Scrollbar) return null;
-      try {
-        return window.Scrollbar.get(el);
-      } catch {
-        return null;
-      }
-    }
-
-    function getScrollTop() {
-      if (isDocumentScrolling()) {
-        return window.scrollY || document.documentElement.scrollTop;
+      const smoother = window.ScrollSmoother?.get?.();
+      if (smoother && typeof smoother.progress === "number") {
+        bar.style.width = `${Math.min(1, Math.max(0, smoother.progress)) * 100}%`;
+        return;
       }
 
-      const sb = getScrollbar();
-      if (sb) return sb.offset.y;
-
-      const container = document.getElementById("scroll-container");
-      if (container && container.scrollHeight > container.clientHeight) {
-        return container.scrollTop;
-      }
-
-      return window.scrollY || document.documentElement.scrollTop;
-    }
-
-    function getScrollLimit() {
-      if (isDocumentScrolling()) {
-        return Math.max(
-          document.documentElement.scrollHeight - window.innerHeight,
-          1,
-        );
-      }
-
-      const sb = getScrollbar();
-      if (sb && sb.limit.y > 0) return sb.limit.y;
-
-      const container = document.getElementById("scroll-container");
-      if (container) {
-        return Math.max(container.scrollHeight - container.clientHeight, 1);
-      }
-
-      return Math.max(
+      const limit = Math.max(
         document.documentElement.scrollHeight - window.innerHeight,
         1,
       );
-    }
-
-    function update() {
-      if (!bar) return;
-      const progress = getScrollTop() / getScrollLimit();
+      const progress =
+        (window.scrollY || document.documentElement.scrollTop) / limit;
       bar.style.width = `${Math.min(1, Math.max(0, progress)) * 100}%`;
     }
 
-    let scrollbarListener: (() => void) | null = null;
-    const waitForScrollbar = window.setInterval(() => {
-      const sb = getScrollbar();
-      if (!sb) return;
-
-      scrollbarListener = update;
-      sb.addListener(scrollbarListener);
-      window.clearInterval(waitForScrollbar);
+    const ticker = window.gsap?.ticker;
+    if (ticker) {
+      ticker.add(update);
       update();
-    }, 80);
-
-    const stopWaiting = window.setTimeout(() => {
-      window.clearInterval(waitForScrollbar);
-      update();
-    }, 6000);
+      return () => {
+        ticker.remove(update);
+      };
+    }
 
     window.addEventListener("scroll", update, { passive: true });
-    document.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
-
     update();
 
     return () => {
-      window.clearInterval(waitForScrollbar);
-      window.clearTimeout(stopWaiting);
       window.removeEventListener("scroll", update);
-      document.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
-      const sb = getScrollbar();
-      if (sb && scrollbarListener && sb.removeListener) {
-        sb.removeListener(scrollbarListener);
-      }
     };
   }, []);
 
