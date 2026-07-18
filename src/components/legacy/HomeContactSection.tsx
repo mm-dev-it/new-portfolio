@@ -40,7 +40,7 @@ export default function HomeContactSection() {
                   <ul>
                     <li>
                       <a
-                        href="https://www.linkedin.com/in/matteo-malaspina-front-end-developer/"
+                        href="https://www.linkedin.com/in/matteo-malaspina-web-developer/"
                         className="magnetic-item"
                         target="_blank"
                         rel="noopener noreferrer"

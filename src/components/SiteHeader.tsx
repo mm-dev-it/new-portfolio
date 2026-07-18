@@ -14,12 +14,12 @@ export default function SiteHeader({ active }: SiteHeaderProps) {
               <img
                 src="/assets/img/matteo-malaspina-logo-white.png"
                 className="tt-logo-light magnetic-item"
-                alt="Logo"
+                alt="Matteo Malaspina — logo"
               />
               <img
                 src="/assets/img/matteo-malaspina-logo-dark.png"
                 className="tt-logo-dark magnetic-item"
-                alt="Logo"
+                alt="Matteo Malaspina — logo"
               />
             </a>
           </div>

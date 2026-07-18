@@ -1,12 +1,13 @@
 export const siteConfig = {
   name: "Matteo Malaspina",
   title: "Matteo Malaspina - Sviluppatore Web",
-  url: "https://www.matteomalaspina.it",
+  url: "https://matteomalaspina.it",
   email: "info@matteomalaspina.it",
   phone: "+39 3347145447",
   phoneHref: "tel:+393347145447",
   address: "Contrada Santo Stefano 3, 63900 Fermo (FM) Italy",
-  linkedin: "https://www.linkedin.com/in/matteo-malaspina-front-end-developer/",
+  linkedin: "https://www.linkedin.com/in/matteo-malaspina-web-developer/",
+  heroImage: "/assets/img/matteo-malaspina-hero-2.png",
   footerText: "2026 _ M.M. P.iva 02514710447 _ © Tutti i diritti riservati",
   nav: [
     { label: "Home", href: "/" },

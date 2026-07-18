@@ -11,17 +11,22 @@ import HomeSections from "@/components/legacy/HomeSections";
 
 
 export const metadata: Metadata = {
-
   title:
-
-    "Creazione Siti Web a Fermo | Matteo Malaspina - Sviluppatore Web Marche",
-
+    "Matteo Malaspina | Creazione Siti Web a Fermo - Sviluppatore Web",
   description:
-
-    "Sviluppatore web freelance a Fermo, Marche. Realizzo siti web vetrina, e-commerce e landing page su misura per professionisti e aziende nella provincia di Fermo.",
-
+    "Matteo Malaspina, sviluppatore web a Fermo (Marche). Creazione siti web vetrina, e-commerce, landing page e web app con React, Next.js e TypeScript.",
   alternates: { canonical: "/" },
-
+  openGraph: {
+    title: "Matteo Malaspina | Creazione Siti Web a Fermo",
+    description:
+      "Portfolio ufficiale: siti web, e-commerce, landing page e web app a Fermo, Marche.",
+    images: [
+      {
+        url: "/assets/img/matteo-malaspina-hero-2.png",
+        alt: "Matteo Malaspina — Sviluppatore Web a Fermo",
+      },
+    ],
+  },
 };
 
 

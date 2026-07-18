@@ -9,5 +9,5 @@ export const homeHeroContent = {
   scrollText: "Scorri in basso - Scorri in basso -",
   aside: "Sogna in Grande",
   image: "/assets/img/matteo-malaspina-hero-2.png",
-  imageAlt: "Matteo Malaspina — Sviluppatore Web",
+  imageAlt: "Matteo Malaspina, sviluppatore web a Fermo — foto profilo portfolio",
 } as const;
