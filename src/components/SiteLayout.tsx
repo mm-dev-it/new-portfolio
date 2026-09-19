@@ -2,6 +2,7 @@ import SiteHeader, { type NavKey } from "./SiteHeader";
 import SiteFooter from "./SiteFooter";
 import MatFeatures from "./MatFeatures";
 import MatCursor from "./MatCursor";
+import WhatsAppFloat from "./WhatsAppFloat";
 
 type SiteLayoutProps = {
   active?: NavKey;
@@ -18,6 +19,7 @@ export default function SiteLayout({
     <main id="body-inner">
       <MatFeatures showPreloader={matPreloader} />
       <MatCursor />
+      <WhatsAppFloat />
 
       <div className="bg-noise"></div>
       <SiteHeader active={active} />

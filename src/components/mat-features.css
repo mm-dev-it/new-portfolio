@@ -14,10 +14,12 @@ html.mat-preload-home:not(.mat-preload-done) #content-wrap,
 html.mat-preload-home:not(.mat-preload-done) #tt-header,
 html.mat-preload-home:not(.mat-preload-done) #hero,
 html.mat-preload-home:not(.mat-preload-done) .mat-hero-section,
+html.mat-preload-home:not(.mat-preload-done) .mat-whatsapp-float,
 body.mat-preloader-active #content-wrap,
 body.mat-preloader-active #tt-header,
 body.mat-preloader-active #hero,
-body.mat-preloader-active .mat-hero-section {
+body.mat-preloader-active .mat-hero-section,
+body.mat-preloader-active .mat-whatsapp-float {
   opacity: 0 !important;
   visibility: hidden !important;
 }

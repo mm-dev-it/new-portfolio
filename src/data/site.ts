@@ -5,6 +5,9 @@ export const siteConfig = {
   email: "info@matteomalaspina.it",
   phone: "+39 3347145447",
   phoneHref: "tel:+393347145447",
+  whatsappHref: `https://wa.me/393347145447?text=${encodeURIComponent(
+    "Ciao Matteo! Vorrei parlarti del mio progetto e ricevere un preventivo gratuito. Quando posso chiamarti?",
+  )}`,
   address: "Contrada Santo Stefano 3, 63900 Fermo (FM) Italy",
   linkedin: "https://www.linkedin.com/in/matteo-malaspina-web-developer/",
   heroImage: "/assets/img/matteo-malaspina-hero-2.png",
