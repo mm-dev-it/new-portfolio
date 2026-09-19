@@ -41,16 +41,12 @@ ExpiresDefault "access plus 0 seconds"
 </IfModule>
 
 <IfModule mod_headers.c>
-  # Pagine HTML: il browser chiede sempre al server se c'e' una versione nuova
+  # Pagine HTML: il browser chiede sempre al server se c'e' una versione nuova.
+  # Non usare <Location> qui: in .htaccess Apache risponde 500.
   <FilesMatch "\.(html)$">
     Header set Cache-Control "no-cache, must-revalidate"
     Header set Pragma "no-cache"
   </FilesMatch>
-
-  # Asset Next.js con hash nel nome file: cache lunga e sicura
-  <Location "/_next/static/">
-    Header set Cache-Control "public, max-age=31536000, immutable"
-  </Location>
 </IfModule>
 
 ## Enable compression ##
