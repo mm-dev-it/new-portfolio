@@ -145,17 +145,17 @@ export const portfolioProjects: Project[] = [
       "E-commerce per ceramiche fatte a mano, con catalogo prodotti, collezioni da appendere e per la tavola, area bomboniere e personalizzazioni pensata per valorizzare il lavoro artigianale del laboratorio.",
   },
   {
-    slug: "carolina-gugliardini",
-    title: "Carolina Gugliardini",
+    slug: "carolina-guliardini",
+    title: "Carolina Guliardini",
     category: "Sito Vetrina",
-    client: "Carolina Gugliardini",
+    client: "Carolina Guliardini",
     year: "2025",
     type: "Sito Vetrina",
     website: "https://carolinaguliardini.com/",
     image: "/assets/img/portfolio/carolina-work-mm.jpg",
     ogImage: "/assets/img/portfolio/carolina-work-mm.jpg",
     description:
-      "Sito vetrina per l'artista Carolina Gugliardini, pensato per presentare il catalogo, raccontare il suo percorso creativo e trasformare l'interesse dei visitatori in richieste di opere su commissione attraverso un percorso chiaro verso il contatto.",
+      "Sito vetrina per l'artista Carolina Guliardini, pensato per presentare il catalogo, raccontare il suo percorso creativo e trasformare l'interesse dei visitatori in richieste di opere su commissione attraverso un percorso chiaro verso il contatto.",
   },
 ];
 
