@@ -46,7 +46,9 @@ body.mat-preloader-active .mat-whatsapp-float {
     visibility 0.8s;
 }
 
-.mat-preloader.done {
+.mat-preloader.done,
+/* su mobile il preloader è saltato (vedi script inline nel layout): mai visibile */
+html:not(.mat-preload-home) .mat-preloader {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;

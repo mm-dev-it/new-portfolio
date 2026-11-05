@@ -1,0 +1,723 @@
+/* ---------------------------------------------------------------------------------------
+* Helper CSS
+*
+* Author:		Matteo Malaspina
+--------------------------------------------------------------------------------------- */
+
+
+/* Table of Content
+====================
+* Various classes
+* Hiding classes
+* Background image classes
+* Font/text classes
+* Hover classes
+* Width classes
+* Height classes
+* Center align classes
+* Text color classes
+* Link style classes
+* Link color classes
+* Background color classes
+* Rounded classes
+* Borders classes
+* Paddings classes
+* Margin classes
+* Grid system (similar logic to the Bootstrap framework).
+*/
+
+
+/* ------------------------------------------------------------- *
+ * Various classes
+/* ------------------------------------------------------------- */
+
+/* clear */
+.clear { clear: both !important; display: block !important; }
+.clear::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* display */
+.block { display: block !important; }
+.inline-block { display: inline-block !important; }
+
+/* position */
+
+/* overflow */
+
+/* list styled */
+
+/* z-index */
+
+
+/* ----------------------------------------------------------------------------------- *
+ * Cover classes (used as image overlay)
+ * Note: parent element must contain "position: relative;" or "position: absolute;"
+/* ----------------------------------------------------------------------------------- */
+
+/* Cover 
+========= */
+
+
+/* Cover opasity
+================= */
+[class*="cover-opacity-"]::before {
+	position: absolute;
+	display: block;
+	content: "";
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: #040404;
+	z-index: 1;
+	opacity: 0;
+}
+.cover-opacity-2::before { opacity: .2; }
+
+
+/* ------------------------------------------------------------- *
+ * Hiding classes
+/* ------------------------------------------------------------- */
+
+/* Hiding via media query breakpoints */
+@media (max-width: 767px) {
+	.hide-from-sm { display: none !important; }
+}
+
+/* Hiding from mobile device */
+
+/* Hiding if not mobile device */
+
+
+/* ------------------------------------------------------------- *
+ * Background image classes
+/* ------------------------------------------------------------- */
+
+
+/* ------------------------------------------------------------- *
+ * Font/text classes
+/* ------------------------------------------------------------- */
+
+/* font alter */
+.font-alter { 
+	font-family: 'IBM Plex Mono', monospace !important;
+}
+
+/* font styles */
+ .italic { font-style: italic !important; }
+
+/* font weight */
+
+/* text sizes */
+
+.text-xxlg {
+	font-size: calc(100% + 0.7vw) !important;
+}
+.text-xxlg p,
+p.text-xxlg {
+	margin-bottom: 5.5% !important;
+}
+
+/* letter spacing */
+
+/* text normal */
+
+/* text aligns */
+.text-center { text-align: center !important; }
+
+/* text aligns via breakpoints */
+
+/* text transform */
+
+
+/* ------------------------------------------------------------- *
+ * Hover classes
+/* ------------------------------------------------------------- */
+
+/* hover opacity */
+
+/* hover zoom */
+
+/* hover hop */
+
+/* hover shadow */
+
+
+/* ------------------------------------------------------------- *
+ * Width classes
+/* ------------------------------------------------------------- */
+
+/* Width auto */
+
+/* Full width */
+
+/* Minimum width classes */
+.min-width { min-width: 100% !important; }
+
+/* Maximum width classes */
+.max-width { max-width: 100% !important; }
+.max-width-900 { max-width: 900px !important; }
+
+
+/* ------------------------------------------------------------- *
+ * Height classes
+/* ------------------------------------------------------------- */
+
+/* full height (vh) on desktop only */
+
+/* full height (vh) on small screens only */
+
+
+/* height classes (vh) */
+
+/* height classes */
+
+/* minimum height classes */
+
+/* maximum height classes */
+
+/* padding height classes */
+
+
+/* -------------------------------------------------------------------------- *
+ * Center align classes (parent element must contain "position: relative;")
+/* -------------------------------------------------------------------------- */
+
+
+/* ------------------------------------------------------------- *
+ * Text color classes
+/* ------------------------------------------------------------- */
+.text-gray { color: #b9b9b9 !important; }
+.text-gray-2 { color: #CCC !important; }
+
+
+/* ------------------------------------------------------------- *
+ * Link style classes
+/* ------------------------------------------------------------- */
+
+/* Link style 1 */
+a.tt-link {
+	background-repeat: no-repeat;
+	background-image: -o-linear-gradient(transparent calc(100% - 1px),currentColor 1px);
+	background-image: linear-gradient(transparent calc(100% - 1px),currentColor 1px);
+	background-image: -ms-linear-gradient(transparent 100%,currentColor 1px);
+	transition: 0.6s cubic-bezier(.215,.61,.355,1) !important;
+	background-size: 0 100%;
+	border: none;
+	opacity: 1;
+}
+a.tt-link:hover,
+a.tt-link:focus {
+	background-size: 100% 100%;
+	opacity: 1;
+}
+
+/* Link style 2 */
+
+
+/* ------------------------------------------------------------- *
+ * Link color classes
+/* ------------------------------------------------------------- */ /* Template main color */
+
+
+/* ------------------------------------------------------------- *
+ * Background color classes
+/* ------------------------------------------------------------- */ /* Template main color */
+
+/* bg white */
+
+/* bg dark */
+
+/* bg gray */
+
+/* bg green */
+
+/* bg blue */
+
+/* bg yellow */
+
+/* bg red */
+
+/* bg brown */
+
+/* bg purple */
+
+/* bg pink */
+
+
+/* ------------------------------------------------------------- *
+ * Rounded classes
+/* ------------------------------------------------------------- */
+
+
+/* ------------------------------------------------------------- *
+ * Borders classes
+/* ------------------------------------------------------------- */
+
+.border { border: 1px solid rgb(132 132 132 / 33%) !important; }
+.border-top { border-top: 1px solid rgb(132 132 132 / 33%) !important; }
+.border-bottom { border-bottom: 1px solid rgb(132 132 132 / 33%) !important; }
+.border-left { border-left: 1px solid rgb(132 132 132 / 33%) !important; }
+.border-right { border-right: 1px solid rgb(132 132 132 / 33%) !important; }
+
+/* no border classes */
+
+/* border width classes */
+
+/* border style classes */
+
+/* border color classes */ /* template main color */ /* template main color */ /* template main color */ /* template main color */ /* template main color */
+
+/* border transparent classes */
+
+
+/* ------------------------------------------------------------- *
+ * Paddings classes
+/* ------------------------------------------------------------- */
+
+/* padding top */
+
+/* padding bottom */
+.padding-bottom-40 { padding-bottom: 40px !important; }
+.padding-bottom-150 { padding-bottom: 150px !important; }
+
+/* padding left */
+
+/* padding right */
+
+
+/* Padding (percent) 
+===================== */
+
+/* padding top (percent) */
+
+/* padding bottom (percent) */
+
+/* padding left (percent) */
+
+/* padding right (percent) */
+
+/* no paddings classes */
+
+
+/* Breakpoints 
+=============== */
+@media (min-width: 576px) {
+
+	/* padding top */
+
+	/* padding bottom */
+
+	/* padding left */
+
+	/* padding right */
+
+
+	/* Padding (percent) 
+	===================== */
+
+	/* padding top (percent) */
+
+	/* padding bottom (percent) */
+
+	/* padding left (percent) */
+	.padding-left-sm-3-p { padding-left: 3% !important; }
+
+	/* padding right (percent) */
+	.padding-right-sm-3-p { padding-right: 3% !important; }
+
+	/* no paddings classes */
+}
+@media (min-width: 768px) {
+
+	/* padding top */
+
+	/* padding bottom */
+
+	/* padding left */
+
+	/* padding right */
+
+
+	/* Padding (percent) 
+	===================== */
+
+	/* padding top (percent) */
+
+	/* padding bottom (percent) */
+
+	/* padding left (percent) */
+
+	/* padding right (percent) */
+	.padding-right-md-5-p { padding-right: 5% !important; }
+
+	/* no paddings classes */
+}
+@media (min-width: 992px) {
+
+	/* padding top */
+
+	/* padding bottom */
+
+	/* padding left */
+
+	/* padding right */
+
+
+	/* Padding (percent) 
+	===================== */
+
+	/* padding top (percent) */
+
+	/* padding bottom (percent) */
+
+	/* padding left (percent) */
+
+	/* padding right (percent) */
+	.padding-right-lg-5-p { padding-right: 5% !important; }
+
+	/* no paddings classes */
+}
+@media (min-width: 1025px) {
+
+	/* padding top */
+	.padding-top-xlg-180 { padding-top: 180px !important; }
+
+	/* padding bottom */
+	.padding-bottom-xlg-150 { padding-bottom: 150px !important; }
+
+	/* padding left */
+
+	/* padding right */
+
+
+	/* Padding (percent) 
+	===================== */
+
+	/* padding top (percent) */
+
+	/* padding bottom (percent) */
+
+	/* padding left (percent) */
+
+	/* padding right (percent) */
+
+	/* no paddings classes */
+}
+
+
+/* ------------------------------------------------------------- *
+ * Margin classes
+/* ------------------------------------------------------------- */
+
+/* margin top */
+.margin-top-40 { margin-top: 40px !important; }
+.margin-top-60 { margin-top: 60px !important; }
+
+/* margin bottom */
+.margin-bottom-60 { margin-bottom: 60px !important; }
+
+/* margin left */
+
+/* margin right */
+
+
+/* Margin (percent) 
+===================== */
+
+/* margin top (percent) */
+
+/* margin bottom (percent) */
+.margin-bottom-10-p { margin-bottom: 10% !important; }
+
+/* margin left (percent) */
+
+/* margin right (percent) */
+
+/* no margins classes */
+.no-margin-bottom { margin-bottom: 0 !important; }
+
+
+/* Breakpoints 
+=============== */
+@media (min-width: 576px) {
+
+	/* margin top */
+
+	/* margin bottom */
+
+	/* margin left */
+
+	/* margin right */
+
+
+	/* Margin (percent) 
+	===================== */
+
+	/* margin top (percent) */
+
+	/* margin bottom (percent) */
+
+	/* margin left (percent) */
+
+	/* margin right (percent) */
+
+	/* no margins classes */
+}
+@media (min-width: 768px) {
+
+	/* margin top */
+
+	/* margin bottom */
+
+	/* margin left */
+
+	/* margin right */
+
+
+	/* Margin (percent) 
+	===================== */
+
+	/* margin top (percent) */
+
+	/* margin bottom (percent) */
+
+	/* margin left (percent) */
+
+	/* margin right (percent) */
+
+	/* no margins classes */
+}
+@media (min-width: 992px) {
+
+	/* margin top */
+
+	/* margin bottom */
+
+	/* margin left */
+
+	/* margin right */
+
+
+	/* Margin (percent) 
+	===================== */
+
+	/* margin top (percent) */
+
+	/* margin bottom (percent) */
+
+	/* margin left (percent) */
+
+	/* margin right (percent) */
+
+	/* no margins classes */
+}
+@media (min-width: 1025px) {
+
+	/* margin top */
+
+	/* margin bottom */
+
+	/* margin left */
+
+	/* margin right */
+
+
+	/* Margin (percent) 
+	===================== */
+
+	/* margin top (percent) */
+
+	/* margin bottom (percent) */
+
+	/* margin left (percent) */
+
+	/* margin right (percent) */
+
+	/* no margins classes */
+}
+
+
+/* ------------------------------------------------------------- *
+ * Grid system (similar logic to the Bootstrap framework).
+/* ------------------------------------------------------------- */
+
+/* Row */
+.tt-row {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+body.tt-boxed .tt-wrap .tt-row {
+	margin-right: -15px;
+	margin-left: -15px;
+}
+
+/* no-gutters */
+
+/* Columns */
+[class*="tt-col-"] {
+	position: relative;
+	width: 100%;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/* Row reverse */
+
+/* Column reverse */
+
+/* Justify content */
+
+/* Align items */
+
+/* Align content */
+
+/* Align self */
+
+
+/* Breakpoints 
+=============== */
+@media (min-width: 576px) {
+
+	/* Row columns */
+
+	/* Columns auto */
+
+	/* Columns */
+
+	/* Order */
+
+	/* Offset */
+
+	/* Justify content */
+
+	/* Align items */
+
+	/* Align content */
+
+	/* Align self */
+
+	/* Reverce */
+}
+
+@media (min-width: 768px) {
+
+	/* Row columns */
+
+	/* Columns auto */
+
+	/* Columns */
+	.tt-col-md-6 {
+		-ms-flex: 0 0 50%;
+		flex: 0 0 50%;
+		max-width: 50%;
+	}
+
+	/* Order */
+
+	/* Offset */
+
+	/* Justify content */
+
+	/* Align items */
+
+	/* Align content */
+
+	/* Align self */
+
+	/* Reverce */
+}
+
+@media (min-width: 992px) {
+
+	/* Row columns */
+
+	/* Columns auto */
+
+	/* Columns */
+	.tt-col-lg-4 {
+		-ms-flex: 0 0 33.333333%;
+		flex: 0 0 33.333333%;
+		max-width: 33.333333%;
+	}
+	.tt-col-lg-5 {
+		-ms-flex: 0 0 41.666667%;
+		flex: 0 0 41.666667%;
+		max-width: 41.666667%;
+	}
+	.tt-col-lg-7 {
+		-ms-flex: 0 0 58.333333%;
+		flex: 0 0 58.333333%;
+		max-width: 58.333333%;
+	}
+	.tt-col-lg-8 {
+		-ms-flex: 0 0 66.666667%;
+		flex: 0 0 66.666667%;
+		max-width: 66.666667%;
+	}
+
+	/* Order */
+
+	/* Offset */
+
+	/* Justify content */
+
+	/* Align items */
+
+	/* Align content */
+
+	/* Align self */
+
+	/* Reverce */
+}
+
+@media (min-width: 1025px) {
+
+	/* Row columns */
+
+	/* Columns auto */
+
+	/* Columns */
+
+	/* Order */
+
+	/* Offset */
+
+	/* Justify content */
+
+	/* Align items */
+
+	/* Align content */
+
+	/* Align self */
+
+	/* Reverce */
+}
+
+@media (min-width: 1400px) {
+
+	/* Row columns */
+
+	/* Columns auto */
+
+	/* Columns */
+
+	/* Order */
+
+	/* Offset */
+
+	/* Justify content */
+
+	/* Align items */
+
+	/* Align content */
+
+	/* Align self */
+
+	/* Reverce */
+}

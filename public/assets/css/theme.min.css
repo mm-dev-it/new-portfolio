@@ -1,0 +1,4062 @@
+/* --------------------------------------------------------------------
+* Master Stylesheet
+*
+* Author:		Matteo Malaspina
+*
+* Body Font (global): 'IBM Plex Mono', monospace;
+* Display Font (titles): 'Syne', sans-serif;
+-------------------------------------------------------------------- */
+
+
+/* Table of Content
+====================
+* General
+* Fonts
+* Page transitions
+* Page boxed layout
+* Body inner
+* Content wrap
+* Page content
+* Custom scrollbar style
+* Smooth Scrollbar
+* Magic cursor
+* tt-Section
+* Headings
+* tt-Headings (custom headings)
+* Header
+* Header tools
+* Classic menu
+* Overlay menu
+* Page header
+* tt-Grid
+* Portfolio grid
+* Portfolio List
+* Portfolio interactive
+* Portfolio slider (full screen)
+* Portfolio carousel
+* tt-Gallery
+* Lightgallery (lightbox plugin)
+* Page nav
+* Logo wall
+* tt-Image
+* Content carousel
+* Testimonials slider
+* Buttons
+* Social buttons
+* tt-Accordion
+* Table
+* tt-Tabs
+* Magnetic wrap
+* Blockquote
+* Figure
+* Forms
+* Contact info
+* Background video
+* Background noise
+* tt-Embed
+* Scrolling text
+* Pagination (tt-pagination)
+* Sidebar (classic)
+* Sliding sidebar
+* Sidebar widgets
+* Blog list
+* Blog interactive
+* Blog single post
+* Footer
+*/
+
+/* ------------------------------------------------------------- *
+ * General
+/* ------------------------------------------------------------- */
+
+* { box-sizing: border-box; }
+
+html, body {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	position: relative;
+	background-color: #020202;
+	line-height: 1.7;
+	font-size: 19px;
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+	color: #FFF;
+	overflow-x: hidden;
+}
+
+p { 
+	margin: 0 0 30px; 
+}
+
+a {
+	color: currentColor;
+	text-decoration: none;
+	outline: none
+}
+a:hover, a:focus {
+	color: currentColor;
+}
+p a { 
+	color: currentColor;
+	opacity: .7;
+	font-style: italic;
+	border-bottom: 1px solid;
+}
+p a:hover,
+p a:focus { 
+	color: currentColor;
+	opacity: .6;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+b, strong {
+	font-weight: bold;
+	font-weight: 700;
+}
+
+section { 
+	position: relative; 
+}
+
+button {}
+button:focus { 
+	outline: none; 
+}
+
+.small, small {
+	font-size: 80%;
+}
+
+.anim-image-parallax {
+	transform: scale(1.2);
+	transform-origin: 50% 100%;
+}
+
+/* Selection */
+::selection {
+	color: #fff;
+	text-shadow: none;
+	background: #4c2122;
+}
+::-moz-selection {
+	color: #fff;
+	text-shadow: none;
+	background: #4c2122; /* Firefox */
+}
+::-webkit-selection {
+	color: #fff;
+	text-shadow: none;
+	background: #4c2122; /* Safari */
+}
+
+/* Lists */
+
+/* Disable scroll */
+.tt-no-scroll {
+	overflow-y: hidden !important;
+}
+
+
+/* ------------------------------------------------------------- *
+ * Fonts
+/* ------------------------------------------------------------- */
+
+/* Body font
+============= */
+body {
+	font-family: 'IBM Plex Mono', monospace;
+}
+
+
+/* Secondary font
+================== */
+.h1, .h2, .h3, .h6, h1, h2, h3, h6,
+.ph-caption-title-ghost,
+.ph-caption-subtitle,
+.scroll-down-circle,
+.made-with-love,
+.tt-ol-menu-toggle-btn-text,
+.tt-m-menu-toggle-btn-text,
+.tt-ol-menu-list,
+.tt-heading,
+.tt-btn,
+.social-buttons,
+.pli-counter,
+.project-info-list,
+.tt-pn-link,
+.tt-pn-subtitle,
+.ph-share-ghost {
+	font-family: 'Syne', sans-serif;
+}
+
+
+/* ------------------------------------------------------------- *
+ * Page transitions
+/* ------------------------------------------------------------- */
+
+#page-transition {
+	display: none;
+}
+body.tt-transition #page-transition {
+	position: relative;
+	display: block;
+	z-index: 99999;
+}
+
+/* Transition overlay */
+
+/* Transition preloader */
+
+
+/* ----------------------------------------------------------------------------------------- *
+ * Page boxed layout
+ * Note: Class "boxed" in <body> tag is connected with class "tt-wrap" in several places!
+/* ----------------------------------------------------------------------------------------- */
+
+body.tt-boxed .tt-wrap {
+	max-width: 1282px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+body.tt-boxed .tt-wrap .tt-wrap {
+	max-width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+
+/* ------------------------------------------------------------- *
+ * Body inner
+/* ------------------------------------------------------------- */
+
+#body-inner {
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+	min-height: 100vh;
+}
+
+
+/* ------------------------------------------------------------- *
+ * Content wrap
+/* ------------------------------------------------------------- */
+
+#content-wrap {
+	position: relative;
+	overflow: hidden;
+}
+
+
+/* ------------------------------------------------------------- *
+ * Page content
+/* ------------------------------------------------------------- */
+
+#page-content {
+}
+
+
+/* ------------------------------------------------------------- *
+ * Custom scrollbar style
+/* ------------------------------------------------------------- */
+
+/* Works on Firefox */
+select {
+	scrollbar-width: thin;
+	scrollbar-color: #666 #2a2a2a;
+}
+
+/* Works on Chrome, Edge, and Safari */
+select::-webkit-scrollbar {
+	width: 10px;
+}
+
+select::-webkit-scrollbar-track {
+	background: #2a2a2a;
+}
+select::-webkit-scrollbar-thumb {
+	background-color: #666;
+	border-radius: 50px;
+}
+
+
+/* ------------------------------------------------------------- *
+ * Smooth Scrollbar
+ * Source: https://github.com/idiotWu/smooth-scrollbar/
+/* ------------------------------------------------------------- */
+
+/* Hide default scrollbar */
+body:not(.is-mobile).tt-smooth-scroll:not(.tt-no-smooth-scroll) {
+	overflow: hidden;
+}
+
+/* Scroll content (added if <body> contain class "tt-smooth-scroll". Disabled on mobile devices!) */
+body:not(.is-mobile).tt-smooth-scroll:not(.tt-no-smooth-scroll) #scroll-container { 
+	width: auto;
+	height: 100vh;
+	overflow: auto;
+	margin: 0;
+}
+
+/* Styling scrollbar */
+
+
+/* ------------------------------------------------------------- *
+ * Magic cursor
+/* ------------------------------------------------------------- */
+
+#magic-cursor {
+	position: absolute;
+	display: none;
+	width: 10px;
+	height: 10px;
+	pointer-events: none;
+	z-index: 99999;
+	opacity: 0;
+}
+body.tt-magic-cursor #magic-cursor {
+	display: block;
+}
+
+
+/* Ball view 
+============= */
+
+
+/* Ball drag 
+============= */
+
+
+/* Ball close 
+============== */
+
+
+/* ------------------------------------------------------------- *
+ * tt-Section
+/* ------------------------------------------------------------- */
+
+.tt-section {
+	position: relative;
+	padding: 80px 0;
+}
+@media (max-width: 991px) {
+	.tt-section {
+		padding: 6% 0;
+	}
+}
+@media (max-width: 767px) {
+	.tt-section {
+		padding: 10% 0;
+	}
+}
+@media (max-width: 480px) {
+	.tt-section {
+		padding: 15% 0;
+	}
+}
+
+
+/* tt-section background image 
+=============================== */
+
+
+/* tt-section inner 
+==================== */
+.tt-section-inner {
+	position: relative;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 2;
+}
+
+
+/* ------------------------------------------------------------- *
+ * Headings
+/* ------------------------------------------------------------- */
+
+.h1, .h2, .h3, .h6, h1, h2, h3, h6 {
+	font-weight: bold;
+	font-weight: 500;
+	color: inherit;
+}
+.h1, .h2, .h3, h1, h2, h3 {
+	line-height: 1.4;
+	margin-top: 0px;
+	margin-bottom: 30px;
+}
+ .h6, h6 {
+	line-height: 1.4;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
+.h1, h1 { font-size: 46px; }
+.h2, h2 { font-size: 42px; }
+.h3, h3 { font-size: 38px; }
+.h6, h6 { font-size: 26px; }
+
+
+/* ------------------------------------------------------------- *
+ * tt-Headings (custom headings)
+/* ------------------------------------------------------------- */
+
+.tt-heading {
+	margin-bottom: 40px;
+}
+@media (max-width: 991px) {
+	.tt-heading {
+		margin-bottom: 30px;
+	}
+}
+
+/* tt-Headings title */
+.tt-heading-title {
+	margin: 0;
+	font-size: calc(24px + 1vw);
+	font-weight: bold;
+	font-weight: 500;
+	color: #FFF;
+}
+
+/* tt-Headings subtitle */
+.tt-heading-subtitle {
+	margin: 0 0 20px 0;
+	font-size: calc(19px + 0.1vw);
+	font-weight: bold;
+	font-weight: normal;
+	color: #FFF;
+}
+.tt-heading-title + .tt-heading-subtitle {
+	margin: 20px 0 0 0;
+}
+
+/* tt-Headings paragraph */
+.tt-heading > p:first-child {
+	margin-bottom: 0;
+}
+.tt-heading-title + p,
+.tt-heading-subtitle + p {
+	margin-top: 50px;
+}
+.tt-heading > p:last-child {
+	margin-bottom: 0;
+}
+
+
+/* tt-Headings styles 
+====================== */
+/* style stroke */
+
+/* If "text-gray" is used */
+
+/* If Firefox */
+
+
+/* tt-Headings positions 
+========================= */
+/* position center */
+
+
+/* tt-Headings sizes 
+===================== */
+/* size xsm */
+.tt-heading.tt-heading-xsm .tt-heading-title {
+	font-size: calc(24px + 0.1vw);
+	font-weight: bold;
+	font-weight: 600;
+}
+.tt-heading.tt-heading-xsm .tt-heading-subtitle {
+	font-size: calc(13px + 0.1vw);
+}
+
+/* size sm */
+
+/* size lg */
+.tt-heading.tt-heading-lg .tt-heading-title {
+	font-size: calc(28px + 2vw);
+	line-height: 1.3;
+}
+.tt-heading.tt-heading-lg .tt-heading-subtitle {
+	font-size: calc(16px + 0.3vw);
+	font-weight: bold;
+	font-weight: 500;
+}
+
+/* size xlg */
+
+/* size xxlg */
+
+
+/* ------------------------------------------------------------- *
+ * tt-Header
+/* ------------------------------------------------------------- */
+
+#tt-header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	color: #fff;
+	z-index: 999;
+	pointer-events: none;
+}
+
+/* header position fixed */
+#tt-header.tt-header-fixed {
+	position: fixed; 
+}
+
+/* header inner */
+.tt-header-inner {
+	width: 100%;
+	display: flex;
+	padding-top: 40px;
+	align-items: center;
+}
+@media (max-width: 1024px) {
+	.tt-header-inner {
+		padding-top: 20px;
+	}
+}
+
+body:not(.tt-boxed) .tt-header-inner,
+.tt-header-inner:not(.tt-wrap) {
+	padding-left: 3.5%;
+	padding-right: 3.5%;
+}
+
+/* header columns */
+.tt-header-col {
+	display: flex;
+	align-items: center;
+}
+.tt-header-col:first-child {
+	margin-right: auto;
+}
+
+
+/* Header logo 
+=============== */
+.tt-logo {
+	position: absolute;
+	top: 40px;
+	margin-right: auto;
+	line-height: 1;
+	pointer-events: initial;
+	z-index: 9;
+}
+.tt-logo a {
+	display: inline-block;
+	font-size: 21px;
+	color: #FFF;
+}
+.tt-logo img {
+	max-height: 48px; /* You may need to change the img height to match your logo type! */
+}
+
+.tt-logo-dark{
+	display: none;
+}
+
+
+/* Logo for small screens */
+@media (max-width: 1024px) {
+	.tt-logo {
+		top: 20px;
+	}
+	.tt-logo img {
+		max-height: 42px; /* You may need to change the img height to match your logo type! */
+	}
+}
+
+
+/* ------------------------------------------------------------- *
+ * Header tools 
+/* ------------------------------------------------------------- */
+
+.tt-header-tools {
+	position: relative;
+	display: flex;
+	pointer-events: initial;
+}
+
+/* Header tools dynamic (this container moves to page bottom on smaller screens to save space in the header) */
+.tt-header-tools-dynamic {
+	display: flex;
+	align-items: center;
+}
+
+/* Header tools item */
+.tt-header-tools-item {
+}
+
+/* Header tools item icon */
+
+
+/* Header tools on small screens 
+==================================== */
+@media (max-width: 768px) {
+	.tt-header-tools-dynamic {
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		justify-content: space-evenly;
+		background-color: rgb(42 42 42 / 96%);
+		z-index: 998;
+	}
+	.tt-header-tools-item.hide {
+		display: block !important;
+	}
+}
+
+
+/* ------------------------------------------------------------- *
+ * Classic menu
+/* ------------------------------------------------------------- */
+
+/* Classic menu (desktop)
+========================== */
+@media (min-width: 1200px) {
+	body.tt-header-tools-on .tt-main-menu {
+		margin-right: 20px;
+	}
+	
+	/* Main menu hover */
+
+
+	/* Submenu 
+	============ */
+
+	/* Open submenu on hover */
+
+	/* submenu links */
+
+	/* Set submenu position to right on last menu list element */
+
+	/* Submenu toggle */
+	.tt-m-caret {
+		display: none;
+	}
+
+	/* Sub-submenu */
+
+	/* Caret (requires FontAwesome: https://fontawesome.com/) */
+
+	/* Caret in sub-submenus */
+
+	/* Hide ".tt-submenu-trigger-m" on desktop */
+
+
+	/* Submenu styles 
+	================== */
+	/* Submenu dark style */
+}
+
+
+/* Mobile menu (for classic menu) 
+================================== */
+@media (min-width: 1200px) {
+	#tt-m-menu-toggle-btn-wrap { /* Hide on desktop */
+		display: none;
+	}
+}
+
+/* Show mobile menu on small screens only */
+@media (max-width: 1199px) {
+
+	/* Mobile menu list */
+
+	/* Mobile menu list hover/active (master parent) */
+
+	/* Mobile submenu */
+
+	/* Mobile submenu list hover/active */
+
+	/* Mobile submenu caret (requires FontAwesome: https://fontawesome.com/) */
+	.tt-m-caret {
+		position: absolute;
+		top: 55%;
+		right: -42px;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 17px;
+		color: #eaeaea;
+		cursor: pointer;
+		z-index: 9;
+		border-radius: 100%;
+		transform: translate3d(0, -50%, 0);
+	}
+	.tt-m-caret::after {
+		font-family: "Font Awesome 5 Free";
+		content: "\f107";
+		font-weight: 900;
+		display: inline-block;
+		font-style: normal;
+		font-variant: normal;
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		transition: all 0.2s ease-in-out;
+	}
+
+	/* Mobile sub-submenu caret */
+
+	/* Mobile menu toggle button */
+	#tt-m-menu-toggle-btn-wrap {
+		position: relative;
+		display: flex;
+		align-items: center;
+		pointer-events: initial;
+		cursor: pointer;
+		z-index: 9;
+	}
+	.tt-m-menu-toggle-btn-holder {
+		float: left;
+	}
+
+	.tt-m-menu-toggle-btn {
+		position: relative;
+		display: block;
+		width: 50px;
+		height: 50px;
+	}
+	.tt-m-menu-toggle-btn span {
+		position: absolute;
+		display: block;
+		top: 52%;
+		left: 50%;
+		height: 2px;
+		width: 24px;
+		background-color: transparent;
+		transform: translate(-50%, -50%);
+		transition: all 0.3s ease-in-out;
+	}
+	.tt-m-menu-toggle-btn span::before,
+	.tt-m-menu-toggle-btn span::after {
+		position: absolute;
+		display: block;
+		content: '';
+		height: 2px;
+		width: 24px;
+		background-color: #FFF;
+		transition: all 0.3s ease-in-out;
+	}
+	.tt-m-menu-toggle-btn span::before {
+		top: -4px;
+		width: 24px;
+	}
+	.tt-m-menu-toggle-btn span::after {
+		top: auto;
+		bottom: -4px;
+		width: 18px;
+	}
+
+	/* Toggle button text */
+	.tt-m-menu-toggle-btn-text {
+		float: left;
+		padding-right: 5px;
+		overflow: hidden;
+		text-align: right;
+		font-size: 16px;
+	}
+	body.tt-m-menu-open .tt-m-menu-toggle-btn-text .tt-m-menu-text-menu {
+		display: none;
+	}
+
+	/* Toggle button close */
+	body.tt-m-menu-open .tt-m-menu-toggle-btn span {
+		width: 20px;
+		background-color: transparent;
+	}
+	body.tt-m-menu-open .tt-m-menu-toggle-btn span::before {
+		top: 0;
+		width: 20px;
+		transform: rotate(45deg);
+	}
+	body.tt-m-menu-open .tt-m-menu-toggle-btn span::after {
+		bottom: 0;
+		width: 20px;
+		transform: rotate(-45deg);
+	}
+
+	.tt-m-menu-toggle-btn-text .tt-m-menu-text-close {
+		display: none;
+	}
+	body.tt-m-menu-open .tt-m-menu-toggle-btn-text .tt-m-menu-text-close {
+		display: block;
+	}
+
+	/* Disable menu toggle button click until the animations last */
+	body.tt-m-menu-toggle-no-click #tt-m-menu-toggle-btn-wrap {
+		pointer-events: none;
+	}
+
+	/* Align mobile menu to center */
+}
+
+
+/* ------------------------------------------------------------- *
+ * Overlay menu 
+/* ------------------------------------------------------------- */
+
+/* Overlay menu 
+================ */
+.tt-overlay-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: #0a0a0a;
+	visibility: hidden;
+	opacity: 0;
+	pointer-events: initial;
+}
+.tt-ol-menu-holder {
+	position: relative;
+	height: 100%;
+	width: calc(100% + 17px);
+	padding-right: 17px;
+	overflow-y: scroll;
+	z-index: 2;
+}
+.tt-ol-menu-inner {
+	display: table;
+	width: 100%;
+	height: 100%;
+	padding-left: 0;
+	padding-right: 0;
+}
+.tt-ol-menu-content {
+	display: table-cell;
+	vertical-align: middle;
+	height: 100%;
+	padding: 120px 5% 120px 5%;
+}
+@media (max-width: 767px) {
+	.tt-ol-menu-content {
+		padding-top: 25%;
+		padding-bottom: 35%;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+/* Disable page scroll if overlay menu is open */
+body.tt-ol-menu-open {
+	overflow-y: hidden !important;
+}
+
+/* Hide smooth scrollbar if overlay menu is open */
+body.tt-smooth-scroll.tt-ol-menu-open .scrollbar-track {
+	display: none !important;
+}
+
+/* Overlay menu list */
+.tt-ol-menu-list {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.tt-ol-menu-list > li {
+	position: relative;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+@media (max-width: 767px) {
+	.tt-ol-menu-list > li {
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+}
+.tt-ol-menu-list > li:first-child {
+	margin-top: 0;
+}
+.tt-ol-menu-list > li:last-child {
+	margin-bottom: 0;
+}
+
+/* Overlay menu list item counter */
+@media (min-width: 992px) {
+	.tt-overlay-menu.tt-ol-menu-count .tt-ol-menu-list {
+		counter-reset: ol-menu-list-counter;
+	}
+	.tt-overlay-menu.tt-ol-menu-count .tt-ol-menu-list > li > a::before,
+	.tt-overlay-menu.tt-ol-menu-count .tt-ol-menu-list > li > .tt-ol-submenu-trigger > a::before {
+		position: absolute;
+		counter-increment: ol-menu-list-counter;
+		content: "" counter(ol-menu-list-counter, decimal-leading-zero);
+		top: 5px;
+		left: -30px;
+		line-height: 1;
+		font-size: 14px;
+		font-weight: normal;
+		color: #FFF;
+		opacity: 0.4;
+	}
+}
+
+/* Overlay menu list links (master parent) */
+.tt-ol-menu-list > li > a,
+.tt-ol-menu-list > li > .tt-ol-submenu-trigger > a {
+	position: relative;
+	display: inline-block;
+	font-size: clamp(34px, 3.2vw, 62px);
+	font-weight: bold;
+	font-weight: 600;
+	line-height: 1.2;
+	color: #eaeaea;
+	transition: opacity 0.3s ease-in-out;
+}
+
+/* Overlay menu list hover/active (master parent). Note: no effect on mobile devices! */
+body:not(.is-mobile) .tt-ol-menu-list.tt-ol-menu-hover > li > a,
+body:not(.is-mobile) .tt-ol-menu-list.tt-ol-menu-hover > li > .tt-ol-submenu-trigger > a,
+body:not(.is-mobile) .tt-ol-menu-list.tt-ol-menu-hover > li > .tt-ol-submenu-trigger .tt-ol-submenu-caret {
+	opacity: .5;
+}
+body:not(.is-mobile) .tt-ol-menu-list > li.active > a,
+body:not(.is-mobile) .tt-ol-menu-list > li.active > .tt-ol-submenu-trigger > a,
+body:not(.is-mobile) .tt-ol-menu-list > li.active > .tt-ol-submenu-trigger .tt-ol-submenu-caret,
+body:not(.is-mobile) .tt-ol-menu-list > li > a:hover,
+body:not(.is-mobile) .tt-ol-menu-list > li > .tt-ol-submenu-trigger:hover > a,
+body:not(.is-mobile) .tt-ol-menu-list > li > .tt-ol-submenu-trigger:hover .tt-ol-submenu-caret,
+body:not(.is-mobile) .tt-ol-menu-list > li > .tt-ol-submenu-trigger.tt-ol-submenu-open > a,
+body:not(.is-mobile) .tt-ol-menu-list > li > .tt-ol-submenu-trigger.tt-ol-submenu-open .tt-ol-submenu-caret {
+	opacity: 1;
+}
+
+/* Overlay menu submenu */
+.tt-ol-submenu-wrap {
+	position: relative;
+}
+.tt-ol-submenu-trigger {
+	position: relative;
+	display: inline-block;
+}
+.tt-ol-submenu {
+	display: none;
+	position: relative;
+	height: auto;
+	margin-left: 20px;
+	color: #8a8a8a;
+}
+.tt-ol-menu-list > li > .tt-ol-submenu {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+/* Overlay menu submenu list */
+.tt-ol-submenu-list {
+	padding: 0;
+	list-style: none;
+}
+.tt-ol-submenu-list .tt-ol-submenu {
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+/* Overlay menu submenu list links */
+.tt-ol-submenu-list > li a,
+.tt-ol-submenu-list > li > .tt-ol-submenu-trigger > a {
+	display: inline-block;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	font-size: 19px;
+	color: #AAA;
+	transition: color 0.3s ease-in-out;
+}
+
+/* Overlay menu submenu list hover/active */
+.tt-ol-submenu-list > li > .tt-ol-submenu-trigger.tt-ol-submenu-open > a,
+.tt-ol-submenu-list > li > .tt-ol-submenu-trigger.tt-ol-submenu-open .tt-ol-submenu-caret,
+.tt-ol-submenu-list > li.active > a,
+.tt-ol-submenu-list > li.active > .tt-ol-submenu-trigger > a,
+.tt-ol-submenu-list > li.active > .tt-ol-submenu-trigger .tt-ol-submenu-caret,
+.tt-ol-submenu-list > li a:hover,
+.tt-ol-submenu-list > li > .tt-ol-submenu-trigger:hover > a,
+.tt-ol-submenu-list > li > .tt-ol-submenu-trigger:hover .tt-ol-submenu-caret {
+	color: #FFF;
+}
+
+/* Submenu caret (requires FontAwesome: https://fontawesome.com/) */
+.tt-ol-submenu-caret-wrap {
+	position: absolute;
+	top: 60%;
+	right: -40px;
+	transform: translate3d(0, -50%, 0);
+}
+@media (max-width: 767px) {
+	.tt-ol-submenu-caret-wrap {
+		right: -40px;
+	}
+}
+.tt-ol-submenu-caret {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	color: #eaeaea;
+	cursor: pointer;
+	z-index: 2;
+	border-radius: 100%;
+	transition: opacity 0.3s ease-in-out;
+}
+.tt-ol-submenu-caret::after {
+	font-family: "Font Awesome 5 Free";
+	content: "\f107";
+	font-weight: 900;
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	transition: all 0.2s ease-in-out;
+}
+.tt-ol-submenu-trigger.tt-ol-submenu-open .tt-ol-submenu-caret::after {
+	transform: rotate(180deg);
+}
+
+/* Sub-submenu caret */
+.tt-ol-menu-list > li li .tt-ol-submenu-caret-wrap {
+	top: 50%;
+	right: -40px;
+}
+.tt-ol-menu-list > li li .tt-ol-submenu-caret {
+	font-size: 16px;
+	color: #8a8a8a;
+}
+
+
+/* Overlay menu toggle button 
+============================== */
+#tt-ol-menu-toggle-btn-wrap {
+	position: relative;
+	display: flex;
+	align-items: center;
+	pointer-events: initial;
+	cursor: pointer;
+	z-index: 9;
+}
+@media (min-width: 1025px) {
+	body.tt-header-tools-on #tt-ol-menu-toggle-btn-wrap {
+		margin-right: 20px;
+	}
+}
+.tt-ol-menu-toggle-btn-holder {
+	float: left;
+}
+
+/* Toggle button */
+.tt-ol-menu-toggle-btn {
+	position: relative;
+	display: block;
+	width: 50px;
+	height: 50px;
+}
+.tt-ol-menu-toggle-btn span {
+	position: absolute;
+	display: block;
+	top: 54%;
+	left: 50%;
+	height: 2px;
+	width: 24px;
+	background-color: transparent;
+	transform: translate(-50%, -50%);
+	transition: all 0.3s ease-in-out;
+}
+.tt-ol-menu-toggle-btn span::before,
+.tt-ol-menu-toggle-btn span::after {
+	position: absolute;
+	display: block;
+	content: '';
+	height: 2px;
+	width: 24px;
+	background-color: #FFF;
+	transition: all 0.3s ease-in-out;
+}
+.tt-ol-menu-toggle-btn span::before {
+	top: -4px;
+	width: 24px;
+}
+.tt-ol-menu-toggle-btn span::after {
+	top: auto;
+	bottom: -4px;
+	width: 18px;
+}
+
+/* Toggle button text */
+.tt-ol-menu-toggle-btn-text {
+	float: left;
+	padding-right: 5px;
+	overflow: hidden;
+	text-align: right;
+	font-size: 15px;
+	color: #FFF;
+}
+@media (max-width: 320px) {
+	.tt-ol-menu-toggle-btn-text {
+		display: none;
+	}
+}
+
+/* Toggle button text hover */
+.tt-ol-menu-toggle-btn-text .text-menu {
+	position: relative;
+	display: inline-block;
+	text-align: right;
+	transition: transform 0.3s;
+}
+body.tt-ol-menu-open .tt-ol-menu-toggle-btn-text .text-menu {
+	display: none;
+}
+
+body:not(.is-mobile) .tt-ol-menu-toggle-btn-text .text-menu::before {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	content: attr(data-hover);
+}
+body:not(.is-mobile) #tt-ol-menu-toggle-btn-wrap:hover .tt-ol-menu-toggle-btn-text .text-menu {
+	transform: translate3d(0, -100%, 0);
+}
+
+/* Toggle button close */
+body.tt-ol-menu-open .tt-ol-menu-toggle-btn span {
+	width: 20px;
+	background-color: transparent;
+}
+body.tt-ol-menu-open .tt-ol-menu-toggle-btn span::before {
+	top: 0;
+	width: 20px;
+	transform: rotate(45deg);
+}
+body.tt-ol-menu-open .tt-ol-menu-toggle-btn span::after {
+	bottom: 0;
+	width: 20px;
+	transform: rotate(-45deg);
+}
+
+.tt-ol-menu-toggle-btn-text .text-close {
+	display: none;
+}
+body.tt-ol-menu-open .tt-ol-menu-toggle-btn-text .text-close {
+	display: block;
+}
+
+/* Disable menu toggle button click until the animations last */
+body.olm-toggle-no-click .tt-ol-menu-toggle-btn-text,
+body.olm-toggle-no-click .tt-ol-menu-toggle-btn {
+	pointer-events: none;
+}
+
+
+/* Overlay menu position center 
+================================ */
+.tt-overlay-menu.tt-ol-menu-center .tt-ol-menu-content {
+	text-align: center;
+}
+.tt-overlay-menu.tt-ol-menu-center .tt-ol-submenu {
+	margin-left: 0;
+}
+
+
+/* ------------------------------------------------------------- *
+ *  tt-Search
+/* ------------------------------------------------------------- */
+
+/* Disable page scroll if tt-Search is open. */
+
+
+/* ------------------------------------------------------------- *
+ * Page header
+/* ------------------------------------------------------------- */
+
+#page-header {
+	position: relative;
+	z-index: 1;
+}
+.page-header-inner,
+body.ph-image-on.ph-bg-image-on #page-header:not(.project-info-list-on) .page-header-inner {
+	width: 100%;
+	padding-top: 13vw;
+	padding-bottom: 7vw;
+	z-index: 2;
+}
+body.ph-image-on #page-header:not(.project-info-list-on) .page-header-inner {
+	padding-top: 16vw;
+	padding-bottom: 13vw;
+}
+body:not(.tt-boxed) .page-header-inner, 
+.page-header-inner:not(.tt-wrap) {
+	padding-left: 13%;
+	padding-right: 13%;
+}
+@media (max-width: 1920px) {
+	.page-header-inner {
+		padding-top: 250px;
+		padding-bottom: 140px;
+	}
+	body.ph-image-on #page-header:not(.project-info-list-on) .page-header-inner {
+		padding-top: 300px;
+		padding-bottom: 260px;
+	}
+
+	/* If page header image does not exist or project info list exist */
+	body:not(.ph-image-on) #page-header .page-header-inner,
+	body.ph-image-on.ph-bg-image-on #page-header:not(.project-info-list-on) .page-header-inner {
+		padding-top: 180px;
+		padding-bottom: 180px;
+	}
+}
+@media (max-width: 1400px) {
+	body.tt-boxed .page-header-inner.tt-wrap {
+		padding-left: 8%;
+		padding-right: 8%;
+	}
+}
+@media (max-width: 1024px) {
+	#page-header:not(.project-info-list-on) .page-header-inner {
+		padding-top: 250px;
+		padding-bottom: 250px;
+	}
+	body:not(.tt-boxed) .page-header-inner, 
+	.page-header-inner:not(.tt-wrap) {
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+}
+@media (max-width: 768px) {
+	.page-header-inner,
+	body:not(.ph-image-on) #page-header .page-header-inner,
+	body.ph-image-on.ph-bg-image-on #page-header:not(.project-info-list-on) .page-header-inner {
+		padding-top: 200px;
+		padding-bottom: 80px;
+	}
+}
+@media (max-width: 540px) {
+	body.ph-image-on #page-header:not(.project-info-list-on) .page-header-inner {
+		padding-top: 240px;
+		padding-bottom: 40vw;
+	}
+}
+
+
+/* Page header image 
+===================== */
+.ph-image {
+	position: absolute;
+	top: 160px;
+	right: 18vw;
+	width: clamp(340px, 18vw, 800px);
+	z-index: 2;
+	line-height: 0;
+}
+@media (max-width: 1920px) {
+	.ph-image {
+		width: 380px;
+	}
+	#page-header.ph-full:not(.ph-center):not(.ph-bg-image) .ph-image {
+		width: 480px;
+	}
+}
+@media (max-width: 1600px) {
+	.ph-image,
+	#page-header.ph-full:not(.ph-center):not(.ph-bg-image) .ph-image {
+		width: 320px;
+	}
+}
+@media (max-width: 1024px) {
+	.ph-image,
+	#page-header.ph-full:not(.ph-center):not(.ph-bg-image) .ph-image {
+		right: 10vw;
+	}
+}
+@media (max-width: 540px) {
+	.ph-image,
+	#page-header.ph-full:not(.ph-center):not(.ph-bg-image) .ph-image {
+		width: 50%;
+	}
+}
+
+.ph-image-inner {
+	position: relative;
+	width: 100%;
+}
+
+/* Video */
+#page-header:not(.ph-image-cropped) .ph-video-wrap {
+	position: relative;
+	padding-bottom: 140%;
+}
+.ph-video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: 50% 50%;
+}
+
+#page-header.ph-bg-image .ph-video-wrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+/* Page header image cover opasity */
+[class*="ph-image-cover-"] .ph-image-inner::before {
+	position: absolute;
+	display: block;
+	content: "";
+	top: -1px;
+	left: -1px;
+	bottom: -1px;
+	right: -1px;
+	background-color: #040404;
+	z-index: 1;
+	opacity: 0;
+}
+.ph-image-cover-0 .ph-image-inner::before { opacity: 0; }
+.ph-image-cover-0-5 .ph-image-inner::before { opacity: .05; }
+.ph-image-cover-1 .ph-image-inner::before { opacity: .1; }
+.ph-image-cover-1-5 .ph-image-inner::before { opacity: .15; }
+.ph-image-cover-2 .ph-image-inner::before { opacity: .2; }
+.ph-image-cover-2-5 .ph-image-inner::before { opacity: .25; }
+.ph-image-cover-3 .ph-image-inner::before { opacity: .3; }
+.ph-image-cover-3-5 .ph-image-inner::before { opacity: .35; }
+.ph-image-cover-4 .ph-image-inner::before { opacity: .4; }
+.ph-image-cover-4-5 .ph-image-inner::before { opacity: .45; }
+.ph-image-cover-5 .ph-image-inner::before { opacity: .5; }
+.ph-image-cover-5-5 .ph-image-inner::before { opacity: .55; }
+.ph-image-cover-6 .ph-image-inner::before { opacity: .6; }
+.ph-image-cover-6-5 .ph-image-inner::before { opacity: .65; }
+.ph-image-cover-7 .ph-image-inner::before { opacity: .7; }
+.ph-image-cover-7-5 .ph-image-inner::before { opacity: .75; }
+.ph-image-cover-8 .ph-image-inner::before { opacity: .8; }
+.ph-image-cover-8-5 .ph-image-inner::before { opacity: .85; }
+.ph-image-cover-9 .ph-image-inner::before { opacity: .9; }
+.ph-image-cover-9-5 .ph-image-inner::before { opacity: .95; }
+
+
+/* if class "ph-image-cropped" enabled (not for background image!) */
+#page-header:not(.ph-bg-image).ph-image-cropped .ph-image-inner {
+	position: relative;
+	padding-bottom: 130%;
+}
+#page-header:not(.ph-bg-image).ph-image-cropped .ph-image-inner img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: 50% 50%;
+}
+
+/* Make image to background image */
+#page-header.ph-bg-image .ph-image {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+	margin: 0;
+	z-index: -1;
+	transform: none;
+	overflow: hidden;
+}
+#page-header.ph-bg-image.ph-image-shadow:after {
+	position: absolute;
+	content: '';
+	bottom: -1px;
+	left: 0;
+	width: 100%;
+	height: 35vh;
+	z-index: 3;
+	pointer-events: none;
+	background: rgb(13,13,13);
+	background: -moz-linear-gradient(0deg, rgba(13,13,13,1) 0%, rgba(13,13,13,0) 100%);
+	background: -webkit-linear-gradient(0deg, rgba(13,13,13,1) 0%, rgba(13,13,13,0) 100%);
+	background: linear-gradient(0deg, rgba(13,13,13,1) 0%, rgba(13,13,13,0) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0d0d0d",endColorstr="#0d0d0d",GradientType=1);
+}
+#page-header.ph-bg-image .ph-image-inner {
+	width: 100%;
+	height: 100%;
+}
+
+#page-header.ph-bg-image .ph-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: 50% 50%;
+}
+
+#page-header.ph-bg-image .ph-video-wrap {
+	padding-bottom: 0;
+}
+
+
+/* Page header caption 
+======================= */
+.ph-caption {
+	position: relative;
+}
+
+/* page header caption title */
+.ph-caption-title {
+	position: relative;
+	margin: 0;
+	font-size: clamp(40px, 5vw, 94px);
+	font-weight: bold;
+	font-weight: 500;
+	color: #FFF;
+	line-height: 1.3;
+	z-index: 9;
+}
+
+
+/* page header caption title ghost */
+.ph-caption-title-ghost {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	top: 0;
+	bottom: 0;
+	left: -6%;
+	padding-top: 8%;
+	font-size: calc(16px + 9vw);
+	font-weight: bold;
+	font-weight: 600;
+	color: #FFF;
+	white-space: nowrap;
+	line-height: 1;
+	opacity: .04;
+	z-index: 1;
+}
+
+/* page header caption subtitle */
+.ph-caption-subtitle {
+	position: relative;
+	margin-top: 40px;
+	font-size: calc(15px + 0.5vw);
+	font-weight: 600;
+	color: #e4e4e4;
+	z-index: 9;
+}
+#page-header:not(.ph-center):not(.ph-bg-image) .ph-caption-subtitle {
+	color: #a7a7a7;
+}
+
+/* page header caption category */
+.ph-categories {
+	position: relative;
+	margin-bottom: 15px;
+	z-index: 9;
+}
+.ph-category {
+	position: relative;
+	display: inline-block;
+	font-size: calc(15px + 0.1vw);
+	color: #FFF;
+	line-height: 1.4;
+}
+a.ph-category:hover {
+	opacity: .8;
+}
+.ph-category ~ .ph-category:not(:empty)::before {
+	content: ", ";
+	margin-left: -4px;
+}
+
+/* page header caption meta */
+.ph-meta {
+	position: relative;
+	display: inline-flex;
+	margin-top: 40px;
+	font-size: 16px;
+	color: #cacaca;
+	font-weight: normal;
+	z-index: 9;
+}
+.ph-meta-published {
+}
+.ph-meta-posted-by {
+	margin-left: 10px;
+	font-weight: normal;
+}
+.ph-meta-posted-by a {
+	position: relative;
+	color: #cacaca;
+}
+.ph-meta-posted-by a:hover {
+	opacity: .8;
+}
+
+/* page header caption description */
+.ph-caption-description {
+	position: relative;
+	max-width: 900px;
+	margin-top: 50px;
+	z-index: 9;
+}
+
+/* page header caption paragraph */
+.ph-caption > p {
+	position: relative;
+	max-width: 900px;
+	z-index: 9;
+}
+.ph-caption .ph-caption-title + p,
+.ph-caption .ph-caption-title-ghost + p,
+.ph-caption .ph-caption-subtitle + p {
+	margin-top: 50px;
+}
+.ph-caption > p:last-child {
+	margin-bottom: 0;
+}
+
+
+/* Project info list
+===================== */
+.project-info-list {
+	position: relative;
+	z-index: 9;
+}
+
+#page-header .project-info-list {
+	margin-top: 60px;
+}
+
+.project-info-list > ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.project-info-list > ul > li {
+	position: relative;
+	display: inline-block;
+	max-width: 320px;
+	vertical-align: top;
+	padding: 0px 30px 0 0;
+	margin: 15px 25px 15px 0;
+}
+@media (max-width: 768px) {
+	#page-header:not(.ph-center) .project-info-list > ul > li {
+		display: block;
+		width: 100%;
+		max-width: 100%;
+		padding: 0;
+		margin: 15px 0 25px 0;
+	}
+}
+.project-info-list > ul > li:last-child {
+	padding-right: 0;
+	margin-right: 0;
+}
+.project-info-list > ul > li::after {
+	position: absolute;
+	display: block;
+	content: "";
+	top: 24px;
+	right: 0;
+	width: 1px;
+	height: 60px;
+	margin-top: -18px;
+	background-color: rgb(255 255 255 / 40%);
+}
+.project-info-list > ul > li:last-child::after {
+	display: none;
+}
+@media (max-width: 768px) {
+	#page-header:not(.ph-center) .project-info-list > ul > li::after {
+		display: none;
+	}
+}
+
+/* project info list if align senter */
+.text-center .project-info-list > ul > li,
+.project-info-list.text-center > ul > li {
+	padding: 0px 40px 0 30px;
+	margin: 15px 0 15px 0;
+}
+
+/* project info list heading */
+.project-info-list .pi-list-heading {
+	margin-bottom: 5px;
+	font-size: calc(17px + 0.1vw);
+	font-weight: normal;
+	opacity: .7;
+}
+
+/* project info list content */
+.project-info-list .pi-list-cont {
+	font-size: calc(17px + 0.1vw);
+}
+.project-info-list .pi-list-cont a {
+	word-wrap: break-word;
+	color: #FFF;
+	font-size: calc(17px + 0.1vw);
+}
+.project-info-list .pi-list-cont a:hover {
+	opacity: .8;
+}
+
+.project-info-list .social-buttons {
+	display: inline-block;
+	margin-top: -5px;
+	margin-left: -10px;
+}
+.project-info-list .social-buttons > ul > li {
+	margin-right: 15px;
+}
+.project-info-list .social-buttons > ul > li a {
+	width: 45px;
+	height: 45px;
+	font-size: 15px;
+}
+
+/* project info list icon */
+.project-info-list .pi-list-icon {
+	position: relative;
+	display: inline-block;
+	bottom: 2px;
+	margin-left: 10px;
+	font-size: 13px;
+	transform: rotate(-45deg);
+}
+
+
+/* Scroll down circle 
+====================== */
+.scroll-down-circle {
+	position: absolute;
+	display: block;
+	left: 3%;
+	bottom: -100px;
+	width: 250px;
+	height: 250px;
+	z-index: 9;
+}
+@media (max-width: 1024px) {
+	.scroll-down-circle {
+		display: none;
+	}
+}
+#page-header:not(.ph-full) .scroll-down-circle { /* Display only on full scren page header! */
+	display: none;
+}
+
+/* Scroll down circle icon */
+.scroll-down-circle .sdc-icon {
+	position: absolute;
+	display: block;
+	left: 50%;
+	top: 50%;
+	font-size: 16px;
+	color: #999;
+	transform: translate(-50%, -50%);
+}
+#page-header.ph-bg-image .scroll-down-circle .sdc-icon {
+	color: #FFF;
+}
+
+/* Scroll down circle svg */
+.scroll-down-circle svg { 
+	width: 100%; 
+	animation: sdc-rotation 8s infinite linear;
+}
+.scroll-down-circle rect { 
+	fill: #FFF; 
+}
+.scroll-down-circle text { 
+	font-size: 33px;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: 25px;
+	fill: #BBB;
+	transition: fill .2s;
+}
+.scroll-down-circle:hover text { 
+	fill: #FFF; 
+}
+#page-header.ph-bg-image .scroll-down-circle text {
+}
+
+/* Scroll down circle animation */
+@keyframes sdc-rotation {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(-360deg);
+	}
+}
+
+
+/* Made with love 
+================== */
+.made-with-love {
+	position: absolute;
+	display: none; /* disabled by default */
+	right: 3.5%;
+	bottom: 50px;
+	font-size: 14px;
+	color: #FFF;
+	opacity: .5;
+	z-index: 9;
+}
+#page-header.ph-full .made-with-love,
+#page-header.ph-bg-image .made-with-love {
+	display: block; /* enable only with "ph-full" */
+}
+@media (max-width: 1024px) {
+	.made-with-love {
+		display: none;
+	}
+}
+.mwl-inner {
+	display: flex;
+	align-items: center;
+	transform: rotate(-90deg);
+	transform-origin: 50% -70%;
+}
+.mwl-text {
+	display: inline-block;
+}
+.mwl-icon {
+	display: inline-block;
+	margin-left: 8px;
+	animation: animateHeart 2.5s infinite;
+}
+@keyframes animateHeart {
+	0% { transform: scale(1); }
+	5% { transform: scale(1.1); }
+	10% { transform: scale(1); }
+	15% { transform: scale(1.2); }
+	50% { transform: scale(1); }
+	100% { transform: scale(1); }
+}
+
+
+/* Page header share 
+===================== */
+.ph-share {
+	position: absolute;
+	display: inline-block;
+	bottom: 5%;
+	right: 3.5%;
+	z-index: 9;
+}
+
+.ph-share-trigger {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.ph-share-text {
+	display: inline-block;
+	font-size: 14px;
+	color: #FFF;
+}
+.ph-share-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	font-size: 17px;
+	color: #FFF;
+	cursor: pointer;
+	border-radius: 50px;
+}
+
+@media (min-width: 769px) {
+	body.made-with-love-on .ph-share {
+		bottom: 170px;
+	}
+	.ph-share-text {
+		margin-right: 20px;
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.3s ease-in-out;
+		transform: translate3d(10px, 0, 0);
+	}
+	.ph-share.active .ph-share-text {
+		opacity: 1;
+		visibility: visible;
+		transform: translate3d(0, 0, 0);
+		transition-delay: 0.2s;
+	}
+
+	.ph-share-icon {
+		opacity: 0.5;
+		transition: opacity 0.3s ease-in-out;
+	}
+	.ph-share.active .ph-share-icon {
+		opacity: 1;
+	}
+}
+@media (max-width: 768px) {
+	.ph-share {
+		position: fixed;
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		background-color: rgb(42 42 42 / 96%);
+		padding: 0 10px;
+	}
+	.ph-share-text {
+		display: none;
+	}
+}
+
+/* Page header share content */
+.ph-share-content {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #0a0a0a;
+	visibility: hidden;
+	opacity: 0;
+	z-index: 99998;
+}
+.ph-share-close {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+.ph-share-ghost {
+	position: absolute;
+	top: 0;
+	bottom: -3.5%;
+	display: flex;
+	align-items: flex-end;
+	font-size: calc(28px + 34vw);
+	font-weight: bold;
+	font-weight: 600;
+	color: #FFF;
+	white-space: nowrap;
+	line-height: 1;
+	z-index: 1;
+	opacity: .03;
+}
+
+.ph-share-inner {
+	position: relative;
+	max-width: 1200px;
+	padding: 5%;
+	text-align: center;
+	z-index: 3;
+}
+@media (max-width: 1024px) {
+	.ph-share-inner {
+		padding: 15% 5%;
+	}
+}
+
+.ph-share-title {
+	margin-bottom: 15px;
+	font-size: clamp(32px, 4vw, 62px);
+	font-weight: 600;
+}
+.ph-share-subtitle {
+	font-size: 19px;
+	font-weight: 300;
+	color: #c1c1c1;
+}
+.ph-share-content .social-buttons {
+	margin-top: 40px;
+}
+@media (max-width: 1024px) {
+	.ph-share-content .social-buttons {
+		margin-top: 20px;
+	}
+}
+.ph-share-content .social-buttons > ul > li a {
+	font-size: 19px;
+}
+
+.ph-share-close-btn {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 30px;
+	right: 40px;
+	width: 40px;
+	height: 40px;
+	background-color: #333;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 50px;
+	z-index: 3;
+	transition: transform 0.3s;
+}
+.ph-share-close-btn:hover {
+	transform: rotate(90deg);
+}
+
+.ph-share-m-close {
+	display: none !important;
+}
+
+/* Disable page scroll if share content is open. */
+body.ph-share-open {
+	overflow-y: hidden !important;
+}
+body.ph-share-open .scrollbar-track {
+	display: none !important;
+}
+
+
+/* Page header styles 
+====================== */
+/* page header caption title (stroke style) */
+#page-header.ph-stroke .ph-caption-title {
+	font-weight: bold;
+	font-weight: 800;
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: #FFF;
+	-webkit-text-fill-color: transparent;
+}
+
+
+/* Page header sizes 
+===================== */
+/* Caption size sm */
+#page-header.ph-cap-sm .ph-caption-title {
+	font-size: clamp(40px, 4vw, 68px);
+}
+
+h3{
+	font-size: clamp(20px, 2vw, 34px) !important;
+}
+
+#page-header.ph-cap-sm .ph-caption-title-ghost {
+	padding-top: 3%;
+	font-size: calc(16px + 8vw);
+}
+
+/* Caption size lg */
+#page-header.ph-cap-lg .ph-caption-title {
+	font-size: clamp(48px, 6vw, 112px);
+}
+#page-header.ph-cap-lg .ph-caption-title-ghost {
+	padding-top: 5%;
+	font-size: calc(16px + 10vw);
+}
+
+/* Caption size xlg */
+#page-header.ph-cap-xlg .ph-caption-title {
+	font-size: clamp(48px, 8vw, 142px);
+}
+@media (min-width: 1025px) {
+	#page-header.ph-cap-xlg.ph-stroke .ph-caption-title {
+		-webkit-text-stroke-width: 3px;
+	}
+}
+#page-header.ph-cap-xlg .ph-caption-title-ghost {
+	padding-top: 5%;
+	font-size: calc(16px + 10vw);
+}
+
+/* Caption size xxlg */
+#page-header.ph-cap-xxlg .ph-caption-title {
+	font-size: clamp(48px, 10vw, 180px);
+}
+@media (min-width: 1025px) {
+	#page-header.ph-cap-xxlg.ph-stroke .ph-caption-title {
+		-webkit-text-stroke-width: 3px;
+	}
+}
+#page-header.ph-cap-xxlg .ph-caption-title-ghost {
+	padding-top: 5%;
+	font-size: calc(16px + 13vw);
+}
+
+/* Page header full screen */
+@media (min-width: 1025px) {
+	#page-header.ph-full {
+		display: flex;
+		align-items: center;
+		min-height: 100vh;
+	}
+	#page-header.ph-full .page-header-inner {
+		padding-top: 5% !important;
+		padding-bottom: 5% !important;
+	}
+	#page-header.ph-full .ph-image {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		top: 0;
+		bottom: 0;
+		height: 100%;
+	}
+	#page-header.ph-full:not(.ph-bg-image).ph-image-cropped .ph-image-inner {
+		padding-bottom: 140%;
+	}
+}
+
+
+/* Page header positions 
+========================= */
+/* Position center */
+#page-header.ph-center {
+	text-align: center;
+}
+@media (min-width: 1025px) {
+	#page-header.ph-center .page-header-inner {
+		max-width: 100%;
+		padding-left: 4% !important;
+		padding-right: 4% !important;
+	}
+}
+#page-header.ph-center .ph-caption,
+#page-header.ph-center .ph-caption-title,
+#page-header.ph-center .ph-caption-subtitle {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+#page-header.ph-center .ph-caption-title-ghost {
+	left: 50%;
+	transform: translate3d(-50%, 0, 0);
+}
+#page-header.ph-center .ph-caption-description,
+#page-header.ph-center .ph-caption > p {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#page-header.ph-center:not(.ph-bg-image) .ph-image {
+	right: 50%;
+	transform: translate(50%, 0);
+}
+#page-header.ph-center .project-info-list .social-buttons {
+	margin-left: 0;
+}
+
+/* Position inline (for a single project page only! No effect with class "ph-center"!) */
+@media (min-width: 1025px) {
+	#page-header:not(.ph-center).ph-inline .page-header-inner {
+		display: flex;
+	}
+	#page-header:not(.ph-center).ph-inline .ph-caption {
+		-ms-flex: 0 0 75%;
+		flex: 0 0 75%;
+		max-width: 75%;
+		align-self: center;
+		padding-right: 10%;
+	}
+
+	#page-header:not(.ph-center).ph-inline .project-info-list {
+		-ms-flex: 0 0 25%;
+		flex: 0 0 25%;
+		max-width: 25%;
+		align-self: center;
+		margin: 0;
+	}
+
+	#page-header:not(.ph-center).ph-inline .project-info-list > ul > li {
+		position: relative;
+		display: block;
+		width: 100%;
+		max-width: 100%;
+		padding: 0;
+		margin: 0 0 25px 0;
+	}
+	#page-header:not(.ph-center).ph-inline .project-info-list > ul > li:last-child {
+		margin: 0;
+	}
+	#page-header:not(.ph-center).ph-inline .project-info-list > ul > li::after {
+		display: none;
+	}
+}
+
+
+/* If page header background image is light (class "ph-bg-image-is-light")
+============================================ */
+/* Make page header caption dark */
+body.ph-bg-image-light-on .ph-category,
+body.ph-bg-image-light-on .ph-caption-title,
+body.ph-bg-image-light-on .ph-caption-subtitle {
+	color: #111;
+}
+body.ph-bg-image-light-on #page-header.ph-stroke .ph-caption-title {
+	-webkit-text-stroke-color: #111;
+}
+
+/* Make page header project info list dark */
+body.ph-bg-image-light-on #page-header .project-info-list,
+body.ph-bg-image-light-on #page-header .project-info-list .pi-list-cont a {
+	color: #111;
+	font-weight: 500;
+}
+body.ph-bg-image-light-on #page-header .project-info-list > ul > li::after {
+	background-color: rgb(92 92 92 / 40%);
+}
+
+/* Make magic cursor dark */
+body.ph-bg-image-light-on:not(.tt-ol-menu-open):not(.ph-share-open) #ball {
+	border-color: #666;
+}
+
+/* Make header logo dark */
+body.ph-bg-image-light-on #tt-header .tt-logo-light {
+	display: none;
+}
+body.ph-bg-image-light-on #tt-header .tt-logo-dark {
+	display: block;
+}
+
+/* Make overlay menu toggle button dark */
+body.ph-bg-image-light-on:not(.tt-ol-menu-open) .tt-ol-menu-toggle-btn-text {
+	color: #111;
+}
+body.ph-bg-image-light-on:not(.tt-ol-menu-open) .tt-ol-menu-toggle-btn span::before, 
+body.ph-bg-image-light-on:not(.tt-ol-menu-open) .tt-ol-menu-toggle-btn span::after {
+	background-color: #111;
+}
+
+/* Make classic menu links dark */
+@media (min-width: 1025px) {
+	body.ph-bg-image-light-on .tt-main-menu-list > li > a, 
+	body.ph-bg-image-light-on .tt-main-menu-list > li > .tt-submenu-trigger > a {
+		color: #111;
+	}
+}
+@media (max-width: 1024px) {
+	body.ph-bg-image-light-on:not(.tt-m-menu-open) .tt-m-menu-toggle-btn-text {
+		color: #111;
+	}
+	body.ph-bg-image-light-on:not(.tt-m-menu-open) .tt-m-menu-toggle-btn span::before, 
+	body.ph-bg-image-light-on:not(.tt-m-menu-open) .tt-m-menu-toggle-btn span::after {
+		background-color: #111;
+	}
+}
+
+/* Make scroll down circle dark */
+body.ph-bg-image-light-on #page-header:not(.ph-image-shadow) .scroll-down-circle text {
+	fill: #111;
+}
+body.ph-bg-image-light-on #page-header:not(.ph-image-shadow) .scroll-down-circle .sdc-icon {
+	color: #555;
+}
+
+/* Make made with love dark */
+body.ph-bg-image-light-on #page-header:not(.ph-image-shadow) .made-with-love {
+	color: #111;
+	opacity: 1 !important;
+}
+
+/* Make project share button dark */
+body.ph-bg-image-light-on #page-header:not(.ph-image-shadow) .ph-share-icon {
+	color: #111;
+	opacity: .9 !important;
+}
+body.ph-bg-image-light-on #page-header:not(.ph-image-shadow) .ph-share-text {
+	color: #111;
+}
+
+
+/* ------------------------------------------------------------- *
+ * tt-Grid
+/* ------------------------------------------------------------- */
+
+
+/* tt-Grid top content
+======================= */
+
+
+/* tt-Ggrid categories/filter 
+============================== */
+
+
+/* tt-Ggrid categories/filter trigger 
+====================================== */
+
+/* If "ttgr-cat-nav" is open */
+
+/* tt-Ggrid categories trigger position fixed */
+
+
+/* tt-Ggrid categories/filter nav 
+================================== */
+
+/* tt-Ggrid categories list */
+
+/* tt-Ggrid categories list item counter */
+
+/* tt-Ggrid categories list close (for mobile devises) */
+
+
+/* tt-Grid items
+================= */
+
+/* tt-Grid item */
+
+
+/* tt-Grid height class ("ttgr-height"). Use it on an element inside "ttgr-item-inner".
+======================================== */
+
+/* if class "ttgr-layout-*" enabled */
+
+
+/* tt-Grid layouts 
+=================== */
+/* layout-2 */
+
+/* layout-3 */
+
+/* layout-4 */
+
+/* layout-1-2 */
+
+/* layout-2-1 */
+
+/* layout-2-3 */
+
+/* layout-3-2 */
+
+/* layout-3-4 */
+
+/* layout-4-3 */
+
+/* layout-creative-1 */
+
+/* layout-creative-2 */
+
+
+/* tt-grid items shifted 
+========================= */
+/* Without layout class (one column) */
+
+/* With layout 2 */
+
+/* With layout 3 */
+
+/* With layout 4 */
+
+
+/* tt-grid item gaps 
+===================== */
+/* Gap 1 */
+
+/* Gap 2 */
+
+/* Gap 3 */
+
+/* Gap 4 */
+
+/* Gap 5 */
+
+/* Gap 6 */
+
+
+/* tt-grid item image not cropped 
+================================== */
+
+
+/* ------------------------------------------------------------- *
+ * Portfolio grid
+/* ------------------------------------------------------------- */
+
+/* Portfolio grid item */
+
+
+/* Portfolio grid item image 
+============================= */
+
+/* video */
+
+
+/* Portfolio grid item caption 
+=============================== */
+
+/* Portfolio grid item title */
+
+/* Portfolio grid item title hover (no effect if "pgi-cap-inside" enabled!) */
+
+
+/* Portfolio grid item categories */
+
+
+/* Portfolio grid item caption sizes 
+===================================== */
+
+
+/* Portfolio grid item caption positions 
+========================================= */
+/* Position inside */
+
+/* Position center */
+
+
+/* Portfolio grid item caption styles 
+====================================== */
+/* If light image used (effect only if "pgi-cap-inside" enabled) */
+
+
+/* Portfolio grid item hover 
+============================= */
+
+/* Clip path (effect only with gaps) */
+@media (min-width: 768px) {
+
+	/* Image zoom */
+}
+
+/* Caption hover */
+
+
+/* ------------------------------------------------------------- *
+ * Portfolio List
+/* ------------------------------------------------------------- */
+
+.portfolio-list {
+	position: relative;
+}
+
+
+/* Portfolio list item 
+======================= */
+.portfolio-list-item {
+	position: relative;
+	margin-bottom: 80px;
+}
+.portfolio-list-item:first-child {
+}
+.portfolio-list-item:last-child {
+	margin-bottom: 0 !important;
+}
+@media (min-width: 768px) {
+	.portfolio-list-item {
+		margin-bottom: 8%;
+	}
+}
+@media (min-width: 1025px) {
+	body.tt-boxed .tt-section-inner:not(.tt-wrap) .portfolio-list-item {
+		margin-left: 17%;
+		margin-right: 17%;
+	}
+}
+@media (max-width: 1024px) {
+	body.tt-boxed .tt-section-inner:not(.tt-wrap) .portfolio-list-item {
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+}
+
+/* Portfolio list item inner */
+.pli-inner {
+	position: relative;
+}
+@media (min-width: 768px) {
+	.pli-inner {
+		display: flex;
+	}
+}
+
+
+/* Portfolio list item image 
+============================= */
+.pli-image-col {
+	line-height: 0;
+}
+
+.pli-image-link {
+	display: block;
+	overflow: hidden;
+}
+.pli-image-holder {
+}
+.pli-image {
+}
+@media (max-width: 767px) { /* remove image cover */
+	.pli-image[class*="cover-opacity-"]::before {
+		display: none !important;
+	}
+}
+.pli-image img {
+}
+
+.pli-video-wrap {
+}
+.pli-video {
+	width: 100%;
+}
+
+@media (min-width: 768px) {
+	.pli-image-col {
+		-ms-flex: 0 0 60%;
+		flex: 0 0 60%;
+		max-width: 60%;
+		z-index: 1;
+	}
+
+	/* Image hover */
+	.pli-hover .pli-image-link {
+		transition: all 0.8s cubic-bezier(0.07, 0.72, 0.29, 0.96);
+		clip-path: inset(0 0 0 0);
+	}
+	.pli-hover .pli-image-col:hover .pli-image-link {
+		clip-path: inset(3% 3% 3% 3%);
+	}
+
+	.pli-hover .pli-image .pli-image-hover-zoom {
+		transition: all 1s cubic-bezier(0.07, 0.72, 0.29, 0.96);
+	}
+	.pli-hover .pli-image-col:hover .pli-image .pli-image-hover-zoom {
+		transform: scale(1.05);
+	}
+}
+
+
+/* Portfolio list item image cropped
+===================================== */
+.portfolio-list.pli-cropped .pli-image img,
+.portfolio-list.pli-cropped .pli-video {
+	width: 100%;
+	height: 33vw;
+	object-fit: cover;
+	object-position: 50% 50%;
+}
+.portfolio-list.pli-cropped:not(.pli-info-overlay) .pli-image img,
+.portfolio-list.pli-cropped:not(.pli-info-overlay) .pli-video {
+	height: 30vw;
+}
+
+@media (max-width: 1024px) {
+	.portfolio-list.pli-cropped .pli-image img,
+	.portfolio-list.pli-cropped .pli-video,
+	.portfolio-list.pli-cropped:not(.pli-info-overlay) .pli-image img,
+	.portfolio-list.pli-cropped:not(.pli-info-overlay) .pli-video {
+		height: 46vw;
+	}
+}
+@media (max-width: 767px) {
+	.portfolio-list.pli-cropped .pli-image img,
+	.portfolio-list.pli-cropped .pli-video,
+	.portfolio-list.pli-cropped:not(.pli-info-overlay) .pli-image img,
+	.portfolio-list.pli-cropped:not(.pli-info-overlay) .pli-video {
+		height: 60vw;
+	}
+}
+
+
+/* Portfolio list item info 
+============================ */
+.pli-info-col {
+	position: relative;
+}
+@media (min-width: 768px) {
+	.pli-info-col {
+		-ms-flex: 0 0 40%;
+		flex: 0 0 40%;
+		max-width: 40%;
+	}
+}
+@media (max-width: 767px) {
+	.pli-info-col {
+		margin-top: 20px;
+	}
+}
+
+.pli-info { 
+	position: relative;
+	line-height: 1;
+}
+@media (min-width: 768px) {
+	.pli-info { 
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 100%;
+		padding-left: 15%;
+		transform: translate3d(0, -50%, 0);
+	}
+}
+
+.pli-title { 
+	margin: 0;
+	font-size: calc(16px + 2vw);
+	font-weight: bold;
+	font-weight: 500;
+	color: #FFF;
+	line-height: 1.3;
+}
+.pli-title a {
+	display: inline;
+	color: #FFF;
+}
+.portfolio-list:not(.pli-info-overlay) .pli-title a {
+	background-repeat: no-repeat;
+	background-image: -o-linear-gradient(transparent calc(100% - 2px),currentColor 2px);
+	background-image: linear-gradient(transparent calc(100% - 2px),currentColor 2px);
+	background-image: -ms-linear-gradient(transparent 96%,currentColor 2px);
+	transition: 0.6s cubic-bezier(.215,.61,.355,1);
+	background-size: 0 96%;
+}
+.portfolio-list:not(.pli-info-overlay) .pli-title a:hover {
+	background-size: 100% 96%;
+}
+
+.pli-categories-wrap {
+	position: relative;
+	margin-top: 40px;
+}
+@media (max-width: 767px) {
+	.pli-categories-wrap {
+		margin-top: 15px;
+	}
+}
+.pli-category {
+	position: relative;
+	display: inline-block;
+	font-size: calc(13px + 0.1vw);
+	color: #FFF;
+	line-height: 1.6;
+}
+.portfolio-list:not(.pli-info-overlay) .pli-category {
+	opacity: .5;
+}
+.pli-category ~ .pli-category {
+	margin-left: -4px;
+}
+.pli-category ~ .pli-category:not(:empty)::before {
+	
+}
+.pli-category ~ .pli-category ~ .pli-category ~ .pli-category {
+	visibility: hidden;
+	width: 0;
+}
+.pli-category ~ .pli-category ~ .pli-category ~ .pli-category ~ .pli-category {
+	display: none;
+}
+.pli-category + .pli-category + .pli-category + .pli-category::before {
+	content: "...";
+	margin-left: 5px;
+	visibility: visible;
+}
+
+
+/* Portfolio list item counter
+=============================== */
+.portfolio-list {
+	counter-reset: pli-counter;
+}
+.pli-counter {
+	position: absolute;
+	display: inline-block;
+	top: -60px;
+	left: 15%;
+	color: #FFF;
+	opacity: 0.4;
+}
+.pli-counter::before {
+	counter-increment: pli-counter;
+	content: "" counter(pli-counter, decimal-leading-zero);
+	line-height: 1;
+	font-size: calc(17px + 0.1vw);
+	font-weight: normal;
+	z-index: 99999;
+}
+@media (min-width: 768px) {
+	.portfolio-list.pl-alter .portfolio-list-item:nth-child(even) .pli-counter {
+		right: 15%;
+		left: auto;
+	}
+	.portfolio-list.pli-info-overlay .pli-counter {
+		left: 53%;
+	}
+	.portfolio-list.pl-alter.pli-info-overlay .portfolio-list-item:nth-child(even) .pli-counter {
+		right: 53%;
+		left: auto;
+	}
+	.portfolio-list.pl-alter .portfolio-list-item:nth-child(even) .pli-counter::before,
+	.portfolio-list.pl-alter.pli-info-overlay .portfolio-list-item:nth-child(even) .pli-counter::before {
+		left: auto;
+		right: 0;
+	}
+}
+@media (max-width: 767px) {
+	.pli-counter {
+		display: none;
+	}
+}
+
+
+/* Portfolio list alternative layout 
+===================================== */
+@media (min-width: 768px) {
+	.portfolio-list.pl-alter .portfolio-list-item { 
+		margin-bottom: 10%;
+	}
+	.portfolio-list.pl-alter .portfolio-list-item:nth-child(even) .pli-inner { 
+		flex-direction: row-reverse;
+	}
+
+	.portfolio-list.pl-alter .portfolio-list-item:nth-child(even) .pli-info {
+		right: auto;
+		left: 0;
+		padding-left: 0;
+		padding-right: 15%;
+		text-align: right;
+	}
+}
+
+
+/* Portfolio list compact layout 
+================================= */
+
+
+/* Portfolio list item info overlay 
+==================================== */
+.pli-info-inner {
+	display: none;
+}
+
+@media (min-width: 768px) {
+	.portfolio-list.pli-info-overlay .pli-image-col {
+		-ms-flex: 0 0 70%;
+		flex: 0 0 70%;
+		max-width: 70%;
+	}
+	.portfolio-list.pli-info-overlay .pli-info-col {
+		-ms-flex: 0 0 30%;
+		flex: 0 0 30%;
+		max-width: 30%;
+	}
+
+	.portfolio-list.pli-info-overlay .pli-info {
+		left: -35%;
+		width: 135%; /* 100 + overlay % */
+		padding-left: 0;
+	}
+	.portfolio-list.pl-alter.pli-info-overlay .portfolio-list-item:nth-child(even) .pli-info {
+		right: -35%;
+		left: auto;
+		padding-right: 0;
+	}
+
+	/* Portfolio list item info inner */
+	.portfolio-list.pli-info-overlay .pli-info-inner  {
+		position: absolute;
+		display: block;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+	}
+	.portfolio-list.pl-alter.pli-info-overlay .portfolio-list-item:nth-child(even) .pli-info-inner {
+		left: 0;
+		right: auto;
+	}
+
+	/* Portfolio list item info outer */
+	.portfolio-list.pli-info-overlay .pli-info-outer {
+		z-index: -1;
+	}
+}
+
+
+/* Portfolio list info size
+============================ */
+@media (min-width: 768px) {
+	/* size sm */
+
+	/* size lg */
+
+	/* size xlg */
+	.portfolio-list.pli-info-xlg .pli-title {
+		font-size: calc(16px + 3.5vw);
+	}
+
+	/* size xxlg */
+}
+
+
+/* Portfolio list item info styles 
+=================================== */
+/* Title stroke effect */
+@media (min-width: 768px) {
+	.portfolio-list.pli-title-stroke .pli-title a {
+		-webkit-text-stroke-width: 1px;
+		-webkit-text-stroke-color: #FFF;
+		-webkit-text-fill-color: transparent;
+	}
+	.portfolio-list.pli-title-stroke .pli-title {
+		font-weight: bold;
+		font-weight: 700;
+	}
+
+	/* If Firefox */
+	body.is-firefox .portfolio-list.pli-title-stroke .pli-title a {
+		-webkit-text-stroke-width: 2px;
+	}
+}
+
+/* If light image used (effect only if "pgi-cap-inside" enabled) */
+@media (min-width: 768px) {
+	.pli-info-overlay .portfolio-list-item.pli-image-is-light .pli-title {
+		color: #111;
+	}
+	.pli-info-overlay .portfolio-list-item.pli-image-is-light .pli-category {
+		color: #111;
+		font-weight: 500;
+	}
+	.pli-info-overlay .portfolio-list-item.pli-image-is-light .pli-image[class*="cover-opacity-"]::before {
+		display: none !important;
+	}
+}
+
+
+/* ------------------------------------------------------------- *
+ * Portfolio interactive
+/* ------------------------------------------------------------- */
+
+/* Portfolio interactive item */
+
+/* Portfolio interactive item counter */
+
+/* Portfolio interactive item category */
+
+/* Portfolio interactive item link */
+
+/* Portfolio interactive item title */
+@media (min-width: 1025px) {
+	@keyframes marquee {
+		from { transform: translateX(0); }
+		to { transform: translateX(-100%); }
+	}
+}
+
+/* Portfolio interactive item title separator (dot) */
+
+/* Portfolio interactive image */
+
+#magic-cursor.portfolio-interactive-hover-on {
+	z-index: -1;
+}
+
+/* Video */
+
+
+/* Portfolio interactive styles 
+================================ */
+/* Style stroke (no effect on small screens) */
+
+/* Style compact */
+
+/* Style with porders */
+
+
+/* ------------------------------------------------------------- *
+ * Portfolio slider (full screen)
+/* ------------------------------------------------------------- */
+
+/* Portfolio slider slide */
+
+
+/* Portfolio slider item 
+========================= */
+
+/* Slide opasity cover (for prev/next slides) */
+
+
+/* Portfolio slider caption 
+============================ */
+
+/* Portfolio slider caption title */
+
+/* Portfolio slider caption title hover if the magic cursor is not enabled */
+
+/* Portfolio slider caption category */
+
+
+/* Portfolio slider caption position 
+===================================== */
+/* Position center */
+
+
+/* Portfolio slider caption styles 
+=================================== */
+/* Style stroke */
+
+
+/* Portfolio slider navigation 
+=============================== */
+
+
+/* Portfolio slider pagination 
+=============================== */
+
+/* Portfolio slider pagination bullets */
+
+/* Portfolio slider pagination dynamic bullets */
+
+/* Portfolio slider pagination fraction */
+
+/* Portfolio slider pagination progressbar */
+
+
+/* If portfolio slider item image is light (class "psi-image-is-light")
+=========================================== */
+/* Make slider caption dark */
+
+/* Make slider navigation dark */
+
+/* Make magic cursor dark */
+
+/* Make header logo dark */
+body.psi-light-image-on #tt-header .tt-logo-light {
+	display: none;
+}
+body.psi-light-image-on #tt-header .tt-logo-dark {
+	display: block;
+}
+
+/* Make overlay menu toggle button dark */
+body.psi-light-image-on:not(.tt-ol-menu-open) .tt-ol-menu-toggle-btn-text {
+	color: #111;
+}
+body.psi-light-image-on:not(.tt-ol-menu-open) .tt-ol-menu-toggle-btn span::before, 
+body.psi-light-image-on:not(.tt-ol-menu-open) .tt-ol-menu-toggle-btn span::after {
+	background-color: #111;
+}
+
+/* Make classic menu links dark */
+@media (max-width: 1024px) {
+	body.psi-light-image-on:not(.tt-m-menu-open) .tt-m-menu-toggle-btn-text {
+		color: #111;
+	}
+	body.psi-light-image-on:not(.tt-m-menu-open) .tt-m-menu-toggle-btn span::before, 
+	body.psi-light-image-on:not(.tt-m-menu-open) .tt-m-menu-toggle-btn span::after {
+		background-color: #111;
+	}
+}
+
+/* Make header tools dark */
+body.psi-light-image-on .tt-header-tools .tt-hti-btn {
+	color: #111;
+}
+
+/* Make footer dark (if position is absolute) */
+
+
+/* ------------------------------------------------------------- *
+ * Portfolio carousel
+/* ------------------------------------------------------------- */
+
+
+/* Portfolio carousel item
+=========================== */
+
+
+/* Portfolio carousel item hover 
+================================= */
+
+
+/* Slide disabled (for non active slides)
+================== */
+
+
+/* Portfolio carousel item caption 
+=================================== */
+
+
+/* Portfolio carousel caption animation 
+======================================== */
+
+/* Offset */
+
+/* Delay */
+
+
+/* Portfolio carousel caption position 
+======================================= */
+/* Position center */
+
+
+/* Portfolio carousel caption styles
+===================================== */
+/* Style stroke */
+@media (min-width: 1025px) {
+
+	/* If Firefox */
+}
+
+/* If item background image is light */
+
+
+/* Portfolio carousel navigation 
+================================= */
+
+
+/* Portfolio carousel pagination 
+================================= */
+
+/* Portfolio carousel pagination bullets */
+
+/* Portfolio carousel pagination dynamic bullets */
+
+/* Portfolio carousel pagination fraction */
+
+/* Portfolio carousel pagination progressbar */
+
+
+/* Portfolio carousel scale down 
+================================= */
+
+
+/* ------------------------------------------------------------- *
+ * tt-Gallery
+/* ------------------------------------------------------------- */
+
+/* tt-Gallery item 
+=================== */
+
+/* tt-Gallery image */
+
+/* Image parallax and hover zoom pseudo wraps (added by .js) */
+
+/* tt-Gallery video */
+
+
+/* tt-Gallery item hover 
+========================= */
+@media (min-width: 768px) {
+	/* Clip path (effect only with gaps) */
+
+	/* Image zoom (".tt-gallery-image-hover-zoom" is added by .js) */
+}
+
+
+/* ----------------------------------------------------------------------- *
+ * Lightgallery (lightbox plugin)
+ * More info: http://sachinchoolur.github.io/lightGallery)
+/* ----------------------------------------------------------------------- */
+
+/* Lightgallery sub html (image caption) */
+
+/* Lightgallery thumbnails improvements */
+
+/* Lightgallery autoplay progress bar improvements */
+
+/* hide next/prev buttons on small screens */
+
+
+/* ------------------------------------------------------------- *
+ * Page nav
+/* ------------------------------------------------------------- */
+
+.tt-page-nav {
+	position: relative;
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+@media screen and (max-width: 1900px) and (min-width: 1024px) {
+	.tt-page-nav {
+		max-width: 40vw;
+	}
+}
+
+/* Page nav link */
+.tt-pn-link {
+	position: relative;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	overflow: hidden;
+}
+
+/* Page nav title */
+.tt-pn-title {
+	position: relative;
+	display: block;
+	left: 50%;
+	font-size: clamp(42px, 6vw, 110px);
+	font-weight: bold;
+	font-weight: 500;
+	color: #FFF;
+	line-height: 1.6;
+	opacity: .4;
+	white-space: nowrap;
+	transform: translate3d(-50%, 0, 0);
+	transition: transform .6s cubic-bezier(0.51, 0.57, 0.17, 1);
+
+	/* Ellipsis */
+	overflow: hidden;
+	text-overflow: ellipsis;
+} 
+.tt-pn-hover-title {
+	position: absolute;
+	left: 50%;
+	font-size: clamp(36px, 6vw, 110px);
+	font-weight: bold;
+	font-weight: 500;
+	color: #FFF;
+	line-height: 1.6;
+	white-space: nowrap;
+	transform: translate3d(-50%, 100%, 0);
+	transition: transform .6s cubic-bezier(0.51, 0.57, 0.17, 1);
+}
+@media (max-width: 1024px) {
+	.tt-pn-title:hover {
+		opacity: 1;
+	}
+	.tt-pn-hover-title {
+		display: none;
+	}
+}
+
+@media (min-width: 1025px) {
+	.tt-pn-link:hover .tt-pn-title {
+		transform: translate3d(-50%, -100%, 0);
+		transition-delay: 0.1s;
+	}
+	.tt-pn-link:hover .tt-pn-hover-title {
+		transform: translate3d(-50%, 0, 0);
+		transition-delay: 0.1s;
+	}
+
+	/* If the hover title is cloned (have multiple <span>'s) then animate it */
+	.tt-page-nav .tt-pn-hover-title span {
+		display: inline-flex;
+		align-items: center;
+		padding-right: 5vw;
+		animation: marquee 3s linear infinite;
+		animation-play-state: paused;
+	}
+	.tt-page-nav .tt-pn-link:hover .tt-pn-hover-title span {
+		animation: marquee 3s linear infinite;
+		animation-play-state: running;
+	}
+	@-webkit-keyframes marquee {
+		from { transform: translateX(0); }
+		to { transform: translateX(-100%); }
+	}
+	@keyframes marquee {
+		from { transform: translateX(0); }
+		to { transform: translateX(-100%); }
+	}
+}
+
+/* Page nav hover title separator (dot) */
+.tt-pn-hover-title span::after {
+	position: absolute;
+	display: block;
+	content: "";
+	right: 1.9vw;
+	top: 56%;
+	width: .8vw;
+	height: .8vw;
+	background-color: #FFF;
+	border-radius: 100px;
+	transform: translate3d(0, -50%, 0);
+}
+
+/* Page nav subtitle */
+.tt-pn-subtitle {
+	margin-top: 20px;
+	font-size: calc(16px + 0.1vw);
+	color: #FFF;
+}
+
+/* Page nav image */
+.tt-page-nav .tt-pn-image {
+	display: none; /* disabled by default */
+}
+.tt-pn-image {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+}
+.tt-pn-image::before {
+	position: absolute;
+	display: block;
+	content: "";
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	background-color: #040404;
+	opacity: .1;
+}
+.tt-pn-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+#magic-cursor.tt-pn-hover-on {
+	z-index: -1;
+}
+#magic-cursor.tt-pn-hover-on #ball {
+	overflow: hidden;
+	border: none !important;
+}
+
+/* Video */
+video.tt-pn-video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+
+/* Page nav styles 
+=================== */
+/* Style stroke (no effect on small screens) */
+@media (min-width: 1025px) {
+	.tt-page-nav.tt-pn-stroke .tt-pn-title {
+		font-weight: bold;
+		font-weight: 800;
+		opacity: .6;
+		-webkit-text-stroke-width: 1px;
+		-webkit-text-stroke-color: #FFF;
+		-webkit-text-fill-color: transparent;
+	}
+
+	/* If Firefox */
+	body.is-firefox .tt-page-nav.tt-pn-stroke .tt-pn-title {
+		-webkit-text-stroke-width: 2px;
+	}
+}
+
+
+/* ------------------------------------------------------------- *
+* Logo wall
+/* ------------------------------------------------------------- */
+
+/* Logo wall img */
+
+/* Logo wall columns */
+
+/* Logo wall on smaller screens */
+
+
+/* ------------------------------------------------------------- *
+ * tt-Image
+/* ------------------------------------------------------------- */
+
+/* tt-image fixed height */
+
+
+/* ------------------------------------------------------------- *
+ * Content carousel
+/* ------------------------------------------------------------- */
+
+
+/* Content carousel navigation 
+=============================== */
+
+/* Hide content carousel navigation*/
+
+
+/* Content carousel pagination 
+=============================== */
+
+/* Content carousel pagination bullets */
+
+/* Content carousel pagination dynamic bullets */
+
+/* Content carousel pagination fraction */
+
+/* Content carousel pagination progressbar */
+
+/* Content carousel pagination position outside */
+
+/* Hide content carousel pagination (for desktop only!) */
+
+
+/* Content carousel shifted style (no effect on small screens!) 
+================================== */
+
+
+/* ------------------------------------------------------------- *
+ * Testimonials slider
+/* ------------------------------------------------------------- */
+
+
+/* Testimonials slider navigation 
+================================== */
+
+/* Hide testimonials slider navigation*/
+
+
+/* Testimonials slider pagination 
+================================== */
+
+/* Hide testimonials slider pagination (for desktop only!) */
+
+/* Testimonials slider pagination bullets */
+
+/* Testimonials slider pagination dynamic bullets */
+
+
+/* Testimonials slider styles
+============================== */
+/* Full width */
+
+
+/* Testimonials slider scale down 
+================================== */
+
+
+/* ------------------------------------------------------------- *
+ * Buttons
+/* ------------------------------------------------------------- */
+
+button {
+	background-color: transparent;
+	cursor: pointer;
+	border: none;
+}
+
+.tt-btn {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 50px;
+	background-color: transparent;
+	margin: 15px 15px 15px 0;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	font-weight: 500;
+	overflow: hidden;
+	cursor: pointer;
+	border: none;
+	border-radius: 100px;
+	z-index: 9;
+}
+.tt-btn:last-child {
+	margin-right: 0;
+}
+.tt-btn > * {
+	position: relative;
+	color: #FFF;
+	transition: transform 0.3s;
+}
+.tt-btn > *,
+.tt-btn > *::after {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	padding: 0 30px;
+	line-height: 1;
+}
+.tt-btn > *::after {
+	position: absolute;
+	content: attr(data-hover);
+	top: 100%;
+	width: 100%;
+	left: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+.tt-btn:hover > * {
+	transform: translate3d(0, -100%, 0);
+}
+
+
+/* Button styles 
+================= */
+/* Button block */
+
+/* Button round */
+
+/* Button primary */
+
+/* Button primary outline */
+
+/* Button light */
+
+/* Button light outline */
+.tt-btn-light-outline {
+	box-shadow: inset 0 0 0 2px #FFF;
+}
+.tt-btn-light-outline > *,
+.tt-btn-light-outline > *::after {
+	color: #FFF;
+}
+.tt-btn-light-outline:hover > * {
+	color: #FFF;
+}
+
+/* Button dark */
+
+/* Button dark outline */
+
+/* Button link */
+.tt-btn-link {
+	align-items: center;
+	border-radius: 0;
+}
+.tt-btn-link > *,
+.tt-btn-link > *::after {
+	padding: 0;
+	line-height: 1.6;
+	color: #FFF;
+}
+.tt-btn-link:hover > * {
+	color: #FFF;
+}
+
+.tt-btn-link::after {
+	display: inline-block;
+	content: "";
+	width: 40px;
+	height: 1px;
+	background-color: #FFF;
+	margin-top: 2px;
+	margin-left: 15px;
+}
+body:not(.is-mobile) .tt-btn-link:hover::after {
+	animation: swipe-line .8s cubic-bezier(0.475, 0.425, 0, 0.995) forwards;
+}
+
+@keyframes swipe-line {
+	0% {
+		transform-origin: right;
+		transform: scale(1); 
+	}
+	33% {
+		transform-origin: right;
+		transform: scaleX(0); 
+	}
+	66% {
+		transform-origin: left;
+		transform: scaleX(0); 
+	}
+	to {
+		transform-origin: left;
+		transform: scale(1); } 
+}
+
+/* Button disabled */
+
+.tt-btn button[disabled] {
+	cursor: not-allowed;
+}
+
+
+/* ------------------------------------------------------------- *
+ * Social buttons
+/* ------------------------------------------------------------- */
+
+.social-buttons {
+}
+.social-buttons ul {
+	display: inline-flex;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.social-buttons ul > li {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	float: left;
+	margin: 0 2px;
+}
+@media (max-width: 991px) {
+	.social-buttons ul > li {
+		margin: 0px;
+	}
+}
+.social-buttons ul > li:first-child {
+	margin-left: 0;
+}
+.social-buttons ul > li:last-child {
+	margin-right: 0;
+}
+
+.social-buttons > ul > li a {
+	display: block;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	line-height: 1;
+	font-size: 15px;
+	font-weight: 600;
+	color: #eaeaea;
+	transition: opacity 0.2s;
+}
+body:not(.tt-magic-cursor) .social-buttons > ul:hover > li a {
+	opacity: .5;
+}
+body:not(.tt-magic-cursor) .social-buttons > ul > li a:hover {
+	opacity: 1;
+}
+
+
+/* ------------------------------------------------------------- *
+ * tt-Accordion
+/* ------------------------------------------------------------- */
+
+
+/* Accordion heading 
+===================== */
+
+/* Accordion heading subtext */
+
+/* Accordion heading caret */
+
+
+/* Accordion content 
+===================== */
+
+
+/* Accordion styles 
+==================== */
+/* borders */
+
+
+/* Accordion sizes 
+=================== */
+
+
+/* ------------------------------------------------------------- *
+ * Table
+/* ------------------------------------------------------------- */
+th {
+	font-weight: bold;
+	font-weight: 600;
+}
+th {
+	padding: 8px 5px;
+	font-size: 16px;
+	vertical-align: middle;
+}
+
+
+/* tt-Table (styled table)
+============ */
+
+/* thead */
+
+/* tbody */
+
+/* tfoot */
+
+
+/* ------------------------------------------------------------- *
+ * tt-Tabs 
+/* ------------------------------------------------------------- */
+
+/* tt-Tabs buttons */
+
+/* tt-Tabs buttons on small screens */
+
+/* tt-Tabs content */
+
+
+/* tt-Tabs styles
+================== */
+
+/* Tabs minimal style*/
+
+/* Tabs justified style*/
+
+
+/* ------------------------------------------------------------- *
+ * Magnetic wrap
+/* ------------------------------------------------------------- */
+
+.magnetic-wrap {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+/* ------------------------------------------------------------- *
+ * Blockquote
+/* ------------------------------------------------------------- */
+
+
+/* ------------------------------------------------------------- *
+ * Figure
+/* ------------------------------------------------------------- */
+
+figure {
+	position: relative;
+	margin: 0;
+}
+
+/* figure image */
+figure img {
+	width: 100%;
+	height: auto;
+}
+
+/* figure caption */
+
+
+/* ------------------------------------------------------------- *
+ * Forms
+/* ------------------------------------------------------------- */
+
+.tt-form-control {
+	display: block;
+	width: 100%;
+	background-color: transparent;
+	padding: 5px 15px;
+	font-size: 17px;
+	font-weight: normal;
+	color: #FFF;
+	border: 1px solid rgb(136 136 136 / 65%);
+	border-radius: 3px;
+}
+.tt-form-control:focus {
+	color: #FFF;
+	background-color: transparent;
+	border-color: rgb(204 204 204 / 85%);
+	outline: none;
+	box-shadow: none;
+}
+.tt-form-control + .tt-form-control {
+	margin-top: 20px;
+}
+.tt-form-control:disabled, .tt-form-control[readonly] {
+	background-color: rgb(176 176 176 / 6%);
+	opacity: .4;
+	cursor: not-allowed;
+}
+
+.tt-form-control:not(textarea):not([size]) { /* tt-form-control height */
+	height: 56px;
+}
+
+.tt-form-text {
+	display: block;
+	margin-top: 5px;
+	font-style: italic;
+	color: #999;
+}
+
+label {
+	display: inline-block;
+	margin-bottom: 8px;
+	font-size: 17px;
+	font-weight: bold;
+	font-weight: 500;
+}
+label .required {
+	opacity: .8;
+}
+
+
+::-webkit-input-placeholder {
+	color: #999 !important;
+}
+::-moz-placeholder {
+	color: #999 !important;
+}
+
+/* form group */
+.tt-form-group {
+	margin-bottom: 30px;
+}
+
+/* checkbox/radio */
+
+/* textarea */
+textarea,
+textarea.tt-form-control {
+	padding: 15px
+}
+
+/* select */
+select,
+select.tt-form-control {
+	cursor: pointer;
+	color: #999;
+}
+select option {
+	background-color: #131212;
+	color: #FFF;
+}
+select option[value=""][disabled] {
+  display: none;
+}
+select option[disabled] {
+	color: #999;
+}
+select:required:invalid {
+	color: #999;
+}
+
+/* range slider */
+
+
+/* Form inline 
+=============== */
+@media (min-width: 1025px) {
+
+	/* Form inline */
+
+	/* Form group inline */
+}
+
+
+/* Custom forms 
+================ */
+/* Custom checkbox/radio */
+
+/* Custom file upload */
+
+/* Custom form with button inside */
+
+
+/* Form extra styles 
+===================== */
+/* form style filled */
+
+/* form style minimal */
+.tt-form-minimal .tt-form-group {
+}
+.tt-form-minimal .tt-form-group label {
+	margin-bottom: 0px;
+}
+.tt-form-minimal .tt-form-control:not(select),
+.tt-form-minimal select.tt-form-control:not([multiple]) {
+	background-color: transparent;
+	padding-left: 0;
+	padding-right: 0;
+	font-size: 17px;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-radius: 2px;
+}
+.tt-form-minimal select.tt-form-control:not([multiple]) {
+	padding-right: 15px;
+}
+.tt-form-minimal .tt-form-control:focus {
+	border-color: #FFF;
+}
+.tt-form-minimal .tt-form-control:disabled, 
+.tt-form-minimal .tt-form-control[readonly] {
+	opacity: .2;
+}
+.tt-form-minimal .tt-form-control,
+.tt-form-minimal .tt-form-control select {
+	border-color: rgb(136 136 136 / 60%);
+}
+
+
+/* Form sizes 
+============== */
+/* form sm */
+
+/* form lg */
+
+
+/* -------------------------------------------------------------------- *
+ * Contact info
+/* -------------------------------------------------------------------- */
+
+.tt-contact-info {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 17px;
+}
+
+.tt-contact-info > li {
+	padding: 3px 0;
+}
+
+.tt-ci-icon {
+	display: inline-block;
+	margin-right: 10px;
+	font-size: 80%;
+}
+.tt-contact-info a {
+	display: inline;
+	transition: color 0.2s;
+}
+.tt-contact-info a:hover {
+	color: #FFF;
+}
+
+/* Social buttons */
+.tt-contact-info .social-buttons {
+	display: inline-block;
+	margin-top: 15px;
+	margin-left: -13px;
+}
+
+
+/* -------------------------------------------------------------------- *
+ * Background video
+ * Note: position "relative" or "absolute" required on parent element!
+/* -------------------------------------------------------------------- */
+
+
+/* ------------------------------------------------------------- *
+ * Background noise
+/* ------------------------------------------------------------- */
+
+.bg-noise {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	pointer-events: none;
+	overflow: hidden;
+}
+.bg-noise:before {
+	position: absolute;
+	content: '';
+	top: -10rem;
+	left: -10rem;
+	width: calc(100% + 20rem);
+	height: calc(100% + 20rem);
+	z-index: -1;
+	pointer-events: none;
+	background-image: url(../img/bg-noise.png);
+	background-position: 50%;
+	animation: BgNoise 1s steps(2) infinite;
+}
+@keyframes BgNoise {
+	0% { transform: translate3d(0, 9rem, 0) }
+	10% { transform: translate3d(-1rem, -4rem, 0) }
+	20% { transform: translate3d(-8rem, 2rem, 0) }
+	30% { transform: translate3d(9rem, -9rem, 0) }
+	40% { transform: translate3d(-2rem, 7rem, 0) }
+	50% { transform: translate3d(-9rem, -4rem, 0) }
+	60% { transform: translate3d(2rem, 6rem, 0) }
+	70% { transform: translate3d(7rem, -8rem, 0) }
+	80% { transform: translate3d(-9rem, 1rem, 0) }
+	90% { transform: translate3d(6rem, -5rem, 0) }
+	to { transform: translate3d(-7rem, 0, 0) }
+}
+
+
+/* ------------------------------------------------------------- *
+ * tt-Embed
+/* ------------------------------------------------------------- */
+
+
+/* ------------------------------------------------------------- *
+ * Scrolling text
+/* ------------------------------------------------------------- */
+
+/* Animation direction reverse. */
+
+
+/* Scrolling text styles 
+========================= */
+/* Style stroke */
+
+
+/* ------------------------------------------------------------- *
+ * Pagination (tt-pagination)
+/* ------------------------------------------------------------- */
+
+/* Align center */
+
+
+/* ------------------------------------------------------------- *
+ * Sidebar (classic)
+/* ------------------------------------------------------------- */
+
+/* Sidebar left */
+
+/* Hide elements (added by .js) */
+
+
+/* Sidebar on small screen 
+=========================== */
+@media (max-width: 991px) {
+
+	/* Sidebar cover */
+
+	/* Sidebar trigger */
+	.tt-header-tools-dynamic .tt-sidebar-trigger {
+		position: relative;
+		bottom: auto;
+		right: auto;
+		width: 40px;
+		height: 45px;
+		background-color: transparent;
+		border-radius: 0;
+	}
+	.ph-share .tt-sidebar-trigger {
+		position: relative;
+		bottom: auto;
+		right: auto;
+		width: 40px;
+		height: 40px;
+		background-color: transparent;
+		border-radius: 0;
+	}
+
+	/* Sidebar top close button */
+}
+
+
+/* ------------------------------------------------------------- *
+ * Sliding sidebar
+/* ------------------------------------------------------------- */
+
+
+/* Sliding sidebar trigger 
+=========================== */
+
+
+/* Sliding sidebar position right 
+================================== */
+
+
+/* Sliding sidebar trigger on small screens
+============================================ */
+@media (max-width: 768px) {
+	.tt-header-tools-dynamic .tt-sliding-sidebar-trigger {
+		position: relative;
+		bottom: auto;
+		right: auto;
+		width: 45px;
+		height: 45px;
+		background-color: transparent;
+		border-radius: 0;
+	}
+	.ph-share .tt-sliding-sidebar-trigger {
+		position: relative;
+		bottom: auto;
+		right: auto;
+		width: 40px;
+		height: 40px;
+		background-color: transparent;
+		border-radius: 0;
+	}
+}
+
+
+/* ------------------------------------------------------------- *
+ * Sidebar widgets
+/* ------------------------------------------------------------- */
+
+/* Sidebar headings */
+
+
+/* Sidebar search 
+================== */
+
+
+/* Sidebar categories 
+====================== */
+
+
+/* Sidebar post list 
+===================== */
+
+
+/* Sidebar post comments list 
+============================== */
+
+/* Sidebar comment */
+
+/* Sidebar comment meta */
+
+/* Sidebar comment data */
+
+/* Sidebar comment text */
+
+
+/* Sidebar tags 
+================ */
+
+
+/* Sidebar meta 
+================ */
+
+
+/* ------------------------------------------------------------- *
+ * Blog list
+/* ------------------------------------------------------------- */
+
+
+/* Blog list item
+================== */
+
+/* Blog list item image */
+
+/* Blog list item info */
+
+/* Blog list item description */
+
+/* Blog list item read more button */
+
+
+/* Blog list compact 
+===================== */
+@media (min-width: 1025px) {
+
+	/* Counter (no effect if sidebar exist!) */
+
+	/* If sidebar exist */
+}
+
+
+/* ------------------------------------------------------------- *
+ * Blog interactive
+/* ------------------------------------------------------------- */
+
+/* Blog interactive item counter */
+
+/* Blog interactive item image */
+
+/* Blog interactive item categories */
+
+/* Blog interactive item title */
+
+/* Blog interactive item meta */
+
+/* Magic cursor behavior */
+#magic-cursor.blog-interactive-hover-on {
+	z-index: -1;
+}
+
+/* Blog interactive item styles 
+================================ */
+/* Borders */
+
+
+/* ------------------------------------------------------------- *
+ * Blog single post
+/* ------------------------------------------------------------- */
+
+/* blog single inner */
+
+/* if page boxed layout enabled */
+
+
+/* Blog single post 
+==================== */
+
+/* blog single post content */
+
+/* blog single post image */
+
+/* blog single tags */
+
+
+/* Blog single post share 
+========================== */
+
+
+/* Blog single post nav 
+======================== */
+
+
+/* Blog single post comments 
+============================= */
+
+/* tt-Comments list */
+
+/* tt-Comments */
+
+/* tt-Comments avatar */
+
+/* tt-Comments pody */
+
+/* tt-Comments meta */
+
+/* tt-Comments text */
+
+/* tt-Comments reply */
+
+/* blog single post comment form */
+
+
+/* ------------------------------------------------------------- *
+ * Footer
+/* ------------------------------------------------------------- */
+
+/* Footer copyright */
+
+
+/* For desktop only 
+==================== */
+@media (min-width: 1025px) {
+
+	/* Footer columns */
+
+	/* Align footer column content */
+
+	/* Footer social */
+}
+
+/* For smaller screens only 
+============================ */
+@media (max-width: 1024px) {
+
+	/* Footer columns */
+
+	/* Order footer columns */
+
+	/* Footer social */
+}

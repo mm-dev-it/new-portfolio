@@ -1,6 +1,7 @@
 import type { Project } from "@/data/projects";
 import { SiteFooter } from "@/components/SiteLayout";
 import "./project-page-mat.css";
+import Icon from "@/components/Icon";
 
 export default function ProjectPageLegacy({ project }: { project: Project }) {
   return (
@@ -11,7 +12,8 @@ export default function ProjectPageLegacy({ project }: { project: Project }) {
       >
         <div className="ph-image">
           <div className="ph-image-inner">
-            <img src={project.image} alt={project.title} />
+            <link rel="preload" as="image" href={project.image} fetchPriority="high" />
+            <img src={project.image} alt={project.title} fetchPriority="high" />
           </div>
         </div>
 
@@ -44,7 +46,7 @@ export default function ProjectPageLegacy({ project }: { project: Project }) {
                     <a href={project.website} target="_blank" rel="noopener noreferrer">
                       Visita il sito
                       <span className="pi-list-icon">
-                        <i className="fas fa-arrow-right"></i>
+                        <Icon name="arrow-right" />
                       </span>
                     </a>
                   </div>
@@ -57,7 +59,7 @@ export default function ProjectPageLegacy({ project }: { project: Project }) {
         <a href="#page-content" className="scroll-down-circle" data-offset="30">
           <div className="sdc-inner ph-appear">
             <div className="sdc-icon">
-              <i className="fas fa-chevron-down"></i>
+              <Icon name="chevron-down" />
             </div>
             <svg viewBox="0 0 500 500">
               <defs>
@@ -79,7 +81,7 @@ export default function ProjectPageLegacy({ project }: { project: Project }) {
           <div className="mwl-inner">
             <div className="mwl-text">Made with</div>
             <div className="mwl-icon">
-              <i className="far fa-heart"></i>
+              <Icon name="heart" />
             </div>
           </div>
         </div>
@@ -112,7 +114,7 @@ export default function ProjectPageLegacy({ project }: { project: Project }) {
               </a>
               <div className="tt-pn-subtitle anim-fadeinup">I miei lavori</div>
               <div className="tt-pn-image">
-                <img src="/assets/img/page-header/work-hero-mm.jpg" alt="Portfolio — I miei lavori" />
+                <img src="/assets/img/page-header/work-hero-mm.webp" alt="Portfolio — I miei lavori" />
               </div>
             </div>
           </div>

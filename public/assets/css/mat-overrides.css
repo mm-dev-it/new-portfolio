@@ -1,8 +1,9 @@
 /* Mat design overrides — must load after theme.css */
 
 :root {
-  --mat-font-display: "Syne", sans-serif;
-  --mat-font-body: "IBM Plex Mono", monospace;
+  /* --font-syne / --font-plex-mono sono iniettate da next/font (self-hosted) */
+  --mat-font-display: var(--font-syne, "Syne"), sans-serif;
+  --mat-font-body: var(--font-plex-mono, "IBM Plex Mono"), monospace;
 }
 
 /* ── Base: IBM Plex Mono per corpo e descrizioni ── */
@@ -22,7 +23,8 @@ body.tt-smooth-scroll:not(.tt-no-smooth-scroll) #scroll-container {
   margin: 0 !important;
 }
 
-#scroll-container #content-wrap {
+/* will-change solo quando ScrollSmoother è davvero attivo (desktop) */
+body.tt-smooth-scroll:not(.tt-no-smooth-scroll) #scroll-container #content-wrap {
   will-change: transform;
 }
 

@@ -6,11 +6,13 @@ import "./mat-cookie-consent.css";
 
 const CONSENT_KEY = "mat-cookie-consent";
 
+// Su mobile il banner compare dopo l'hydration: un'anteprima corta evita che diventi
+// l'elemento LCP della pagina. Il resto si apre con "Leggi di più".
 const cookieTextPreview =
-  "Utilizziamo cookie tecnici necessari al funzionamento del sito e per memorizzare la tua scelta sui cookie. I font sono caricati tramite Google Fonts e possono comportare un trattamento limitato di dati tecnici (es. indirizzo IP) da parte di Google.";
+  "Solo cookie tecnici, nessun tracciamento e nessun dato inviato a terzi.";
 
 const cookieTextMore =
-  "Non utilizziamo cookie di profilazione o marketing. Titolare: Matteo Malaspina";
+  "I cookie servono al funzionamento del sito e a memorizzare la tua scelta. Font e risorse sono serviti direttamente da questo sito. Non utilizziamo cookie di profilazione o marketing. Titolare: Matteo Malaspina";
 
 type MatCookieConsentProps = {
   waitForPreloader?: boolean;

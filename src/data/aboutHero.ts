@@ -6,6 +6,6 @@ export const aboutHeroContent = {
   subtitleAccent: "Malaspina",
   scrollText: "Scorri in basso - Scorri in basso -",
   aside: "Sogna in Grande",
-  image: "/assets/img/page-header/bg_2.png",
+  image: "/assets/img/page-header/bg_2.webp",
   imageAlt: "Matteo Malaspina — Chi sono",
 } as const;

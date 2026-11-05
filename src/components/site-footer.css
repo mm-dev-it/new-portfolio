@@ -6,7 +6,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.7rem;
-  color: #737373;
+  color: #8f8f8f; /* ≥ 4.5:1 su sfondo scuro (accessibilità) */
   letter-spacing: 0.05em;
   text-align: center;
   background: #050505;

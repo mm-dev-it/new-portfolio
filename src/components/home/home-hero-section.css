@@ -589,3 +589,27 @@ html.mat-page-enter .mat-hero-visual-photo {
     transform: translateY(2%);
   }
 }
+
+/* ── Touch (html.mat-no-enter): foto e cornice visibili subito, senza animazione d'ingresso (LCP) ── */
+html.mat-no-enter.mat-page-enter .mat-hero-visual-backdrop__glow,
+html.mat-no-enter.mat-page-enter .mat-hero-visual-backdrop__square,
+html.mat-no-enter.mat-page-enter .mat-hero-visual-photo {
+  animation: none;
+}
+
+html.mat-no-enter .mat-hero-visual-backdrop__glow {
+  opacity: 1;
+}
+
+html.mat-no-enter .mat-hero-visual-backdrop__square {
+  clip-path: inset(0 0 0 0);
+}
+
+html.mat-no-enter .mat-hero-visual-backdrop__accent {
+  transform: translate(10px, 10px);
+}
+
+html.mat-no-enter .mat-hero-visual-photo {
+  opacity: 1;
+  transform: translateY(4%);
+}

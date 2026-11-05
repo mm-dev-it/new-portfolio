@@ -1,5 +1,6 @@
 import { worksHeroContent } from "@/data/worksHero";
 import "./works-hero-section.css";
+import Icon from "@/components/Icon";
 
 export default function WorksHeroSection() {
   const {
@@ -22,7 +23,8 @@ export default function WorksHeroSection() {
       <div className="page-header-inner tt-wrap">
         <div className="ph-image">
           <div className="ph-image-inner">
-            <img src={image} alt={imageAlt} loading="eager" decoding="async" />
+            <link rel="preload" as="image" href={image} fetchPriority="high" />
+            <img src={image} alt={imageAlt} loading="eager" decoding="async" fetchPriority="high" />
           </div>
         </div>
 
@@ -52,7 +54,7 @@ export default function WorksHeroSection() {
       >
         <div className="sdc-inner ph-appear">
           <div className="sdc-icon">
-            <i className="fas fa-chevron-down" aria-hidden="true" />
+            <Icon name="chevron-down" />
           </div>
           <svg viewBox="0 0 500 500" aria-hidden="true">
             <defs>
@@ -72,7 +74,7 @@ export default function WorksHeroSection() {
         <div className="mwl-inner">
           <div className="mwl-text">{aside}</div>
           <div className="mwl-icon">
-            <i className="far fa-heart" aria-hidden="true" />
+            <Icon name="heart" />
           </div>
         </div>
       </div>

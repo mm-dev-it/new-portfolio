@@ -77,14 +77,20 @@ function ScrollProgressBar() {
   );
 }
 
+function isPreloaderSkipped() {
+  return !document.documentElement.classList.contains("mat-preload-home");
+}
+
 function MatPreloader({ active }: { active: boolean }) {
   const [done, setDone] = useState(false);
   const [count, setCount] = useState(0);
   const progressRef = useRef<HTMLDivElement>(null);
   const finishedRef = useRef(false);
 
+  // Lo script inline nel layout salta il preloader su mobile (niente classe mat-preload-home):
+  // in quel caso non deve nascondere nulla e segnala subito "done" a chi lo aspetta.
   useLayoutEffect(() => {
-    if (!active) return;
+    if (!active || isPreloaderSkipped()) return;
     document.body.classList.add("mat-preloader-active");
     document.body.dataset.matPreloader = "true";
     return () => {
@@ -96,10 +102,19 @@ function MatPreloader({ active }: { active: boolean }) {
   useEffect(() => {
     if (!active) return;
 
+    if (isPreloaderSkipped()) {
+      // il CSS lo tiene già invisibile (html:not(.mat-preload-home)): niente setState qui
+      finishedRef.current = true;
+      document.documentElement.classList.add("mat-preload-done");
+      window.dispatchEvent(new Event("mat-preload-done"));
+      return;
+    }
+
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    const duration = prefersReduced ? 300 : 1800;
+    // 1,8 s bloccavano l'LCP: il contatore ora dura 1 s (la pagina sotto è già pronta)
+    const duration = prefersReduced ? 300 : 1000;
     const start = performance.now();
     let raf = 0;
 
