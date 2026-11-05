@@ -19,6 +19,9 @@ RewriteRule ^bnb-da-zare\.html$ /roger-sushi-lab/ [R=301,L]
 # DirectoryIndex per trailing slash
 DirectoryIndex index.html
 
+# Pagina 404 del sito al posto di quella di default di Plesk
+ErrorDocument 404 /404.html
+
 ## CACHING ##
 # Le pagine HTML non vanno cachate a lungo: altrimenti testi e mail
 # restano vecchi fino a 1 mese senza svuotare la cache del browser.
