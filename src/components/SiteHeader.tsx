@@ -34,7 +34,11 @@ export default function SiteHeader({ active }: SiteHeaderProps) {
               <span className="text-close">Chiudi</span>
             </div>
             <div className="tt-ol-menu-toggle-btn-holder">
-              <a href="#" className="tt-ol-menu-toggle-btn magnetic-item">
+              <a
+                href="#"
+                className="tt-ol-menu-toggle-btn magnetic-item"
+                aria-label="Apri o chiudi il menu"
+              >
                 <span></span>
               </a>
             </div>

@@ -246,3 +246,29 @@ html.mat-page-enter body:has(#page-header.mat-page-hero) #page-content {
     transform: translate(50%, 0) !important;
   }
 }
+
+/* ── Touch (html.mat-no-enter): nessuna animazione d'ingresso, contenuto visibile al primo paint (LCP) ── */
+  html.mat-no-enter.mat-page-enter #tt-header,
+  html.mat-no-enter.mat-page-enter .mat-hero-section .mat-hero-content > .ph-appear,
+  html.mat-no-enter.mat-page-enter .mat-hero-section .scroll-down-circle .sdc-inner,
+  html.mat-no-enter.mat-page-enter .mat-hero-section .made-with-love,
+  html.mat-no-enter.mat-page-enter #page-header.mat-page-hero .ph-image,
+  html.mat-no-enter.mat-page-enter #page-header.mat-page-hero .ph-caption .ph-appear,
+  html.mat-no-enter.mat-page-enter #page-header.mat-page-hero .ph-caption-title-ghost,
+  html.mat-no-enter.mat-page-enter #page-header.mat-page-hero .scroll-down-circle .sdc-inner,
+  html.mat-no-enter.mat-page-enter #page-header.mat-page-hero .made-with-love,
+  html.mat-no-enter.mat-page-enter body:has(.mat-hero-section) #page-content,
+  html.mat-no-enter.mat-page-enter body:has(#page-header.mat-page-hero) #page-content {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  html.mat-no-enter.mat-page-enter #page-header.mat-page-hero.ph-center .ph-caption-title-ghost {
+    transform: translate3d(-50%, 0, 0) !important;
+  }
+
+  html.mat-no-enter.mat-page-enter #page-header.mat-page-hero.ph-center:not(.ph-bg-image) .ph-image {
+    transform: translate(50%, 0) !important;
+  }
+

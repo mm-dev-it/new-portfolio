@@ -38,6 +38,7 @@ function WorkIntroContent({
         <span className="mat-work-intro-accent">Lavori</span>
       </h2>
       <Link
+                      prefetch={false}
         href="/i-miei-lavori"
         className="mat-work-sidebar-link magnetic-item"
         data-cursor="Vedi tutti<br>i progetti"
@@ -80,14 +81,18 @@ export default function HomeWorkSection() {
                 <article key={slide.slug} className="mat-work-slide">
                   <div className="mat-work-slide-inner">
                     <Link
+                      prefetch={false}
                       href={getHomeWorkSlideHref(slide)}
                       className="mat-work-slide-media"
                       data-cursor={`Esplora<br>${slide.title}`}
                     >
                       <img
                         src={getHomeWorkSlideImage(index)}
+                        srcSet={`${getHomeWorkSlideImage(index).replace(".webp", "-760.webp")} 760w, ${getHomeWorkSlideImage(index)} 1400w`}
+                        sizes="(max-width: 768px) 85vw, 38vw"
                         alt={slide.title}
-                        loading="eager"
+                        loading={index === 0 ? "eager" : "lazy"}
+                        decoding="async"
                         width={1200}
                         height={825}
                       />
@@ -97,6 +102,7 @@ export default function HomeWorkSection() {
                         <h3 className="mat-work-slide-title">{slide.title}</h3>
                       </div>
                       <Link
+                      prefetch={false}
                         href="/i-miei-lavori"
                         className="mat-work-slide-link"
                         data-cursor="Esplora<br>progetti"
@@ -125,6 +131,7 @@ export default function HomeWorkSection() {
                       <h3 className="mat-work-slide-title">&nbsp;</h3>
                     </div>
                     <Link
+                      prefetch={false}
                       href="/i-miei-lavori"
                       className="mat-work-slide-link mat-work-slide-cta-link magnetic-item"
                       data-cursor="Vedi tutti<br>i progetti"

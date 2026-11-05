@@ -125,8 +125,8 @@ export const portfolioProjects: Project[] = [
     year: "2026",
     type: "E-commerce",
     website: "https://ilricciotralepagine.com/",
-    image: "/assets/img/portfolio/il-riccio-work-mm.jpg",
-    ogImage: "/assets/img/portfolio/il-riccio-work-mm.jpg",
+    image: "/assets/img/portfolio/il-riccio-work-mm.webp",
+    ogImage: "/assets/img/portfolio/il-riccio-work-mm.webp",
     description:
       "E-commerce per libreria indipendente dedicata a bambini e ragazzi, con catalogo libri, albi illustrati, silent book, giochi e percorsi d'acquisto pensati per valorizzare la selezione editoriale e l'identità del negozio fisico e online.",
   },
@@ -152,8 +152,8 @@ export const portfolioProjects: Project[] = [
     year: "2025",
     type: "Sito Vetrina",
     website: "https://carolinaguliardini.com/",
-    image: "/assets/img/portfolio/carolina-work-mm.jpg",
-    ogImage: "/assets/img/portfolio/carolina-work-mm.jpg",
+    image: "/assets/img/portfolio/carolina-work-mm.webp",
+    ogImage: "/assets/img/portfolio/carolina-work-mm.webp",
     description:
       "Sito vetrina per l'artista Carolina Guliardini, pensato per presentare il catalogo, raccontare il suo percorso creativo e trasformare l'interesse dei visitatori in richieste di opere su commissione attraverso un percorso chiaro verso il contatto.",
   },
@@ -169,8 +169,8 @@ const legacyProjects: Project[] = [
     year: "2022",
     type: "E-commerce",
     website: "https://lagoaworld.com/",
-    image: "/assets/img/portfolio/lagoa-work.jpg",
-    ogImage: "/assets/img/portfolio/lagoa-work.jpg",
+    image: "/assets/img/portfolio/lagoa-work.webp",
+    ogImage: "/assets/img/portfolio/lagoa-work.webp",
     description:
       "LagoaWorld mira costantemente ad unire differenti modi di fare scarpe con lo scopo di creare un unico stile dal carattere naturale Lo stile LagoaWorld, libero e versatile, trae isprazione da scenari urbani e cosmopoliti. Perfetto per tutti coloro che cercano una creazione di qualità, pongono l'accento sulla cura dei particolari ma, al tempo stesso, amano la scoperta di nuovi stili e di nuovi mondi….",
   },
@@ -183,8 +183,8 @@ const legacyProjects: Project[] = [
     year: "2022",
     type: "Shop",
     website: "https://bohofolksdreams.com/",
-    image: "/assets/img/portfolio/BohoFolksDream.jpg",
-    ogImage: "/assets/img/portfolio/BohoFolksDream.jpg",
+    image: "/assets/img/portfolio/BohoFolksDream.webp",
+    ogImage: "/assets/img/portfolio/BohoFolksDream.webp",
     description:
       "Hai mai sentito parlare della comunità Wayyu? Il nostro obiettivo è valorizzare l'artigianalità delle diverse culture Colombiane. Scegliendo i nostri prodotti aiuterai più di 140 comunità indigene a proseguire la loro tradizione.",
   },
@@ -197,8 +197,8 @@ const legacyProjects: Project[] = [
     year: "2022",
     type: "Sito Vetrina",
     website: "https://barbatodesignstudio.com/",
-    image: "/assets/img/portfolio/barbato-design.png",
-    ogImage: "/assets/img/portfolio/barbato-design.png",
+    image: "/assets/img/portfolio/barbato-design.webp",
+    ogImage: "/assets/img/portfolio/barbato-design.webp",
     description:
       "La BARBATO DESIGN STUDIO è un team di stilisti di calzature e abbigliamento che propone consulenze stilistiche a livello internazionale. Con oltre 40 anni di collaborazioni, la BARBATO DESIGN STUDIO è conosciuta per la facoltà di percepire le intuizioni che anticipano le tendenze future e farle diventare veri e propri successi. Il team BARBATO DESIGN STUDIO si affianca da sempre al cliente in molteplici modi, dalla creazione di una collezione fino alla direzione creativa di un brand.",
   },
@@ -211,8 +211,8 @@ const legacyProjects: Project[] = [
     year: "2022",
     type: "E-commerce",
     website: "https://verdesalus.com/",
-    image: "/assets/img/portfolio/verdesalus.jpg",
-    ogImage: "/assets/img/portfolio/verdesalus.jpg",
+    image: "/assets/img/portfolio/verdesalus.webp",
+    ogImage: "/assets/img/portfolio/verdesalus.webp",
     description:
       "Il progetto Verdesalus nasce dalla volontà di creare una linea cosmetica rispettosa della natura e della bellezza, valorizzando al massimo il potere antiossidante e rigenerante dei polifenoli estratti da: ippocastano, limone, uva e nocciolo. Le saponine e l'escina dell'Ippocastano, l'esperidina e la citrina del Limone, gli antociani e il resveratrolo dell' Uva, i tannini e gli stilbeni del Nocciolo, sono i nostri punti di forza, preziosi alleati della tua bellezza e del tuo benessere psico fisico.",
   },
@@ -225,8 +225,8 @@ const legacyProjects: Project[] = [
     year: "2022",
     type: "E-commerce",
     website: "https://namahsi.com/",
-    image: "/assets/img/portfolio/Namahsi.jpeg",
-    ogImage: "/assets/img/portfolio/Namahsi.jpeg",
+    image: "/assets/img/portfolio/Namahsi.webp",
+    ogImage: "/assets/img/portfolio/Namahsi.webp",
     description:
       "Namahsì è un progetto che nasce dall'amore per la vita, per la natura, per l'arte e per i saperi ancestrali e contemporanei. Miriamo all'evoluzione dell'Essere Umano nell'amore e nella consapevolezza attraverso la pratica delle discipline olistiche e delle vie di crescita spirituale e di illuminazione.",
   },
@@ -239,9 +239,9 @@ const legacyProjects: Project[] = [
     type: "Sito Vetrina",
     website: "https://fluidfisioterapia.it/",
     image:
-      "/assets/img/portfolio/fluid-studio-fisioterapico-fermo-portosangiorgio.png",
+      "/assets/img/portfolio/fluid-studio-fisioterapico-fermo-portosangiorgio.webp",
     ogImage:
-      "/assets/img/portfolio/fluid-studio-fisioterapico-fermo-portosangiorgio.png",
+      "/assets/img/portfolio/fluid-studio-fisioterapico-fermo-portosangiorgio.webp",
     description:
       "Fluid è uno studio fisioterapico che da diversi anni offre ai propri pazienti la possibilità di fruire del supporto di personale competente capace di risolvere qualsiasi genere di problematica con trattamenti ottimali. Ascoltare e comprendere il problema di ogni paziente è fondamentale per il percorso di cura.",
     lightImage: true,
@@ -255,8 +255,8 @@ const legacyProjects: Project[] = [
     year: "2022",
     type: "E-commerce",
     website: "https://dixystore.com/",
-    image: "/assets/img/portfolio/pink-dog-coat.jpg",
-    ogImage: "/assets/img/portfolio/pink-dog-coat.jpg",
+    image: "/assets/img/portfolio/pink-dog-coat.webp",
+    ogImage: "/assets/img/portfolio/pink-dog-coat.webp",
     description:
       "Ciao! Siamo Dixy – piccola modella, \"coccolosa\" influencer e Zaira – attenta e premurosa coinquilina, imprenditrice amante degli animali, e co-fondatrice di Dixy's. Se non ti importa di quelle persone che criticano il fatto di vestire il tuo pelosetto, con dixystore.com darai loro un motivo in più per farlo! Noi a Dixy's sappiamo quanto sia importante avere un look favoloso, anche quando esci per fare una piccola passeggiata.",
   },

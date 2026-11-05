@@ -135,8 +135,11 @@
 
 			var isMatHomeHero = $(".mat-hero-section").length;
 			var isMatPageHero = $("#page-header.mat-page-hero").length;
+			// Su touch (html.mat-no-enter) niente animazione d'ingresso GSAP: il contenuto è già visibile
+			// dal primo paint (vedi script inline in SiteDocument) e l'LCP non aspetta theme.js.
+			var noEnter = document.documentElement.classList.contains("mat-no-enter");
 
-			if (isMatHomeHero || isMatPageHero) {
+			if (isMatHomeHero || isMatPageHero || noEnter) {
 				$("#page-header.mat-ph-enter").addClass("mat-ph-enter-done");
 				return;
 			}
@@ -1629,7 +1632,8 @@
 
 	// init Isotope
 	var $container = $(".isotope-items-wrap");
-	$container.imagesLoaded(function() {
+	// Isotope/imagesLoaded non sono più caricati: nessuna pagina usa la griglia.
+	if ($container.length && typeof $container.imagesLoaded === "function") $container.imagesLoaded(function() {
 		$container.isotope({
 			itemSelector: ".isotope-item",
 			layoutMode: "packery",
@@ -1687,7 +1691,8 @@
 	// Mousewheel plugin: https://github.com/jquery/jquery-mousewheel
 	// =====================================================
 
-	$(".lightgallery").lightGallery({
+	// lightGallery non è più caricato: nessuna pagina usa la lightbox.
+	if (typeof $.fn.lightGallery === "function") $(".lightgallery").lightGallery({
 
 		// Please read about gallery options here: http://sachinchoolur.github.io/lightGallery/docs/api.html
 

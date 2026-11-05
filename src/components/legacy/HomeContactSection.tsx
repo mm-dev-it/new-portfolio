@@ -1,3 +1,5 @@
+import Icon from "@/components/Icon";
+
 export default function HomeContactSection() {
   return (
     <div className="tt-section">
@@ -14,13 +16,13 @@ export default function HomeContactSection() {
             <ul className="tt-contact-info padding-bottom-40 text-gray">
               <li className="anim-fadeinup">
                 <span className="tt-ci-icon">
-                  <i className="fas fa-map-marker-alt"></i>
+                  <Icon name="map-marker" />
                 </span>
                 Contrada Santo Stefano 3, 63900 Fermo (FM) Italy
               </li>
               <li className="anim-fadeinup">
                 <span className="tt-ci-icon">
-                  <i className="fas fa-phone"></i>
+                  <Icon name="phone" />
                 </span>
                 <a href="tel:+393347145447" className="tt-link">
                   +39 3347145447
@@ -28,7 +30,7 @@ export default function HomeContactSection() {
               </li>
               <li className="anim-fadeinup">
                 <span className="tt-ci-icon">
-                  <i className="fas fa-envelope"></i>
+                  <Icon name="envelope" />
                 </span>
                 <a href="mailto:info@matteomalaspina.it" className="tt-link">
                   info@matteomalaspina.it

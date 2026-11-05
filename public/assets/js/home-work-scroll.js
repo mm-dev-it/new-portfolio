@@ -10,7 +10,8 @@
     return Promise.all(
       Array.prototype.map.call(images, function (img) {
         return new Promise(function (resolve) {
-          if (img.complete) {
+          // Le slide fuori viewport sono loading="lazy": non aspettarle, hanno già width/height.
+          if (img.complete || img.loading === "lazy") {
             resolve();
             return;
           }

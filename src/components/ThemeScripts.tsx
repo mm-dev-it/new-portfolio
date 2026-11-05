@@ -1,23 +1,13 @@
 import Script from "next/script";
 
+/**
+ * Script del tema legacy (jQuery + GSAP + theme.js).
+ * Un solo loader, dopo l'hydration, che carica theme.bundle.js (tutto concatenato: 1 richiesta)
+ * (prima jQuery/GSAP erano sincroni nell'<head>). Swiper, Isotope, lightGallery e mousewheel
+ * sono stati rimossi: nessuna pagina li usa. home-work-scroll.js si auto-disattiva fuori dalla home.
+ */
 export default function ThemeScripts() {
   return (
-    <>
-      <Script src="/assets/vendor/jquery/jquery.min.js" strategy="beforeInteractive" />
-      <Script src="/assets/vendor/gsap/gsap.min.js" strategy="beforeInteractive" />
-      <Script src="/assets/js/gsap-shim.js" strategy="beforeInteractive" />
-      <Script src="/assets/vendor/gsap/ScrollToPlugin.min.js" strategy="beforeInteractive" />
-      <Script src="/assets/vendor/gsap/ScrollTrigger.min.js" strategy="beforeInteractive" />
-      <Script src="/assets/vendor/gsap/ScrollSmoother.min.js" strategy="beforeInteractive" />
-      <Script src="/assets/vendor/swiper/js/swiper-bundle.min.js" strategy="afterInteractive" />
-      <Script src="/assets/vendor/isotope/imagesloaded.pkgd.min.js" strategy="afterInteractive" />
-      <Script src="/assets/vendor/isotope/isotope.pkgd.min.js" strategy="afterInteractive" />
-      <Script src="/assets/vendor/isotope/packery-mode.pkgd.min.js" strategy="afterInteractive" />
-      <Script src="/assets/vendor/lightgallery/js/lightgallery-all.min.js" strategy="afterInteractive" />
-      <Script src="/assets/vendor/jquery.mousewheel.min.js" strategy="afterInteractive" />
-      <Script src="/assets/js/theme.js" strategy="afterInteractive" />
-      <Script src="/assets/js/next-init.js" strategy="afterInteractive" />
-      <Script src="/assets/js/form-handler.js" strategy="afterInteractive" />
-    </>
+    <Script src="/assets/js/theme-loader.js" strategy="afterInteractive" />
   );
 }

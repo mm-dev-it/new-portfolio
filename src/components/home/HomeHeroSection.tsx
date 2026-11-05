@@ -1,5 +1,6 @@
 import { homeHeroContent } from "@/data/homeHero";
 import "./home-hero-section.css";
+import Icon from "@/components/Icon";
 
 export default function HomeHeroSection() {
   const {
@@ -54,12 +55,16 @@ export default function HomeHeroSection() {
                 <div className="mat-hero-visual-backdrop__frame" />
               </div>
             </div>
+            <link rel="preload" as="image" href={image} fetchPriority="high" />
             <img
               src={image}
               alt={imageAlt}
               className="mat-hero-visual-photo"
               loading="eager"
               decoding="async"
+              fetchPriority="high"
+              width={854}
+              height={1049}
             />
           </div>
         </div>
@@ -74,7 +79,7 @@ export default function HomeHeroSection() {
       >
         <div className="sdc-inner ph-appear">
           <div className="sdc-icon">
-            <i className="fas fa-chevron-down" aria-hidden="true" />
+            <Icon name="chevron-down" />
           </div>
           <svg viewBox="0 0 500 500" aria-hidden="true">
             <defs>
@@ -93,7 +98,7 @@ export default function HomeHeroSection() {
       <div className="made-with-love ph-appear">
         <div className="mwl-inner">
           <div className="mwl-icon">
-            <i className="far fa-heart" aria-hidden="true" />
+            <Icon name="heart" />
           </div>
           <div className="mwl-text">{aside}</div>
         </div>
