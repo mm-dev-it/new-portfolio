@@ -242,8 +242,10 @@ html.mat-page-enter body:has(#page-header.mat-page-hero) #page-content {
     transform: translate3d(-50%, 0, 0) !important;
   }
 
-  html.mat-page-enter #page-header.mat-page-hero.ph-center:not(.ph-bg-image) .ph-image {
-    transform: translate(50%, 0) !important;
+  @media (min-width: 1025px) {
+    html.mat-page-enter #page-header.mat-page-hero.ph-center:not(.ph-bg-image) .ph-image {
+      transform: translate(50%, 0) !important;
+    }
   }
 }
 
@@ -268,7 +270,10 @@ html.mat-page-enter body:has(#page-header.mat-page-hero) #page-content {
     transform: translate3d(-50%, 0, 0) !important;
   }
 
-  html.mat-no-enter.mat-page-enter #page-header.mat-page-hero.ph-center:not(.ph-bg-image) .ph-image {
-    transform: translate(50%, 0) !important;
+  /* solo desktop: su mobile la foto è centrata dal layout, senza translate */
+  @media (min-width: 1025px) {
+    html.mat-no-enter.mat-page-enter #page-header.mat-page-hero.ph-center:not(.ph-bg-image) .ph-image {
+      transform: translate(50%, 0) !important;
+    }
   }
 
